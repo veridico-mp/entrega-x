@@ -1,24 +1,24 @@
-const nombre = document.getElementById('nombre');
-const pass = document.getElementById('pass');
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('form');
 
-document.addEventListener('DOMContentLoaded', ()=>{
-    let btn = document.getElementById('logg');
+    form.addEventListener('submit', (event) => {
+        event.preventDefault(); // Evita que el formulario se envíe por defecto
 
-    btn.addEventListener('click', ()=>{
-        if (checkCont()){
-            location.href('index.html');
-        }else{
-            alert("Ninguno de los campos puede estar vacio");
+        if (checkCont()) {
+            location.href = 'index.html';
         }
+    });
+});
 
-    })
-    
-})
+function checkCont() {
+    const nombre = document.getElementById('nombre');
+    const pass = document.getElementById('pass');
+    const errorMessage = "Ninguno de los campos puede estar vacío";
 
-function checkCont(){
-    if (nombre.value === "" && pass.value=== ""){
-        alert("Ninguno de los campos puede estar vacio");
-    }else {
+    if (nombre.value === "" || pass.value === "") {
+        alert(errorMessage);
+        return false;
+    } else {
         return true;
     }
 }
