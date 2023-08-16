@@ -70,6 +70,8 @@ nav a {
 footer {
   padding-top: 3rem;
   padding-bottom: 3rem;
+  bottom: 0;
+  position: absolute;
 }
 
 footer p {
