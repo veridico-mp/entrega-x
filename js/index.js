@@ -19,5 +19,12 @@ document.addEventListener("DOMContentLoaded", function(){
         document.getElementById('nombre').innerHTML= usuario;
     }
 
+    let logout = document.getElementById('salir');
+    logout.addEventListener('click', function(){
+        localStorage.removeItem('nombre');
+        alert('Desconexion exitosa', 'Vuelve pronto');
+        location.href="login.html";
+        
+    })
 });
 
