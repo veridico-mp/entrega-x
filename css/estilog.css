@@ -7,6 +7,10 @@ body{
     text-align: center;
 }
 
+footer{
+    position: absolute;
+}
+
 .container{
 position: absolute;
 top: 50%;
