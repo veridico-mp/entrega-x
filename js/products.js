@@ -1,4 +1,5 @@
-    const URL_Autos = "https://japceibal.github.io/emercado-api/cats_products/101.json";
+    let catID = localStorage.getItem("catID");
+    const URL_CATEGORIES = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
 
     //Realiza solicitud fetch y espera a que la respuesta se convierta a formato JSON. En caso de error se captura en un bloque catch y muestra mensaje de error en consola
     async function fetchProductData(url) {
@@ -14,7 +15,7 @@
     
     
     //Se llama a la funcion fetchProductData() con la URL. Cuando se resuelve la promesa muestra los datos con uploadProducts(), sino se crea un mensaje de error
-    fetchProductData(URL_Autos)
+    fetchProductData(URL_CATEGORIES)
         .then(data => {
             uploadProducts(data.products);
         })
