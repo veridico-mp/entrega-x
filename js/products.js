@@ -16,6 +16,7 @@
     //Se llama a la funcion fetchProductData() con la URL. Cuando se resuelve la promesa muestra los datos con uploadProducts(), sino se crea un mensaje de error
     fetchProductData(URL_CATEGORIES)
         .then(data => {
+            localStorage.setItem('backUp', JSON.stringify(data.products));
             uploadProducts(data.products);
         })
         .catch(error => {
@@ -91,4 +92,10 @@
                 });
 
             })
-
+    let localData = localStorage.getItem('backUp');
+    let parsedData = JSON.parse(localData);
+    console.log(parsedData);
+    function sortByPrice(data){
+        data.cost.sort(function(a, b){return a - b;});
+    }
+    console.log(sortByPrice(parsedData));
