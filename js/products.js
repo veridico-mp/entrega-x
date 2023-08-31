@@ -116,7 +116,6 @@ fetchProductData(URL_CATEGORIES)
     });
 //Ordena segun relevancia mayor a menor
     countD.addEventListener('click', function(){
-        console.log("uno");
         let productsList = document.getElementById("products-list");
         let sortedArray = storeageOne.sort((a, b)=> b.soldCount- a.soldCount);
         productsList.innerHTML= "";
@@ -124,7 +123,6 @@ fetchProductData(URL_CATEGORIES)
     });
 //Ordena segun relevancia menor a mayor
     countU.addEventListener('click', function(){
-        console.log("dos");
         let productsList = document.getElementById("products-list");
         let sortedArray = storeageOne.sort((a, b)=> a.soldCount - b.soldCount);
         productsList.innerHTML= "";
