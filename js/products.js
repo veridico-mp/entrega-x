@@ -97,7 +97,8 @@ fetchProductData(URL_CATEGORIES)
 
     let aToZ = document.getElementById('sortAsc');//Botón A-Z
     let zToA = document.getElementById('sortDesc');//Botón Z-Z
-    let count = document.getElementById('sortByCount');//Botón ordenador por relevancia
+    let countD = document.getElementById('sortByCountDown');//Botón ordenador por relevancia
+    let countU = document.getElementById('sortByCountUp');//Botón ordenador por relevancia
 //Ordena de A-Z
     aToZ.addEventListener('click', function(){
         let productsList = document.getElementById("products-list");
@@ -110,28 +111,22 @@ fetchProductData(URL_CATEGORIES)
     zToA.addEventListener('click', function(){
         let productsList = document.getElementById("products-list");
         let sortedArray = storeageOne.sort((a, b)=> b.name.localeCompare(a.name));
-        //console.log(sortedArray);
         productsList.innerHTML= "";
         uploadProducts(sortedArray);
     });
-//Ordena segun relevancia
-    let flipFlop = 0;
-    count.addEventListener('click', function(){
-        //console.log(storeageOne);
+//Ordena segun relevancia mayor a menor
+    countD.addEventListener('click', function(){
+        console.log("uno");
         let productsList = document.getElementById("products-list");
-        if (flipFlop === 0){
-            flipFlop = flipFlop + 1;
-            //console.log(flipFlop);
-            let sortedArray = storeageOne.sort((a, b)=> b.soldCount- a.soldCount);
-            //console.log(sortedArray);
-            productsList.innerHTML= "";
-            uploadProducts(sortedArray);
-        }else if(flipFlop > 0){
-            flipFlop = flipFlop - 1;
-            //console.log(flipFlop);
-            let sortedArray = storeageOne.sort((a, b)=> a.soldCount - b.soldCount);
-            //console.log(sortedArray);
-            productsList.innerHTML= "";
-            uploadProducts(sortedArray);
-        }
-    }); 
+        let sortedArray = storeageOne.sort((a, b)=> b.soldCount- a.soldCount);
+        productsList.innerHTML= "";
+        uploadProducts(sortedArray);    
+    });
+//Ordena segun relevancia menor a mayor
+    countU.addEventListener('click', function(){
+        console.log("dos");
+        let productsList = document.getElementById("products-list");
+        let sortedArray = storeageOne.sort((a, b)=> a.soldCount - b.soldCount);
+        productsList.innerHTML= "";
+        uploadProducts(sortedArray);
+    })
