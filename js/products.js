@@ -29,8 +29,8 @@
           
         //Toma un array de productos y crea un div a medida que itera por cada elemento, dentro coloca todas sus características   
         function uploadProducts(dataArray) {
-            const productsList = document.getElementById("products-list");
-          
+            let productsList = document.getElementById("products-list");
+            localStorage.setItem('lastLoad', JSON.stringify(dataArray));
             for (const item of dataArray) {
               const productDiv = document.createElement("div");
               productDiv.classList.add("product"); // Agrega la clase "product" para aplicar los estilos CSS
@@ -78,7 +78,7 @@
         /*Aca se limpian los filtros y se vuelve a cargar los productos en su totalidad */
             const cleanFilter = document.getElementById('clearRangeFilter');
             cleanFilter.addEventListener('click', function(){
-                const productsList = document.getElementById("products-list");
+                let productsList = document.getElementById("products-list");
                 productsList.innerHTML= "";
                 
                 fetchProductData(URL_CATEGORIES)
@@ -92,10 +92,30 @@
                 });
 
             })
-    let localData = localStorage.getItem('backUp');
-    let parsedData = JSON.parse(localData);
-    console.log(parsedData);
-    function sortByPrice(data){
-        data.cost.sort(function(a, b){return a - b;});
-    }
-    console.log(sortByPrice(parsedData));
+
+    /*Ordenando arreglos */
+
+
+    let aToZ = document.getElementById('sortAsc');
+    let zToA = document.getElementById('sortDesc');
+//Ordena de A-Z
+    aToZ.addEventListener('click', function(){
+        let localData = localStorage.getItem('lastLoad');
+        let parsedData = JSON.parse(localData);
+        let productsList = document.getElementById("products-list");
+        let sortedArray = parsedData.sort((a, b)=> a.name.localeCompare(b.name));
+        //console.log(sortedArray);
+        productsList.innerHTML= "";
+        uploadProducts(sortedArray);
+    });
+//Ordena Z-A
+    zToA.addEventListener('click', function(){
+        let localData = localStorage.getItem('lastLoad');
+        let parsedData = JSON.parse(localData);
+        let productsList = document.getElementById("products-list");
+        let sortedArray = parsedData.sort((a, b)=> b.name.localeCompare(a.name));
+        //console.log(sortedArray);
+        productsList.innerHTML= "";
+        uploadProducts(sortedArray);
+    });
+
