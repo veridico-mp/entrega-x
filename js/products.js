@@ -1,6 +1,9 @@
 let catID = localStorage.getItem("catID");
 const URL_CATEGORIES = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
 
+const searchButton = document.getElementById("searchButton");
+const searchInput = document.getElementById("searchInput");
+
 
 //Realiza solicitud fetch y espera a que la respuesta se convierta a formato JSON. En caso de error se captura en un bloque catch y muestra mensaje de error en consola
 async function fetchProductData(url) {
@@ -29,11 +32,17 @@ fetchProductData(URL_CATEGORIES)
 
     let storeageOne = {}; 
     //Toma un array de productos y crea un div a medida que itera por cada elemento, dentro coloca todas sus características   
-    function uploadProducts(dataArray) {
+    function uploadProducts(dataArray, searchTerm = "") {
         storeageOne = dataArray;
         //console.log(storeageOne);
         let productsList = document.getElementById("products-list");
+        productsList.innerHTML = "";
+
         for (const item of dataArray) {
+
+        if (item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                item.description.toLowerCase().includes(searchTerm.toLowerCase())
+            ){
           const productDiv = document.createElement("div");
           productDiv.classList.add("product"); // Agrega la clase "product" para aplicar los estilos CSS
           productDiv.classList.add("fetched-product"); // Agrega la clase adicional para todos los productos obtenidos a través de fetch
@@ -50,7 +59,7 @@ fetchProductData(URL_CATEGORIES)
               </div>
           `;
           productsList.appendChild(productDiv);
-        }   
+        }}   
         /*Aca esta el filtro de productos segun precio */
         const filterBtn = document.getElementById('rangeFilterCount');
         filterBtn.addEventListener('click', function(){
@@ -128,3 +137,15 @@ fetchProductData(URL_CATEGORIES)
         productsList.innerHTML= "";
         uploadProducts(sortedArray);
     })
+
+    // searchButton.addEventListener("click", function() {
+    //     const searchTerm = searchInput.value;
+    //     uploadProducts(storeageOne, searchTerm);
+    // });
+
+    searchInput.addEventListener("input", function() {
+        const searchTerm = searchInput.value;
+        uploadProducts(storeageOne, searchTerm);
+    });
+
+    
