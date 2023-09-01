@@ -107,18 +107,18 @@ fetchProductData(URL_CATEGORIES)
     let zToA = document.getElementById('sortDesc');//Botón Z-Z
     let countD = document.getElementById('sortByCountDown');//Botón ordenador por relevancia
     let countU = document.getElementById('sortByCountUp');//Botón ordenador por relevancia
-//Ordena de A-Z
+//Ordena de Max-Min
     aToZ.addEventListener('click', function(){
         let productsList = document.getElementById("products-list");
-        let sortedArray = storeageOne.sort((a, b)=> a.name.localeCompare(b.name));
+        let sortedArray = storeageOne.sort((a, b)=> a.cost - b.cost);
         //console.log(sortedArray);
         productsList.innerHTML= "";
         uploadProducts(sortedArray);
     });
-//Ordena Z-A
+//Ordena Min-Max
     zToA.addEventListener('click', function(){
         let productsList = document.getElementById("products-list");
-        let sortedArray = storeageOne.sort((a, b)=> b.name.localeCompare(a.name));
+        let sortedArray = storeageOne.sort((a, b)=> b.cost - a.cost);
         productsList.innerHTML= "";
         uploadProducts(sortedArray);
     });
@@ -129,14 +129,7 @@ fetchProductData(URL_CATEGORIES)
         productsList.innerHTML= "";
         uploadProducts(sortedArray);    
     });
-//Ordena segun relevancia menor a mayor
-    countU.addEventListener('click', function(){
-        let productsList = document.getElementById("products-list");
-        let sortedArray = storeageOne.sort((a, b)=> a.soldCount - b.soldCount);
-        productsList.innerHTML= "";
-        uploadProducts(sortedArray);
-    })
-
+//Busca los productos según ingrese letras en el cuadro de busqueda
     searchInput.addEventListener("input", function() {
         const searchTerm = searchInput.value;
         uploadProducts(storeageOne, searchTerm);
