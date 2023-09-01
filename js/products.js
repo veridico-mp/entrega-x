@@ -1,7 +1,6 @@
 let catID = localStorage.getItem("catID");
 const URL_CATEGORIES = `https://japceibal.github.io/emercado-api/cats_products/${catID}.json`;
 
-const searchButton = document.getElementById("searchButton");
 const searchInput = document.getElementById("searchInput");
 
 
@@ -137,11 +136,6 @@ fetchProductData(URL_CATEGORIES)
         productsList.innerHTML= "";
         uploadProducts(sortedArray);
     })
-
-    // searchButton.addEventListener("click", function() {
-    //     const searchTerm = searchInput.value;
-    //     uploadProducts(storeageOne, searchTerm);
-    // });
 
     searchInput.addEventListener("input", function() {
         const searchTerm = searchInput.value;
