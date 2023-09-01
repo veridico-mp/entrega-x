@@ -14,17 +14,27 @@
 <body>
   <header class="header">
     <div class="logo">
-      <img src="img/logo-usuario.png" alt="">
+      <div class="usuario">
+      <img src="img/usuario.png" alt="logo o imagen usuario" class="logo-usuario">
+      <a class="prof-link" id="nombre"></a>
+    
       <ul class="submenu-logo">
+       
         <li class="item-logo">
-          <a class="prof-link" id="nombre"></a> <!--Faltaria agregar un href="" que dirija a la pagina de perfil de usuario-->
+          <a class="prof-link" id="ajustes">Mi perfil</a> <!--Faltaria agregar un href="" que dirija a la pagina de perfil de usuario-->
+        </li>
+        <li class="item-logo">
+          <a class="prof-link" id="ajustes">Mis compras</a> <!--Faltaria agregar un href="" que dirija a la pagina de compras-->
         </li>
         <hr>
         <li class="item-logo">
           <input type="button" id="salir" value="Desconectar">
         </li>
       </ul>
-     
+    </div>
+    <div class="carrito">
+     <img src="img/Logo-carrito.png" alt="logo carrito de compras" class="logo-carrito">
+    </div>
     </div>
   <nav>
   
@@ -35,6 +45,7 @@
 
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
+           
           </li>
 
           <li class="nav-item">

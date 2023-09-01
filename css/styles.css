@@ -209,6 +209,11 @@ nav{
   margin-top: 20px;
 }
 
+#searchInput{
+margin-right: 5px;
+
+}
+
 .product {
   background-color: rgb(255, 255, 255);
   display: flex;
@@ -258,6 +263,7 @@ nav{
 
 .cuerpo{
   background-image: url('/img/fondoautos.png');
+  margin-top: 70px;
 }
 
 /* header */
