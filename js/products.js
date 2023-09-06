@@ -44,11 +44,11 @@ fetchProductData(URL_CATEGORIES)
             ){
           const productDiv = document.createElement("div");
           productDiv.classList.add("product"); // Agrega la clase "product" para aplicar los estilos CSS
-          productDiv.classList.add("fetched-product"); // Agrega la clase adicional para todos los productos obtenidos a través de fetch
+          //productDiv.classList.add("fetched-product"); // Agrega la clase adicional para todos los productos obtenidos a través de fetch
           //Acá se construyen todos los div que contienen cada producto
           productDiv.innerHTML = `
               <img src="${item.image}">
-              <div class="description-container">
+              <div class="description-container" onclick="setProdID(${item.id})">
                   <h2>${item.name}</h2>
                   <p>${item.description}</p>
                   <p class="price">${item.currency} ${item.cost}</p>
@@ -135,4 +135,8 @@ fetchProductData(URL_CATEGORIES)
         uploadProducts(storeageOne, searchTerm);
     });
 
-    
+//Guardar ID de producto en el localStorage para poder hacer fetch a su informacion en product-info.js
+function setProdID(id) {
+    localStorage.setItem("prodID", id);
+    window.location = "product-info.html";
+}
