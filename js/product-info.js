@@ -92,3 +92,42 @@ function showProductComments(data) {
 
 // Llamamos a la función para cargar los comentarios
 fetchComments(URL_com);
+
+// Obtener una referencia al formulario y al contenedor de comentarios
+const commentForm = document.getElementById("comment-form");
+const commentsContainer = document.getElementById("comments");
+
+// Agregar un evento de envío al formulario
+commentForm.addEventListener("submit", function (event) {
+  event.preventDefault(); // Evitar que la página se recargue al enviar el formulario
+
+  // Obtener los valores ingresados por el usuario
+  const username = document.getElementById("username").value;
+  const score = document.getElementById("score").value;
+  const commentText = document.getElementById("comment").value;
+
+  // Validar que se haya ingresado un comentario
+  if (commentText.trim() === "") {
+    alert("Por favor, ingrese un comentario.");
+    return;
+  }
+
+  // Obtener la fecha y hora actual
+  const now = new Date();
+  const formattedDate = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+
+  // Crear un nuevo elemento de comentario y agregarlo al contenedor de comentarios
+  const newComment = document.createElement("div");
+  newComment.className = "comment";
+  newComment.innerHTML = `
+    <p><strong>Usuario:</strong> ${username}</p>
+    <p><strong>Puntuación:</strong> ${score}</p>
+    <p><strong>Comentario:</strong> ${commentText}</p>
+    <p><strong>Fecha/Hora:</strong> ${formattedDate}</p>
+  `;
+
+  commentsContainer.appendChild(newComment);
+
+  // Limpiar el formulario después de enviar el comentario
+  commentForm.reset();
+});

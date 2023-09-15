@@ -74,8 +74,40 @@
       
     </div>
     <div class="container form-control" id="comments">
+
       
     </div>
+      <!-- Agrega esta sección dentro del div con id "comments" en tu HTML existente -->
+      <div class="container form-control" id="comments">
+        <h2>Comentarios</h2>
+        <!-- Aquí se mostrarán los comentarios existentes -->
+      
+        <!-- Formulario para un nuevo comentario -->
+        <div class="new-comment">
+          <h3>Escribir un Nuevo Comentario</h3>
+          <form id="comment-form">
+            <div class="form-group">
+              <input id="username" type="text">
+
+              <label for="score">Puntuación:</label>
+              <select class="form-control" id="score" name="score">
+                <option value="1">1 - Muy malo</option>
+                <option value="2">2 - Malo</option>
+                <option value="3">3 - Regular</option>
+                <option value="4">4 - Bueno</option>
+                <option value="5">5 - Excelente</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="comment">Comentario:</label>
+              <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar Comentario</button>
+          </form>
+        </div>
+      </div>
+      
+
   </main>
   <footer class="text-muted">
     <div class="container">
