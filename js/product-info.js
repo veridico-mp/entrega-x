@@ -12,6 +12,7 @@ function fetchData(url){//Esta es para mostrar imagenes
         console.log(data);
         showProductGalery(data);
         showProductDescription(data);
+        showRelatedProducts(data);
     })
     .catch(function(error) {
         console.log(error);
@@ -57,4 +58,19 @@ function showProductDescription(data){
     <p>Precio: ${data.currency} ${data.cost}</p>
     </div>
     `;
+    let des = document.getElementById('descripcion');
+    des.innerHTML += `<h2>descripción:</h2> <br> ${data.description}<br> valor: ${data.currency} ${data.cost}<br>Stock: ${data.soldCount}`;
+    console.log(des);    
+}
+function showRelatedProducts(data){ // Funcion que mostrara los productos relacionados
+    let relproduct= document.getElementById('prodRelacionados');
+    relproduct.innerHTML += `
+    <div class='container form-control' id='relprod'></div>`
+    showProductRelacionado(data);
+};
+function showProductRelacionado(data){ // Esta funcion obtendra los productos del array y luego se llamará dentro de showRelatedProducts
+ let relprod = document.getElementById('relprod');
+ for (let product of data.relatedProducts){
+    relprod.innerHTML += `<h2>Productos Relacionados:</h2> <br> <p>${product.name}</p> <img src=${product.image}>`;
+ }
 }
