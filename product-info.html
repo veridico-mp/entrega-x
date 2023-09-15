@@ -16,106 +16,77 @@
   <header class="header">
     <div class="logo">
       <div class="usuario">
-      <img src="img/usuario.png" alt="logo o imagen usuario" class="logo-usuario">
-      <a class="prof-link" id="nombre"></a>
-    
-      <ul class="submenu-logo">
-       
-        <li class="item-logo">
-          <a class="prof-link" id="ajustes">Mi perfil</a> <!--Faltaria agregar un href="" que dirija a la pagina de perfil de usuario-->
+        <img src="img/usuario.png" alt="logo o imagen usuario" class="logo-usuario">
+        <a class="prof-link" id="nombre"></a>
+        <ul class="submenu-logo">
+          <li class="item-logo">
+            <a class="prof-link" id="ajustes">Mi perfil</a> <!--Faltaria agregar un href="" que dirija a la pagina de perfil de usuario-->
+          </li>
+          <li class="item-logo">
+            <a class="prof-link" id="ajustes">Mis compras</a> <!--Faltaria agregar un href="" que dirija a la pagina de compras-->
+          </li>
+          <hr>
+          <li class="item-logo">
+            <input type="button" id="salir" value="Desconectar">
+          </li>
+        </ul>
+      </div>
+      <div class="carrito">
+        <img src="img/Logo-carrito.png" alt="logo carrito de compras" class="logo-carrito">
+      </div>
+    </div>
+    <nav>
+      <ul class="nav-links">
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html">Inicio</a>
         </li>
-        <li class="item-logo">
-          <a class="prof-link" id="ajustes">Mis compras</a> <!--Faltaria agregar un href="" que dirija a la pagina de compras-->
+        <li class="nav-item">
+          <a class="nav-link" href="categories.html">Categorías</a>
         </li>
-        <hr>
-        <li class="item-logo">
-          <input type="button" id="salir" value="Desconectar">
+        <li class="nav-item">
+          <a class="nav-link" href="sell.html">Vender</a>
+        </li>
+        <li class="nav-item">
         </li>
       </ul>
-    </div>
-    <div class="carrito">
-     <img src="img/Logo-carrito.png" alt="logo carrito de compras" class="logo-carrito">
-    </div>
-    </div>
-  <nav>
-    
-  
-        <ul class="nav-links">
-          <li class="nav-item">
-            <a class="nav-link active" href="index.html">Inicio</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="categories.html">Categorías</a>
-           
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="sell.html">Vender</a>
-          </li>
-
-          <li class="nav-item">
-          </li>
-
-        
-        </ul>
-      
-    </div>
-  </nav>
-</header>
+    </nav>
+  </header>
   <main>
-<<<<<<< HEAD
     <div class="container" id="gallery">
-
-=======
-    <div class="container">
-      <div id="comments-container"></div>
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
->>>>>>> 2f31d8bb7896b43d5c5c3a135a91f7bd2ec4de7e
     </div>
     <div class="container form-control" id="description">
-
     </div>
     <div class="container form-control" id="related-products">
-      
     </div>
     <div class="container form-control" id="comments">
-
-      
+      <h2>Comentarios</h2>
+      <!-- Aquí se mostrarán los comentarios existentes -->
     </div>
-      <!-- Agrega esta sección dentro del div con id "comments" en tu HTML existente -->
-      <div class="container form-control" id="comments">
-        <h2>Comentarios</h2>
-        <!-- Aquí se mostrarán los comentarios existentes -->
-      
-        <!-- Formulario para un nuevo comentario -->
-        <div class="new-comment">
-          <h3>Escribir un Nuevo Comentario</h3>
-          <form id="comment-form">
-            <div class="form-group">
-              <input id="username" type="text">
-
-              <label for="score">Puntuación:</label>
-              <select class="form-control" id="score" name="score">
-                <option value="1">1 - Muy malo</option>
-                <option value="2">2 - Malo</option>
-                <option value="3">3 - Regular</option>
-                <option value="4">4 - Bueno</option>
-                <option value="5">5 - Excelente</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="comment">Comentario:</label>
-              <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar Comentario</button>
-          </form>
+    <!-- Formulario para un nuevo comentario -->
+    <div class="new-comment">
+      <h3>Escribir un Nuevo Comentario</h3>
+      <form id="comment-form">
+        <div class="form-group">
+          <label for="username">Nombre de Usuario:</label>
+          <input id="username" type="text" name="username">
         </div>
-      </div>
-      
-
+        <div class="form-group">
+          <label for="score">Puntuación:</label>
+          <select class="form-control" id="score" name="score">
+            <option value="1">1 - Muy malo</option>
+            <option value="2">2 - Malo</option>
+            <option value="3">3 - Regular</option>
+            <option value="4">4 - Bueno</option>
+            <option value="5">5 - Excelente</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="comment">Comentario:</label>
+          <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar Comentario</button>
+      </form>
+    </div>
   </main>
   <footer class="text-muted">
     <div class="container">
@@ -125,14 +96,12 @@
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
-
-  
-    <div class="lds-ring" >
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+  <div class="lds-ring">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
   </div>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
@@ -140,8 +109,3 @@
 </body>
 
 </html>
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 2f31d8bb7896b43d5c5c3a135a91f7bd2ec4de7e

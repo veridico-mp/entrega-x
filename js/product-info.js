@@ -131,3 +131,5 @@ commentForm.addEventListener("submit", function (event) {
   // Limpiar el formulario después de enviar el comentario
   commentForm.reset();
 });
+
+
