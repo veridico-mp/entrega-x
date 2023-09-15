@@ -1,0 +1,123 @@
+main{
+  margin-top: 5%;
+}
+
+* {
+    box-sizing: border-box;
+  }
+  
+  /* Position the image container (needed to position the left and right arrows) */
+  .container {
+    position: relative;
+  }
+  
+  /* Hide the images by default */
+  .mySlides {
+    display: none;
+  }
+  
+  /* Add a pointer when hovering over the thumbnail images */
+  .cursor {
+    cursor: pointer;
+  }
+  
+  /* Next & previous buttons */
+  .prev,
+  .next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+    margin-right: 10px;
+    text-decoration: none;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Position the "next button" to the right */
+  .next {
+    border-radius: 0 3px 3px 0;
+      position: absolute;
+      top: 40%; 
+      right: 0; 
+      
+  }
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover,
+  .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 0 3px 3px 0;
+  }
+  
+  /* Number text (1/3 etc) */
+  .numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    
+  }
+  
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Six columns side by side */
+  .column {
+    float: left;
+    width: 24.5%;
+    height: auto;
+   
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  /* Add a transparency effect for thumnbail images */
+  .demo {
+    opacity: 0.6;
+  }
+  
+  .active,
+  .demo:hover {
+    opacity: 1;
+  }
+
+  
+  .demo:hover ~ .column {
+    border: 0.5px solid black;
+  }
+
+  /* Agrega flexbox para el contenedor principal */
+#contenedor {
+  display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en filas si no caben en una sola línea */
+}
+
+/* Establece un ancho para containerImages */
+.containerImages {
+  flex: 2; /* Ocupa una parte del espacio disponible */
+  max-width: 60%; /* Establece un ancho máximo para evitar que ocupe toda la pantalla */
+  position: relative;
+}
+
+/* Establece un ancho para mainInfo */
+#mainInfo {
+  flex: 1; /* Ocupa una parte del espacio disponible */
+  max-width: 40%; /* Establece un ancho máximo para evitar que ocupe toda la pantalla */
+}
+
+.column img{
+  border-radius: 5px;
+  padding: 2px;
+  border: 0.5px solid gray;
+}
