@@ -1,5 +1,5 @@
 // Obtener el ID de producto almacenado en el localStorage
-var prodID = localStorage.getItem("prodID");
+var prodID = localStorage.getItem('prodID');
 let URL_prod = `https://japceibal.github.io/emercado-api/products/${prodID}.json`;
 let URL_com = `https://japceibal.github.io/emercado-api/products_comments/${prodID}.json`;
 
@@ -9,8 +9,8 @@ fetchData(URL_prod);
 // Función para cargar contenidos.
 function fetchData(url) {
   fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => response.json())
+    .then(data => {
       showProductGallery(data);
       showProductDescription(data);
       showRelatedProducts(data);
@@ -23,8 +23,8 @@ function fetchData(url) {
 // Función para cargar comentarios.
 function fetchComments(url) {
   fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
+    .then(response => response.json())
+    .then(data => {
       showProductComments(data);
     })
     .catch(function (error) {
@@ -33,18 +33,18 @@ function fetchComments(url) {
 }
 
 function showProductGallery(data) {
-  let galleryContainer = document.getElementById("gallery");
-  galleryContainer.innerHTML = ""; // Limpia el contenido anterior si lo hubiera
+  let galleryContainer = document.getElementById('gallery');
+  galleryContainer.innerHTML = ''; // Limpia el contenido anterior si lo hubiera
 
   for (let image of data.images) {
-    let imageElement = document.createElement("img");
+    let imageElement = document.createElement('img');
     imageElement.src = image;
     galleryContainer.appendChild(imageElement);
   }
 }
 
 function showProductDescription(data) {
-  let descriptionContainer = document.getElementById("description");
+  let descriptionContainer = document.getElementById('description');
   descriptionContainer.innerHTML = `
     <h1>${data.name}</h1>
     <p>${data.description}</p>
@@ -54,12 +54,12 @@ function showProductDescription(data) {
 }
 
 function showRelatedProducts(data) {
-  let relatedProductsContainer = document.getElementById("related-products");
-  relatedProductsContainer.innerHTML = "<h2>Productos Relacionados:</h2>";
+  let relatedProductsContainer = document.getElementById('related-products');
+  relatedProductsContainer.innerHTML = '<h2>Productos Relacionados:</h2>';
 
   for (let relatedProduct of data.relatedProducts) {
-    let productElement = document.createElement("div");
-    productElement.classList.add("related-product");
+    let productElement = document.createElement('div');
+    productElement.classList.add('related-product');
 
     productElement.innerHTML = `
       <h3>${relatedProduct.name}</h3>
@@ -71,19 +71,20 @@ function showRelatedProducts(data) {
 }
 
 function showProductComments(data) {
-  let commentsContainer = document.getElementById("comments");
-  commentsContainer.innerHTML = ""; // Limpia el contenido anterior si lo hubiera
+  let commentsContainer = document.getElementById('comments');
+  commentsContainer.innerHTML = ''; // Limpia el contenido anterior si lo hubiera
 
   for (let comment of data) {
-    let commentElement = document.createElement("div");
-    commentElement.classList.add("comment");
+    let commentElement = document.createElement('div');
+    commentElement.classList.add('comment');
 
     commentElement.innerHTML = `
-      <h3>Comentario:</h3>
       <p>Puntuación: ${comment.score}</p>
-      <p>Usuario: ${comment.user}</p>
+      <p>${comment.user}</p>
       <p>Descripción: ${comment.description}</p>
       <p>Fecha y hora: ${comment.dateTime}</p>
+      <br> <hr>
+      
     `;
 
     commentsContainer.appendChild(commentElement);
@@ -94,21 +95,25 @@ function showProductComments(data) {
 fetchComments(URL_com);
 
 // Obtener una referencia al formulario y al contenedor de comentarios
-const commentForm = document.getElementById("comment-form");
-const commentsContainer = document.getElementById("comments");
+const commentForm = document.getElementById('comment-form');
+const commentsContainer = document.getElementById('comments');
 
 // Agregar un evento de envío al formulario
-commentForm.addEventListener("submit", function (event) {
+commentForm.addEventListener('submit', function (event) {
   event.preventDefault(); // Evitar que la página se recargue al enviar el formulario
 
   // Obtener los valores ingresados por el usuario
-  const username = document.getElementById("username").value;
-  const score = document.getElementById("score").value;
-  const commentText = document.getElementById("comment").value;
+  let username = localStorage.getItem('nombre');
+  let score = Number(document.getElementById('score').value);
+  let commentText = document.getElementById('comment').value;
 
+  if (score === -1) {
+    alert('Tu comentario debe ir acompañado de una puntuación.');
+    return;
+  }
   // Validar que se haya ingresado un comentario
-  if (commentText.trim() === "") {
-    alert("Por favor, ingrese un comentario.");
+  if (commentText.trim() === '') {
+    alert('Por favor, ingrese un comentario.');
     return;
   }
 
@@ -117,13 +122,13 @@ commentForm.addEventListener("submit", function (event) {
   const formattedDate = `${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
 
   // Crear un nuevo elemento de comentario y agregarlo al contenedor de comentarios
-  const newComment = document.createElement("div");
-  newComment.className = "comment";
+  const newComment = document.createElement('div');
+  newComment.className = 'comment';
   newComment.innerHTML = `
-    <p><strong>Usuario:</strong> ${username}</p>
-    <p><strong>Puntuación:</strong> ${score}</p>
-    <p><strong>Comentario:</strong> ${commentText}</p>
-    <p><strong>Fecha/Hora:</strong> ${formattedDate}</p>
+    <p>Puntuación: ${score}</p>  
+    <p>${username}</p>
+    <p>Comentario: ${commentText}</p>
+    <p>Fecha y Hora: ${formattedDate}</p>
   `;
 
   commentsContainer.appendChild(newComment);
@@ -131,5 +136,3 @@ commentForm.addEventListener("submit", function (event) {
   // Limpiar el formulario después de enviar el comentario
   commentForm.reset();
 });
-
-
