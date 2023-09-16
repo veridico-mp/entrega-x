@@ -4,6 +4,28 @@ let URL_prod = `https://japceibal.github.io/emercado-api/products/${prodID}.json
 let URL_com = `https://japceibal.github.io/emercado-api/products_comments/${prodID}.json`;
 // Hacer la solicitud fetch para obtener la información del producto
 fetchData(URL_prod);
+
+//fetchCom(URL_com);
+
+
+document.addEventListener("DOMContentLoaded", function(){
+
+  //Nombre de usuario y boton desconectar
+  let usuario = localStorage.getItem('nombre');
+  if (usuario=="" || usuario==null){
+      location.href='login.html';
+  }else{
+      document.getElementById('nombre').innerHTML= usuario;
+  }
+
+  let logout = document.getElementById('salir');
+  logout.addEventListener('click', function(){
+      localStorage.removeItem('nombre');
+      alert('Desconexion exitosa', 'Vuelve pronto');
+      location.href="login.html";
+  })
+})
+
 //Funcion para cargar contenidos.
 function fetchData(url){//Esta es para mostrar imagenes
     fetch(url)
@@ -89,7 +111,10 @@ function showMainInfo(data){
   let prodName = document.getElementById('prodName');
   let prodCost = document.getElementById('prodCost');
   prodName.innerHTML += `${data.name}`
-  prodCost.innerHTML += `${data.currency}:  ${data.cost}`
+
+  prodCost.innerHTML += `${data.currency}:  <span id="cost">${data.cost} </span>`
+ 
+
 }
 function showProductDescription(data){
     let cont = document.getElementById('prodInfo');
@@ -100,9 +125,10 @@ function showProductDescription(data){
     </div>
     `;
     let des = document.getElementById('descripcion');
-    des.innerHTML += `<h2>descripción:</h2> <br> ${data.description}<br> valor: ${data.currency} ${data.cost}<br>Stock: ${data.soldCount}`;
-    console.log(des);    
-    des.innerHTML += `<h2>Descripción:</h2> <br> ${data.description}<br>`;
+
+
+    des.innerHTML += `<h2>Descripción:</h2> <br> <p>${data.description}</p><br>`;
+
         console.log(des);    
 }
 function showRelatedProducts(data){ // Funcion que mostrara los productos relacionados
@@ -114,6 +140,8 @@ function showRelatedProducts(data){ // Funcion que mostrara los productos relaci
 function showProductRelacionado(data){ // Esta funcion obtendra los productos del array y luego se llamará dentro de showRelatedProducts
  let relprod = document.getElementById('relprod');
  for (let product of data.relatedProducts){
-    relprod.innerHTML += `<h2>Productos Relacionados:</h2> <br> <p>${product.name}</p> <img src=${product.image}>`;
+    relprod.innerHTML += ` <div class=containerRelProd> <div class="product-info"> <img src=${product.image}>  <p>${product.name}</p> </div></div>`;
  }
 }
+
+

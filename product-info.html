@@ -24,10 +24,10 @@
       <ul class="submenu-logo">
        
         <li class="item-logo">
-          <a class="prof-link" id="ajustes">Mi perfil</a> <!--Faltaria agregar un href="" que dirija a la pagina de perfil de usuario-->
+          <a class="prof-link" id="miPerfil" href="my-profile.html">Mi perfil</a> <!--Faltaria agregar un href="" que dirija a la pagina de perfil de usuario-->
         </li>
         <li class="item-logo">
-          <a class="prof-link" id="ajustes">Mis compras</a> <!--Faltaria agregar un href="" que dirija a la pagina de compras-->
+          <a class="prof-link" id="misCompras" href="wip.html">Mis compras</a> <!--Faltaria agregar un href="" que dirija a la pagina de compras-->
         </li>
         <hr>
         <li class="item-logo">
@@ -40,8 +40,6 @@
     </div>
     </div>
   <nav>
-
-    
   
         <ul class="nav-links">
           <li class="nav-item">
@@ -69,8 +67,10 @@
 
 
 
-
   <main>
+
+
+    
     <div class="container" id="contenedor">
      
       <div class="containerImages">
@@ -97,6 +97,7 @@
         <h1 id="prodName"></h1>
         <span id="prodCost"></span>
         <br>
+        <div id="funcionesCompra">
         <span>Cantidad:</span>
         <select name="selectCantidad" id="selectCantidad">
           <option value="1">1 unidad</option>
@@ -107,19 +108,27 @@
         <br>
         <input type="button" value="Comprar" id="btnBuy">
         <br>
-        <input type="button" value="Agregar al carrito" id="btnCarrito">
+        <input type="button" value="Agregar al carrito" id="btnCart">
+      </div>
       </div>
 
 
-    </div>
+    
  
       
-    </div>
+    
     <div class="container form-control" id="descripcion">
 
     </div>
+  </div>
+
+
     <div class="container form-control" id="prodRelacionados">
-      
+
+
+      <h2>Quienes vieron este producto también compraron</h2>
+
+
     </div>
   </main>
 
