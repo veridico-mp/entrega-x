@@ -64,9 +64,6 @@
   </nav>
 </header>
   <main>
-    
-
-    
     <div class="container" id="contenedor">
      
 
@@ -105,52 +102,40 @@
 
       </div>
     </div>
-  
-  
-      <div class="container form-control" id="prodRelacionados">
-  
-  
-        <h2>Quienes vieron este producto también compraron</h2>
-  
-    <div class="container form-control" id="comments">
+        <div class="container form-control" id="prodRelacionados">
+          <h2>Quienes vieron este producto también compraron</h2>
+        </div>
+        
+        <h2>Comentarios</h2>
+        <div class="container form-control" id="comments">
+        <!-- Aquí se mostrarán los comentarios existentes -->
+        </div>
 
-    </div>
-    <div class="container form-control" id="prodRelacionados">
-      
-    </div>
+        <!-- Formulario para un nuevo comentario -->
+    <div class="new-comment">
+      <h3>Escribir un Nuevo Comentario</h3>
+      <form id="comment-form">
+        <div class="form-group">
+        </div>
+        <div class="form-group">
+          <label for="score">Puntuación:</label>
+          <select class="form-control" id="score" name="score">
+            <option value="-1">Valoración</option>
+            <option value="1">1 - Muy malo</option>
+            <option value="2">2 - Malo</option>
+            <option value="3">3 - Regular</option>
+            <option value="4">4 - Bueno</option>
+            <option value="5">5 - Excelente</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="comment">Comentario:</label>
+          <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar Comentario</button>
+      </form>
+    
   </main>
-<!-- Formulario para un nuevo comentario -->
-<div class="new-comment">
-  <h3>Escribir un Nuevo Comentario</h3>
-  <form id="comment-form">
-    <div class="form-group">
-    </div>
-    <div class="form-group">
-      <label for="score">Puntuación:</label>
-      <select class="form-control" id="score" name="score">
-        <option value="-1">Valoración</option>
-        <option value="1">1 - Muy malo</option>
-        <option value="2">2 - Malo</option>
-        <option value="3">3 - Regular</option>
-        <option value="4">4 - Bueno</option>
-        <option value="5">5 - Excelente</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="comment">Comentario:</label>
-      <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Enviar Comentario</button>
-  </form>
-
-
-
-
-
-
-
-
-
   <footer class="text-muted">
     <div class="container">
       <p class="float-end">
