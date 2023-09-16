@@ -40,7 +40,6 @@
     </div>
     </div>
   <nav>
-  
         <ul class="nav-links">
           <li class="nav-item">
             <a class="nav-link active" href="index.html">Inicio</a>
@@ -64,15 +63,13 @@
     </div>
   </nav>
 </header>
-
-
-
   <main>
-
+    
 
     
     <div class="container" id="contenedor">
      
+
       <div class="containerImages">
       <div class='expImg' id='expImg'>
 
@@ -85,15 +82,8 @@
         <div class="row" id="row">
 
         </div>
-
-        
-
-
-      </div>
-
-
+     </div>
       <div class="container form-control" id="mainInfo">
-
         <h1 id="prodName"></h1>
         <span id="prodCost"></span>
         <br>
@@ -110,28 +100,37 @@
         <br>
         <input type="button" value="Agregar al carrito" id="btnCart">
       </div>
-      </div>
-
-
-    
- 
-      
-    
-    <div class="container form-control" id="descripcion">
+      </div> 
+    <div class="container form-control" id="comments">
 
     </div>
-  </div>
-
-
     <div class="container form-control" id="prodRelacionados">
-
-
-      <h2>Quienes vieron este producto también compraron</h2>
-
-
+      
     </div>
   </main>
-
+<!-- Formulario para un nuevo comentario -->
+<div class="new-comment">
+  <h3>Escribir un Nuevo Comentario</h3>
+  <form id="comment-form">
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+      <label for="score">Puntuación:</label>
+      <select class="form-control" id="score" name="score">
+        <option value="-1">Valoración</option>
+        <option value="1">1 - Muy malo</option>
+        <option value="2">2 - Malo</option>
+        <option value="3">3 - Regular</option>
+        <option value="4">4 - Bueno</option>
+        <option value="5">5 - Excelente</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="comment">Comentario:</label>
+      <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar Comentario</button>
+  </form>
 
 
 
@@ -149,14 +148,12 @@
       <p>Este sitio forma parte de <a href="https://jovenesaprogramar.edu.uy/" target="_blank">Jovenes a Programar</a></p>
     </div>
   </footer>
-
-  
-    <div class="lds-ring" >
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
+  <div class="lds-ring">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
   </div>
   <script src="js/bootstrap.bundle.min.js"></script>
   <script src="js/init.js"></script>
