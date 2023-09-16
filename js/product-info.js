@@ -54,17 +54,14 @@ function fetchCom(url){//Esta es para los comentarios
     });
 }
 function showProductGalery(data){//Muestra galeria de imagenes.
-    let cont = document.getElementById('contenedor');
-    cont.innerHTML+= `
-    <h1>${data.name}</h1>
-    <div class='imgList' id='imList'></div>
-    <div class='showImg' id='showImg'></div>
-    <div class='prodInfo' id='prodInfo'></div>
-    `;
+ 
     showImgList(data);
     showSlides(1); 
 }
-function showImgList(data){//Agrega imagenes a la lista.
+
+
+
+function showImgList(data){//Agrega imagenes a la lista
     let imgList= document.getElementById('expImg');
     let imgRow = document.getElementById('row')
     let numImg = 1;
@@ -117,13 +114,7 @@ function showMainInfo(data){
 
 }
 function showProductDescription(data){
-    let cont = document.getElementById('prodInfo');
-    cont.innerHTML+= `
-    <div class='descInfo'>
-    <p>${data.description}</p>
-    <p>Precio: ${data.currency} ${data.cost}</p>
-    </div>
-    `;
+  
     let des = document.getElementById('descripcion');
 
 
