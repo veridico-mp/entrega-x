@@ -298,3 +298,53 @@ body{
 .containerRelProd:hover {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* Agrega una sombra suave al pasar el mouse */
 }
+
+#pttts { /* coloca la puntuación a la derecha del div, con un a distancia de 20px de este en la derecha y arriba. hace la letra */
+  position: absolute;
+ right: 20px;
+ font-style: italic;
+ padding-top: 20px;
+}
+
+#ussser{ /*hace el texto más grande y más oscuro. agrega distancia del div a la izquierda y arriba.*/
+  font-weight: bolder;
+  font-size: 120%;
+  padding-left: 10px;
+  padding-top: 20px;
+}
+#commm{
+padding-left: 90px;
+}
+
+#daaate{ /* coloca el texto a la derecha y cambia su color.*/
+position: absolute;
+right: 20px;
+color: #adadad;
+font-style: italic;
+}
+
+#titulocom{ /* al titulo de "Comentarios:" se le agrega distancia a la izquierda*/
+  padding-left: 50px;
+}
+
+.new-comment{ /*se marca el tamaño del espacio para escribir un nuevo comentario y la distancia de este a la izquierda*/
+  width: 60%;
+  padding-left: 100px;
+
+}
+
+#btnNewComment { /* agrega el color de fondo y del borde al botón de nuevo comentario.*/
+  background-color: #016A70;
+  border-color: #06585c;
+}
+
+#btnNewComment:hover{ /* cambia el estilo del botón cuando el mouse está sobre el, cambia el color del texto, del fondo y del borde.*/
+  color: #06585c;
+  background-color: #ffffff;
+  border-color: #adadad;
+}
+
+#commusser { /*imagen de usuario, aparece junto al nombre de usuario en los comentarios. se indica que tiene de tamaño 50px y una distancia a la derecha de 5px*/
+  width: 50px;
+  padding-right: 5px;
+}

@@ -12,6 +12,7 @@
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="css/product-info.css">
+
 </head>
 
 <body>
@@ -103,17 +104,17 @@
       </div>
     </div>
         <div class="container form-control" id="prodRelacionados">
-          <h2>Quienes vieron este producto también compraron</h2>
+          <br> <h2>Quienes vieron este producto también compraron</h2>
         </div>
         
-        <h2>Comentarios</h2>
+        <br> <h2 id="titulocom">Comentarios</h2> <br>
         <div class="container form-control" id="comments">
         <!-- Aquí se mostrarán los comentarios existentes -->
         </div>
 
         <!-- Formulario para un nuevo comentario -->
     <div class="new-comment">
-      <h3>Escribir un Nuevo Comentario</h3>
+     <br> <h3>Escribir nuevo comentario</h3>
       <form id="comment-form">
         <div class="form-group">
         </div>
@@ -123,16 +124,16 @@
             <option value="-1">Valoración</option>
             <option value="1">1 - Muy malo</option>
             <option value="2">2 - Malo</option>
-            <option value="3">3 - Regular</option>
+            <option value="3">3 - Regular </option>
             <option value="4">4 - Bueno</option>
-            <option value="5">5 - Excelente</option>
+            <option value="5">5 - Excelente </option>
           </select>
         </div>
         <div class="form-group">
           <label for="comment">Comentario:</label>
           <textarea class="form-control" id="comment" name="comment" rows="3"></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Enviar Comentario</button>
+        <br> <button type="submit" class="btn btn-primary" id="btnNewComment">Enviar Comentario</button>
       </form>
     
   </main>
