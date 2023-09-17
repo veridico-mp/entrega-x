@@ -189,10 +189,10 @@ function showProductComments(data) {
     commentElement.classList.add('comment');
 
     commentElement.innerHTML = `
-      <p>Puntuación: ${comment.score}</p>
-      <p>${comment.user}</p>
-      <p>Comentario: ${comment.description}</p>
-      <p>Fecha y hora: ${comment.dateTime}</p>
+      <p id="pttts" > Puntuación: ${comment.score} </p>
+      <p id="ussser"> <img src="img/usuario.png" id="commusser"> ${comment.user}</p>
+      <p id="commm"> ${comment.description}</p>
+      <p id="daaate"> ${comment.dateTime}</p>
       <br> <hr>
       
     `;
