@@ -38,11 +38,11 @@ commentForm.addEventListener('submit', function (event) {
   const newComment = document.createElement('div');
   newComment.className = 'comment';
   newComment.innerHTML = `
-    <p>Puntuación: ${score}</p>  
-    <p>${username}</p>
-    <p>Comentario: ${commentText}</p>
-    <p>Fecha y Hora: ${formattedDate}</p>
-    <hr>
+    <p class="pttts">Puntuación: ${score}</p>  
+    <p class="ussser">${username}</p>
+    <p class="commm">Comentario: ${commentText}</p>
+    <p class="daaate">Fecha y Hora: ${formattedDate}</p>
+    <br> <hr>
   `;
 
   commentsContainer.appendChild(newComment);
@@ -189,10 +189,10 @@ function showProductComments(data) {
     commentElement.classList.add('comment');
 
     commentElement.innerHTML = `
-      <p id="pttts" > Puntuación: ${comment.score} </p>
-      <p id="ussser"> <img src="img/usuario.png" id="commusser"> ${comment.user}</p>
-      <p id="commm"> ${comment.description}</p>
-      <p id="daaate"> ${comment.dateTime}</p>
+      <p class="pttts" > Puntuación: ${comment.score} </p>
+      <p class="ussser"> <img src="img/usuario.png" id="commusser"> ${comment.user}</p>
+      <p class="commm"> ${comment.description}</p>
+      <p class="daaate"> ${comment.dateTime}</p>
       <br> <hr>
       
     `;
