@@ -176,7 +176,14 @@ function showProductRelacionado(data) {
   // Esta funcion obtendra los productos del array y luego se llamará dentro de showRelatedProducts
   let relprod = document.getElementById('relprod');
   for (let product of data.relatedProducts) {
-    relprod.innerHTML += ` <div class=containerRelProd> <div class="product-info"> <img src=${product.image}>  <p>${product.name}</p> </div></div>`;
+    relprod.innerHTML += `
+    <div class="containerRelProd" id="${product.id}" onclick="setProdID(${product.id})">
+     <div class="product-info">
+     <img src=${product.image}>
+     <p>${product.name}</p> 
+     </div>
+    </div>
+    `;
   }
 }
 
@@ -199,4 +206,8 @@ function showProductComments(data) {
 
     commentsContainer.appendChild(commentElement);
   }
+}
+function setProdID(id) {
+  localStorage.setItem("prodID", id);
+  window.location = "product-info.html";
 }
