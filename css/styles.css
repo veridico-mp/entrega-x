@@ -375,24 +375,6 @@ margin-right: 5px;
   opacity: 1;
 }
 
-#salir {
-  width: 120px; /* Ancho del botón */
-  height: 40px; /* Alto del botón */
-  background-color: #A2C579; /* Color de fondo */
-  color: white; /* Color del texto */
-  border: none; /* Sin borde */
-  border-radius: 5px; /* Bordes redondeados */
-  font-size: 16px; /* Tamaño de fuente */
-  cursor: pointer; /* Cambiar el cursor al pasar por encima */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
-  outline: none; /* Quita el borde de enfoque */
-}
-
-#salir:hover {
-  background-color: #D2DE32; /* Cambia el color de fondo al pasar el mouse */
-  transform: scale(1.05); /* Escala ligeramente el botón al pasar el mouse */
-}
-
 .submenu-logo li a:hover{
   color: #ffbc0e;
   transform: scale(1.1);
@@ -421,3 +403,53 @@ margin-right: 5px;
   margin-left: 10px;
 
 }
+/*Logo usuario-------------------------------*/
+.logo-usuario{
+  max-width: 30px;
+  margin-right: 5%;
+}
+.encabezado{
+  background-color: #016A70;
+}
+.container-fluid a{
+  color: white;
+}
+.nav-item a:hover{
+  color: wheat;
+  background-color: #014246;
+}
+.navbar-brand{
+  font-size: 35px;
+  margin-left: 20px;
+}
+.navbar-nav li{
+  font-size: 20px;
+  margin-left: 10px;
+}
+.dropdown-menu a{
+  color: #333333;
+}
+.dropdown-menu li{
+  margin-left: 0px;
+}
+#salir {
+  width: 120px; /* Ancho del botón */
+  height: 40px; /* Alto del botón */
+  background-color: #5c7f34; /* Color de fondo */
+  color: white; /* Color del texto */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  font-size: 18px; /* Tamaño de fuente */
+  font-weight:bold;
+  cursor: pointer; /* Cambiar el cursor al pasar por encima */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+  outline: none; /* Quita el borde de enfoque */
+  padding-left: 4%;
+  padding-top: 4%;
+  margin-left: 10%;
+}
+#salir:hover {
+  background-color: #344e17; /* Cambia el color de fondo al pasar el mouse */
+  transform: scale(1.05); /* Escala ligeramente el botón al pasar el mouse */
+}
+/*Estilo encabezado----------------------------*/
