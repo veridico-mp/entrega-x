@@ -384,3 +384,28 @@ input:checked + .slider:before {
   background-color: #121212;
   color: #ffffff;
 }
+.dark-mode .product{
+  background-color: #121212;
+}
+.dark-mode .col-md-4{
+  color: #121212;
+}
+.dark-mode .list-group-item{
+  background-color: #121212;
+  color: white;
+}
+.dark-mode .navbar-brand, .dark-mode .nav-link{
+  color: #121212;
+}
+.dark-mode .dropdown-menu{
+  background-color: #121212;
+}
+.dark-mode .dropdown-item{
+  color: white;
+}
+.dark-mode #titulocom{
+  color: #121212;
+}
+.dark-mode .new-comment{
+  color: #121212;
+}
