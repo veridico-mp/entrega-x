@@ -372,3 +372,15 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 /*Estilo encabezado fin----------------------------*/
+
+/* Estilos para el modo claro */
+.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* Estilos para el modo oscuro */
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+}
