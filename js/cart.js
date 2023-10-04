@@ -4,32 +4,32 @@ document.addEventListener('DOMContentLoaded', function () {
   fetch(URL_CART)
     .then(response => response.json())
     .then(data => {
-      showList(data);
-      console.log(data.articles[0].name);
+        console.log(data.articles[0].name);
+        showList(data);      
     });
 });
 
 function showList(data) {
     let list = document.getElementById("listaCarrito");
-    for(let one of products){
+    for(let one of data.articles){
         list.innerHTML += `
         <div class="form-control col-md-6" id="cssList">
             <ul>
                 <div class="form-control col-md-6">
                     <li></li>
-                    <img src="${one.article.image}">
+                    <img src="${one.image}">
                 </div>
                 <div class="form-control col-md-6">
                     <li>Nombre</li>
-                    <p>${one.article.name}</p>
+                    <p>${one.name}</p>
                 </div>
                 <div class="form-control col-md-6">
                     <li>Costo</li>
-                    <p>${one.article.currency}${one.article.unitCost}</p>
+                    <p>${one.currency}${one.unitCost}</p>
                 </div>
                 <div class="form-control col-md-6">
                     <li>Cant.</li>
-                    <input type="number" id="units" min="1">
+                    <input type="number" id="units" min="1" placeholder="1">
                 </div>
                 <div class="form-control col-md-6">
                     <li>Subtotal</li>
