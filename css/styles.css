@@ -224,11 +224,13 @@ margin-right: 5px;
   border: 2px solid rgba(128, 128, 128, 0.253);
 }
 
-.product img {
+.product img { 
   max-width: 250px; 
-  height: auto;
+  height: auto; 
   margin-right: 50px; 
+
 }
+
 
 .product h2 {
   margin: 0;
@@ -408,4 +410,9 @@ input:checked + .slider:before {
 }
 .dark-mode .new-comment{
   color: #121212;
+}
+
+.img-responsive {
+  max-width: 100%;
+  height: auto;
 }
