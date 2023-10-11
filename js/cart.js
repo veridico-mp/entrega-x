@@ -13,29 +13,14 @@ function showList(data) {
     let list = document.getElementById("listaCarrito");
     for(let one of data.articles){
         list.innerHTML += `
-        <div class="form-control col-md-6" id="cssList">
-            <ul>
-                <div class="form-control col-md-6">
-                    <li></li>
-                    <img src="${one.image}">
-                </div>
-                <div class="form-control col-md-6">
-                    <li>Nombre</li>
-                    <p>${one.name}</p>
-                </div>
-                <div class="form-control col-md-6">
-                    <li>Costo</li>
-                    <p>${one.currency}${one.unitCost}</p>
-                </div>
-                <div class="form-control col-md-6">
-                    <li>Cant.</li>
-                    <input type="number" id="units" min="1" placeholder="1">
-                </div>
-                <div class="form-control col-md-6">
-                    <li>Subtotal</li>
-                    ${"una funcion"};//Aca va el subtotal
-                </div>
-            </ul>
+        <div class="form-control" id="cssList">
+            <div class="row">
+                <div class="col text-center fnt-size px-1"><img src="${one.image}" title="producto" class="imagenCart img-fluid float-start"></div>
+                <div class="col text-center fnt-size px-1">${one.name}</div>
+                <div class="col text-center fnt-size px-1">${one.currency}${one.unitCost}</div>
+                <div class="col text-center fnt-size px-1"><input type="number" id="units" min="1" placeholder="1" class="cantidadProd"></div>
+                <div class="col text-center fnt-size px-1">${"una funcion"}</div>
+            </div>
         </div>
         `
     }

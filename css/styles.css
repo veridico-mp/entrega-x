@@ -409,3 +409,18 @@ input:checked + .slider:before {
 .dark-mode .new-comment{
   color: #121212;
 }
+/*Imagen carrito*/
+.imagenCart{
+  max-width: 50px;
+}
+/*Fin Carrito*/
+/*Input Carrito*/
+.cantidadProd{
+  max-width: 50px;
+}
+/*Fin Input Carrito*/
+/*Tamaño fuente lista del carrito*/
+.fnt-size{
+  font-size: 70%;
+}
+/*Fin Tamaño fuente carrito*/
