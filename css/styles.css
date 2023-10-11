@@ -409,3 +409,13 @@ input:checked + .slider:before {
 .dark-mode .new-comment{
   color: #121212;
 }
+
+.dark-mode input{
+  background-color: rgb(66, 66, 66);
+  color: white;
+}
+
+.dark-mode input:focus{
+background-color: rgb(66, 66, 66);
+color: white;
+}
