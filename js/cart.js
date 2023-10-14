@@ -13,13 +13,13 @@ function showList(data) {
     let list = document.getElementById("listaCarrito");
     for(let one of data.articles){
         list.innerHTML += `
-        <div class="form-control" id="cssList">
-            <div class="row">
+        <div class="form-control py-1" id="cssList">
+            <div class="row py-0">
                 <div class="col text-center fnt-size px-1"><img src="${one.image}" title="producto" class="imagenCart img-fluid float-start"></div>
                 <div class="col text-center fnt-size px-1">${one.name}</div>
-                <div class="col text-center fnt-size px-1">${one.currency}${one.unitCost}</div>
-                <div class="col text-center fnt-size px-1"><input type="number" id="units" min="1" placeholder="1" class="cantidadProd"></div>
-                <div class="col text-center fnt-size px-1">${"una funcion"}</div>
+                <div class="col text-center fnt-size px-0 py-0"><div class="row"><div class="col">${one.currency}</div><div class="col cost">${one.unitCost}</div></div></div>
+                <div class="col text-center fnt-size px-1 py-1"><input type="number" id="units" min="1" placeholder="1" class="cantidadProd"></div>
+                <div class="col text-center fnt-size px-1 py-0"><div class="row"><div class="col">${one.currency}</div><div class="col subTot">123456</div></div></div>
             </div>
         </div>
         `
