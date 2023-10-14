@@ -23,5 +23,7 @@ function showList(data) {
             </div>
         </div>
         `
+        /*Se crea la clase "cost" que contiene el valor numerico del costo unitario.
+         Se crea la clase "subTot" en la cual se debe introducir el valor subtotal calculado*/
     }
 }
