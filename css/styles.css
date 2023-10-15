@@ -459,6 +459,17 @@ input:checked + .slider:before {
   color: #121212;
 }
 
+
+.dark-mode input{
+  background-color: rgb(66, 66, 66);
+  color: white;
+}
+
+.dark-mode input:focus{
+background-color: rgb(66, 66, 66);
+color: white;
+}
+
 '
 /* Estilo para ocultar el texto en dispositivos móviles */
 @media (max-width: 1400px) {
@@ -621,6 +632,7 @@ input:checked + .slider:before {
   color: white;
 }
 /*Fin TopCarrito*/
+
 
 
 
