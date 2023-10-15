@@ -13,7 +13,7 @@
 nav a {
   text-decoration: none;
 }
-
+main
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
@@ -42,12 +42,16 @@ nav a {
   font-weight: bold;
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .jumbotron {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
+    height: 20vh;
+    background-image: url('../img/login.png');
+    background-size: contain;
+  
   }
 }
+
+
 
 .jumbotron p:last-child {
   margin-bottom: 0;
@@ -183,6 +187,47 @@ main {
   margin-top: 60px;
 }
 
+@media (max-width: 768px) {
+  main {
+    margin-top: 0px; /* En dispositivos móviles, se establece a 0 para eliminar el margin-top */
+  }
+
+  
+}
+
+@media (max-width: 768px) {
+  .col-md-4 {
+    position: relative;
+    max-width: 100%; /* Ancho máximo del 100% del contenedor */
+    margin-bottom: 10px; /* Espacio entre los cuadros */
+  }
+
+  .col-md-4 img {
+    max-width: 100%; /* Ancho máximo del 100% del contenedor */
+    max-height: auto; /* Altura ajustada automáticamente para mantener la proporción */
+    opacity: 0.7;
+  }
+
+  .col-md-4 h3 {
+    position: absolute;
+    top: 10%;
+    left: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    margin: 0;
+    text-align: center;
+  }
+
+ 
+ .card-body {
+      display: none;
+    }
+  
+  
+}
+
+
 a.custom-card,
 a.custom-card:hover {
   color: inherit;
@@ -271,7 +316,7 @@ margin-right: 5px;
   margin-right: 5%;
 }
 .encabezado{
-  background-color: #016A70;
+  background-color: #147479;
 }
 .container-fluid a{
   color: white;
@@ -348,6 +393,7 @@ margin-right: 5px;
   -webkit-transition: .2s;
   transition: .2s;
 }
+
 .slider:before {
   position: absolute;
   content: "";
@@ -409,6 +455,7 @@ input:checked + .slider:before {
 .dark-mode .new-comment{
   color: #121212;
 }
+
 /*Imagen carrito*/
 .imagenCart{
   max-width: 50px;
@@ -430,3 +477,4 @@ input:checked + .slider:before {
   color: white;
 }
 /*Fin TopCarrito*/
+
