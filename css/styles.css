@@ -225,7 +225,8 @@ margin-right: 5px;
 }
 
 .product img { 
-  max-width: 250px; 
+  max-width: 100%; 
+  max-width: 100%;
   height: auto; 
   margin-right: 50px; 
 
