@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function(){
             if (usuario=="" || usuario==null){
                 location.href='login.html';
             }else{
-                document.getElementById('nombre').innerHTML += usuario;
+                document.getElementById('nombre').innerHTML= usuario;
             }
         
             let logout = document.getElementById('salir');
@@ -68,9 +68,6 @@ fetchProductData(URL_CATEGORIES)
             ){
           const productDiv = document.createElement("div");
           productDiv.classList.add("product"); // Agrega la clase "product" para aplicar los estilos CSS
-          const productImage = document.createElement("img");
-            productImage.src = item.image;
-            productImage.classList.add("img-responsive");
           productDiv.setAttribute("onclick", `setProdID(${item.id})`);
           //Acá se construyen todos los div que contienen cada producto
           productDiv.innerHTML = `

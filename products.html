@@ -55,37 +55,51 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-6 offset-lg-6 col-md-12 mb-1">
-        <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
-          <input type="text" id="searchInput" placeholder="Buscar productos...">
-          <input type="radio" class="btn-check" name="options" id="sortAsc">
-          <label class="btn btn-light" for="sortAsc">Min-Max</label>
-          <input type="radio" class="btn-check" name="options" id="sortDesc">
-          <label class="btn btn-light" for="sortDesc">Max-Min</label>
-          <input type="radio" class="btn-check" name="options" id="sortByCountDown" checked>
-          <label class="btn btn-light" for="sortByCountDown"><i class="fas fa-sort-amount-down mr-1"></i></label>
+        <div class="btn-group mb-4" role="group">
+          <input type="text" id="searchInput" placeholder="Buscar productos..." class="form-control">
+          <div class="btn-group" role="group">
+            <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Ordenar
+            </button>
+            <div class="dropdown-menu">
+              <input type="radio" class="btn-check" name="options" id="sortAsc">
+              <label class="btn btn-light" for="sortAsc">Min-Max</label>
+              <input type="radio" class="btn-check" name="options" id="sortDesc">
+              <label class="btn btn-light" for="sortDesc">Max-Min</label>
+            </div>
+          </div>
+          <div class="btn-group" role="group">
+            <button class="btn btn-light" id="filterButton" data-bs-toggle="collapse" href="#filterCollapse" role="button" aria-expanded="false" aria-controls="filterCollapse">Filtrar</button>
+          </div>
         </div>
       </div>
     </div>
-    <div class="row"><!--Aca va el filtro por precio-->
+    
+    <div class="row">
       <div class="col-lg-6 offset-lg-6 col-md-12 mb-1">
-        <div class="row container-fluid p-0 m-0">
-          <div class="col">
-            <p class="font-weight-normal text-end my-2">Cant.</p>
-          </div>
-          <div class="col">
-            <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
-          </div>
-          <div class="col">
-            <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
-          </div>
-          <div class="col-3 p-0">
-            <div class="btn-group" role="group">
-              <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
-              <button class="btn btn-light btn-block" id="clearRangeFilter">Limpiar</button>
+        <div class="collapse" id="filterCollapse">
+          <div class="row container-fluid p-0 m-0">
+            <div class="col">
+              <p class="font-weight-normal text-end my-2">Cant.</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="min." id="rangeFilterCountMin">
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="máx." id="rangeFilterCountMax">
+            </div>
+            <div class="col-3 p-0">
+              <div class="btn-group" role="group">
+                <button class="btn btn-light btn-block" id="rangeFilterCount">Filtrar</button>
+                <button class="btn btn-light btn-block" id="clearRangeFilter">Limpiar</button>
+              </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  
     <main class="pb-5 container-fluid">
     <div class="container-fluid">
         <div class="row">
