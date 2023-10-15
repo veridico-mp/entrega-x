@@ -112,11 +112,11 @@ function showImgList(data) {
     imgList.innerHTML += `
       <div class="mySlides">
           <div class="numbertext">${numImg} / ${data.images.length}</div>
-          <img src='${one}' onclick='expose("${one}") style="width:100%'>
+          <img class="img-fluid" src='${one}' onclick='expose("${one}") style="width:100%'>
       </div>`;
     imgRow.innerHTML += `
       <div class="column">
-          <img class="demo cursor" src="${one}"  onclick="currentSlide(${numImg})" style="width:100%;";" >
+          <img class="demo cursor img-fluid" src="${one}"  onclick="currentSlide(${numImg})" style="width:100%;";" >
       </div>`;
     numImg++;
   }
@@ -179,7 +179,7 @@ function showProductRelacionado(data) {
     relprod.innerHTML += `
     <div class="containerRelProd" id="${product.id}" onclick="setProdID(${product.id})">
      <div class="product-info">
-     <img src=${product.image}>
+     <img class="img-fluid"src=${product.image}>
      <p>${product.name}</p> 
      </div>
     </div>
