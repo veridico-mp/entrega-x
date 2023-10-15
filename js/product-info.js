@@ -3,7 +3,10 @@ var prodID = localStorage.getItem('prodID');
 let URL_prod = `https://japceibal.github.io/emercado-api/products/${prodID}.json`;
 let URL_com = `https://japceibal.github.io/emercado-api/products_comments/${prodID}.json`;
 
+let cantidad = 1;
 let precioProducto = 0;
+let productData;
+let productosEnCarrito = [];
 
 // Hacer la solicitud fetch para obtener la información del producto
 fetchData(URL_prod);
@@ -11,6 +14,10 @@ fetchComments(URL_com);
 
 document.querySelector('#units').addEventListener('change', function () {
   calcularSubtotal(precioProducto);
+});
+
+document.querySelector('#btnCart').addEventListener('click', function () {
+  agregarAlCarrito(productData, cantidad);
 });
 
 // Obtener una referencia al formulario y al contenedor de comentarios
@@ -80,6 +87,7 @@ function fetchData(url) {
   fetch(url)
     .then(response => response.json())
     .then(data => {
+      productData = data;
       showProductGalery(data);
       showMainInfo(data);
       calcularSubtotal(precioProducto);
@@ -224,9 +232,24 @@ function setProdID(id) {
 }
 
 function calcularSubtotal(precioProducto) {
-  let cantidad = document.querySelector('#units').value;
+  cantidadProducto = document.querySelector('#units').value;
   let div = document.querySelector('#divSubtotal');
-  subtotal = precioProducto * cantidad;
+
+  subtotal = precioProducto * cantidadProducto;
 
   div.innerHTML = `Subtotal ${subtotal}`;
+}
+
+function agregarAlCarrito(productData, cantidadProducto) {
+  let productoEnCarrito = {
+    Nombre: productData.name,
+    Descripcion: productData.description,
+    Cantidad: cantidadProducto,
+    Id: productData.id,
+    imagenes: productData.image,
+  };
+
+  productosEnCarrito.push(productoEnCarrito);
+  localStorage.setItem('cartProducts', productosEnCarrito);
+  console.log(localStorage.getItem('cartProducts'));
 }
