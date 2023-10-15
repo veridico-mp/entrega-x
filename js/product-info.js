@@ -3,7 +3,7 @@ var prodID = localStorage.getItem('prodID');
 let URL_prod = `https://japceibal.github.io/emercado-api/products/${prodID}.json`;
 let URL_com = `https://japceibal.github.io/emercado-api/products_comments/${prodID}.json`;
 
-let cantidad = 1;
+let cantidadProducto = 1;
 let precioProducto = 0;
 let productData;
 let productosEnCarrito = [];
@@ -17,7 +17,7 @@ document.querySelector('#units').addEventListener('change', function () {
 });
 
 document.querySelector('#btnCart').addEventListener('click', function () {
-  agregarAlCarrito(productData, cantidad);
+  agregarAlCarrito(productData, cantidadProducto);
 });
 
 // Obtener una referencia al formulario y al contenedor de comentarios
@@ -246,10 +246,12 @@ function agregarAlCarrito(productData, cantidadProducto) {
     Descripcion: productData.description,
     Cantidad: cantidadProducto,
     Id: productData.id,
-    imagenes: productData.image,
+    Imagen: productData.images[0],
+    Divisa: productData.currency,
+    CosteUnidad: productData.cost,
   };
 
   productosEnCarrito.push(productoEnCarrito);
-  localStorage.setItem('cartProducts', productosEnCarrito);
-  console.log(localStorage.getItem('cartProducts'));
+  localStorage.setItem('cartProducts', JSON.stringify(productosEnCarrito));
+  console.log(cantidadProducto);
 }
