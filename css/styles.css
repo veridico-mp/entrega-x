@@ -49,6 +49,8 @@ main
     background-size: contain;
   
   }
+
+  
 }
 
 
@@ -192,6 +194,7 @@ main {
     margin-top: 0px; /* En dispositivos móviles, se establece a 0 para eliminar el margin-top */
   }
 
+ 
   
 }
 
@@ -220,9 +223,6 @@ main {
   }
 
  
- .card-body {
-      display: none;
-    }
   
   
 }
@@ -470,7 +470,7 @@ background-color: rgb(66, 66, 66);
 color: white;
 }
 
-'
+
 /* Estilo para ocultar el texto en dispositivos móviles */
 @media (max-width: 1400px) {
   #btnCart {
@@ -493,7 +493,7 @@ color: white;
   }
 }
 
-'
+
 .img-responsive {
   max-width: 100%;
   height: auto;
@@ -521,9 +521,7 @@ color: white;
 
 /* Oculta el texto "Inicio" y muestra la imagen en dispositivos móviles */
 
-.navbar {
-  height: 60px; /* Ajusta la altura del navbar según tus preferencias */
-}
+
 
   .navbar-brand {
     font-size: 0; /* Oculta el texto estableciendo el tamaño de fuente a 0 */
@@ -635,6 +633,5 @@ color: white;
 .btnproductss{
   margin-bottom:40px;
 }
-
 
 
