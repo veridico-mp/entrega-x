@@ -598,5 +598,7 @@ input:checked + .slider:before {
   color: white;
 }
 /*Fin TopCarrito*/
-
+.btnproductss{
+  margin-bottom:40px;
+}
 
