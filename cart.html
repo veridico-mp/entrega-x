@@ -17,7 +17,7 @@
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand" href="index.html">Inicio</a>
-        <button class="navbar-toggler" id="hamburgerBtn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler collapsed" id="hamburgerBtn" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon" id="hamburgerSkin"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -52,13 +52,36 @@
   </header>
   <main>
 
-    <section class="h-100" >
+    
+
+    <!--Cart header-->
+    <div class="container col-sm-12 col-md-8 col-lg-6 px-0">
+      <div class="form-group">
+        <div class="px-2 py-0" >
+            <div class="row topCart">
+              <div class="col-2 fnt-size text-center"></div>
+              <div class="col fnt-size text-center">Nombre</div>
+              <div class="col fnt-size text-center">Precio</div>
+              <div class="col fnt-size text-center">Cantidad</div>
+              <div class="col fnt-size text-center">Subtotal</div>
+            </div>
+        </div>
+      </div>
+      <!--Cart content-->
+      <div class="form-group" id="listaCarrito">
+
+      </div>
+      <!--CART END-->
+    </div>
+    <br>
+
+    <section class="h-100">
       <div class="container h-100">
         <div class="row justify-content-md-center h-100">
           <div class="card-wrapper" >
             
-            <div class="card fat">
-              <div class="card-body form-control" id="formulario">
+            <div class="card fat" id="formulario">
+              <div class="card-body form-control dark-mode" >
                 <h4 class="card-title">Envío</h4>
                   <div class="form-group">
                     <label for="Calle">Calle</label>
@@ -88,26 +111,6 @@
 			</div>
 		</div>
             </section>
-
-    <!--Cart header-->
-    <div class="container col-sm-12 col-md-8 col-lg-6 px-0">
-      <div class="form-group">
-        <div class="px-2 py-0">
-            <div class="row topCart">
-              <div class="col-2 fnt-size text-center"></div>
-              <div class="col fnt-size text-center">Nombre</div>
-              <div class="col fnt-size text-center">Precio</div>
-              <div class="col fnt-size text-center">Cantidad</div>
-              <div class="col fnt-size text-center">Subtotal</div>
-            </div>
-        </div>
-      </div>
-      <!--Cart content-->
-      <div class="form-group" id="listaCarrito">
-
-      </div>
-      <!--CART END-->
-    </div>
 
   </main>
   <footer class="text-muted">
