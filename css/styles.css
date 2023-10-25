@@ -189,14 +189,11 @@ main {
   margin-top: 60px;
 }
 
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {
   main {
-    margin-top: 0px; /* En dispositivos móviles, se establece a 0 para eliminar el margin-top */
+    margin-top: 0px;
   }
-
- 
-  
-}
+}*/
 
 @media (max-width: 768px) {
   .col-md-4 {
@@ -506,10 +503,10 @@ color: white;
     display: none;
   }
 
-  .product img {
-    max-width: 100px; /* Ancho máximo deseado en píxeles */
-    max-height: 100px; /* Alto máximo deseado en píxeles */
-  }
+  /*.product img {*/
+    /*max-width: 100px; /* Ancho máximo deseado en píxeles */
+    /*max-height: 100px; /* Alto máximo deseado en píxeles */
+  /*}*/
 
 /* Oculta el texto "Inicio" y muestra la imagen en dispositivos móviles */
 
