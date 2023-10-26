@@ -623,4 +623,50 @@ color: white;
   margin-bottom:40px;
 }
 
+/*Inicio CostosCarrito*/
+.costosF {
+  width: 100%;
+  border: 2px solid;
+  border-color:  rgb(63, 61, 61);
+  margin: 2px 2px ;
+  padding: 8px;
+}
 
+.costp{
+  width: 85%;
+  font-size: 15px;
+  color: #969191;
+}
+
+.inputF1, .inputF2, .inputF3{
+  position: absolute;
+  max-width: 55px;
+  border:0;
+  float:right;
+}
+
+.f3{
+  height: 9vh;
+}
+.f3>.usd{
+  transform: translate(-35px, -15px);
+}
+
+.inputF3{
+  transform: translate(0px, -15px);
+}
+
+.usd{
+  transform: translate(-35px);
+  position: absolute;
+  width: 100%;
+  max-width: 60px;
+  font-size:14px ;
+  float: right;
+}
+
+.form2{
+   margin-top: 20px;
+}
+
+/*Fin CostosCarrito*/
