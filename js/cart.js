@@ -25,26 +25,26 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-function showList(data) {
-  let list = document.getElementById('listaCarrito');
-  for (let one of data.articles) {
-    list.innerHTML += `
-        <div class="form-control py-1" id="cssList">
-            <div class="row py-0">
-                <div class="col text-center fnt-size px-1"><img src="${one.image}" title="producto" class="imagenCart img-fluid float-start"></div>
-                <div class="col text-center fnt-size px-1">${one.name}</div>
-                <div class="col text-center fnt-size px-0 py-0"><div class="row"><div class="col">${one.currency}</div><div class="col cost">${one.unitCost}</div></div></div>
-                <div class="col text-center fnt-size px-1 py-1"><input type="number" id="units" min="1" value="${one.count}" class="cantidadProd"></div>
-                <div class="col text-center fnt-size px-1 py-0"><div class="row"><div class="col">${one.currency}</div><div class="col subTot">${calcularSubtotal(one.unitCost, 1)}</div></div></div>
-            </div>
-        </div>
-        `;
-    /*Se crea la clase "cost" que contiene el valor numerico del costo unitario.
-         Se crea la clase "subTot" en la cual se debe introducir el valor subtotal calculado*/
+// function showList(data) {
+//   let list = document.getElementById('listaCarrito');
+//   for (let one of data.articles) {
+//     list.innerHTML += `
+//         <div class="form-control py-1" id="cssList">
+//             <div class="row py-0">
+//                 <div class="col text-center fnt-size px-1"><img src="${one.image}" title="producto" class="imagenCart img-fluid float-start"></div>
+//                 <div class="col text-center fnt-size px-1">${one.name}</div>
+//                 <div class="col text-center fnt-size px-0 py-0"><div class="row"><div class="col">${one.currency}</div><div class="col cost">${one.unitCost}</div></div></div>
+//                 <div class="col text-center fnt-size px-1 py-1"><input type="number" id="units" min="1" value="${one.count}" class="cantidadProd"></div>
+//                 <div class="col text-center fnt-size px-1 py-0"><div class="row"><div class="col">${one.currency}</div><div class="col subTot">${calcularSubtotal(one.unitCost, 1)}</div></div></div>
+//             </div>
+//         </div>
+//         `;
+//     /*Se crea la clase "cost" que contiene el valor numerico del costo unitario.
+//          Se crea la clase "subTot" en la cual se debe introducir el valor subtotal calculado*/
 
-    console.log(values[2].value);
-  }
-}
+//     console.log(values[2].value);
+//   }
+// }
 
 function showListFromStorage(data) {
   let list = document.getElementById('listaCarrito');
@@ -60,14 +60,32 @@ function showListFromStorage(data) {
       article.CosteUnidad,
       article.Cantidad
     )}</div></div></div>
+    <div class="col text-center fnt-size px-1 py-0"><button class="btn btn-danger btn-sm deleteBtn">Eliminar</button></div>
 
               </div>
           </div>
           `;
   }
+  const deleteButtons = document.querySelectorAll('.deleteBtn');
+  deleteButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      // Elimina el artículo del carrito
+      data.splice(index, 1);
+
+      // Actualiza la vista del carrito
+      list.innerHTML = ''; // Borra la lista actual
+      showListFromStorage(data);
+
+      // Guarda los cambios en el carrito en el almacenamiento local
+      localStorage.setItem('cartProducts', JSON.stringify(data));
+    });
+  });
 }
+  
+
 
 function calcularSubtotal(precioProducto, cantidadProducto) {
   subtotal = precioProducto * cantidadProducto;
   return subtotal;
 }
+
