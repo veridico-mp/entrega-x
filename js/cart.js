@@ -82,3 +82,4 @@ function modificarSubtotal() {
     subtotales[i].textContent = cantidad * precio;
   }
 }
+//Reroll
