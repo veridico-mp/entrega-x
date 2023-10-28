@@ -52,45 +52,24 @@ function showListFromStorage(data) {
   let list = document.getElementById('listaCarrito');
   for (let article of data) {
     list.innerHTML += `
-          <div class="form-control py-1" id="cssList">
-              <div class="row py-0">
-                  <div class="col text-center fnt-size px-1"><img src="${article.Imagen}" title="producto" class="imagenCart img-fluid float-start"></div>
-                  <div class="col text-center fnt-size px-1">${article.Nombre}</div>
-                  <div class="col text-center fnt-size px-0 py-0"><div class="row"><div class="col">${article.Divisa}</div><div class="col cost">${article.CosteUnidad}</div></div></div>
-                  <div class="col text-center fnt-size px-1 py-1"><input type="number" onchange="" min="1" value="${article.Cantidad}" class="cantidadProd"></div>
-                  <div class="col text-center fnt-size px-1 py-0"><div class="row"><div class="col">${article.Divisa}</div><div class="col subTot">${calcularSubtotal(
-      article.CosteUnidad,
-      article.Cantidad
-    )}</div></div></div>
-    <div class="col text-center fnt-size px-1 py-0"><button class="btn btn-danger btn-sm deleteBtn">Eliminar</button></div>
-
-              </div>
-          </div>
-          `;
+      <div class="form-control py-1" id="cssList">
+        <div class="row py-0">
+          <div class="col text-center fnt-size px-1"><img src="${article.Imagen}" title="producto" class="imagenCart img-fluid float-start"></div>
+          <div class="col text-center fnt-size px-1">${article.Nombre}</div>
+          <div class="col text-center fnt-size px-0 py-0"><div class="row"><div class="col">${article.Divisa}</div><div class="col cost">${article.CosteUnidad}</div></div></div>
+          <div class="col text-center fnt-size px-1 py-1"><input type="number" min="1" value="${article.Cantidad}" class="cantidadProd"></div>
+          <div class="col text-center fnt-size px-1 py-0"><div class="row"><div class="col">${article.Divisa}</div><div class="col subTot">${article.Cantidad * article.CosteUnidad}</div></div></div>
+        </div>
+      </div>
+    `;
   }
-}
-  const deleteButtons = document.querySelectorAll('.deleteBtn');
-  deleteButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-      // Elimina el artículo del carrito
-      data.splice(index, 1);
 
-      // Actualiza la vista del carrito
-      list.innerHTML = ''; // Borra la lista actual
-      showListFromStorage(data);
-
-      // Guarda los cambios en el carrito en el almacenamiento local
-      localStorage.setItem('cartProducts', JSON.stringify(data));
-    });
-      // Agregar el evento change a todos los elementos con la clase "cantidadProd"
+  // Agregar el evento change a todos los elementos con la clase "cantidadProd"
   let cantidadInputs = document.querySelectorAll('.cantidadProd');
   cantidadInputs.forEach(input => {
     input.addEventListener('change', modificarSubtotal);
-
   });
-})
-  
-
+}
 
 function modificarSubtotal() {
   let cantidadInputs = document.querySelectorAll('.cantidadProd');
@@ -103,4 +82,3 @@ function modificarSubtotal() {
     subtotales[i].textContent = cantidad * precio;
   }
 }
-
