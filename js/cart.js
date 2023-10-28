@@ -17,12 +17,14 @@ fetch(URL_CART)
 
 document.addEventListener('DOMContentLoaded', function () {
   let values = document.getElementsByClassName('cantidadProd');
-
+  let envio = document.getElementById('tipoEnvio');//Este es el div que contiene los radio check para el tipo de envio.
+  
   values.addEventListener('change', () => {
     let costElements = document.querySelectorAll('.cost').innerHTML;
     console.log(costElements);
     // calcularSubtotal(precioProducto, cantidadProducto);
   });
+
 });
 
 function showList(data) {

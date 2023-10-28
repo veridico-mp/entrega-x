@@ -79,7 +79,20 @@
       <div class="container h-100">
         <div class="row justify-content-md-center h-100">
           <div class="card-wrapper" >
-            
+            <div class="card fat" id="tipoEnvio">
+              <div class="card-body form-group" id="tipoEnvio">
+                <h4>Tipo de envío</h4>
+                <div class="form-control">
+                  <input type="radio" name="envío" value="1.05" id="env1"> <span>Standard (5%)</span>
+              </div>
+              <div class="form-control">
+                <input type="radio" name="envío" value="1.07"> <span>Rápido (7%)</span>
+              </div>
+              <div class="form-control">
+                <input type="radio" name="envío" value="1.12"> <span>Express (12%)</span>
+              </div>
+            </div>
+            <!--DATOS DE ENVÍO-->
             <div class="card fat" id="formulario">
               <div class="card-body form-control dark-mode" >
                 <h4 class="card-title">Envío</h4>
@@ -114,7 +127,7 @@
                   <h4 class="card-title">Costos</h4>
                   <div class="form-group costosF" >
                     <h6>Subtotal</h6>
-                    <label for="costo" class="costp"> Costo unitario del producto por cantidad</label>
+                    <label for="costo" class="costp">Monto inicial</label>
                     <input class="inputF1" type="text" id="costo" value="0" readonly> <span class="usd">USD</span>
                   </div>  
           
