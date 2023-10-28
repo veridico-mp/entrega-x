@@ -86,16 +86,25 @@
                 <div class="form-group">
                   <label for="Calle">Calle</label>
                   <input id="calle" type="text" class="form-control" name="calle" value="" required autofocus>
+                  <div class="invalid-feedback" id="feedbackCalle">
+                    Debe ingresar una calle
+                  </div>
                 </div>
           
                   <div class="form-group">
                     <label for="Numero">Número</label>
                     <input id="numero" type="number" class="form-control" name="numero" required data-eye>
+                    <div class="invalid-feedback" id="feedbackNumero">
+                      Debe ingresar un Número
+                    </div>
                   </div>
                   
                   <div class="form-group">
                     <label for="Esquina">Esquina</label>
                     <input id="esquina" type="text" class="form-control" name="esquina" required data-eye>
+                    <div class="invalid-feedback" id="feedbackEsquina">
+                      Debe ingresar una esquina
+                    </div>
                   </div>
                   
           
@@ -134,6 +143,76 @@
             </div>
           </div>
             </section>
+            <div class="container">
+              <!-- Button trigger modal -->
+ <!-- Button trigger modal -->
+ <div>
+    <h5 class="h5">Forma de Pago</h5>
+    <label for="#staticBackdrop" class="form-label" id="DebeCambiar">No ha seleccionado</label>
+    <a href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Seleccionar</a>
+    <div class="invalid-feedback" id="feedbackPago">
+      Debe seleccionar una forma de pago
+    </div>
+ </div> 
+ 
+ 
+ <!-- Modal -->
+ <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+   <div class="modal-dialog">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h1 class="modal-title text-primary fs-5" id="staticBackdropLabel">Selecciona tu método de pago</h1>
+         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+       </div>
+       <div class="modal-body">
+         <div class="container" id="tarjeta">
+         <input type="radio" name="SelMetodo" class="form-check-input" id="tarjetacredito">
+         <label for="tarjetacredito" class="form-label text-center">Tarjeta de crédito</label>
+          <div class="invalid-feedback" id="feedbackTarjeta">
+            Debe seleccionar un método
+          </div>
+         </div>
+         <hr class="border-top border-dark">
+         <div class="container">
+           <label for="numero1" class="form-label">Número de Tarjeta</label>
+           <br>
+           <input type="text" class="form-control-sm" id="numero1">
+           <br><br>
+           <label for="codigo" class="form-label">Código de Seg</label>
+           <input type="text" class="form-control-sm" id="codigo">
+           <br><br>
+           <label for="vencimiento" class="form-label">Vencimiento (MM/AA)</label>
+           <input type="text" class="form-control-sm" id="vencimiento">
+           <br><br>
+           <input type="radio" name="SelMetodo" class="form-check-input" id="Transferencia">
+           <label for="Transferencia"  class="form-label text-center">Transferencia Bancaria</label>
+           <div class="invalid-feedback" id="feedbackTransfer">
+            Debe seleccionar un método
+           </div>
+           <br>
+           </div>
+           <hr class="border-top border-dark">
+           <div class="container">
+           <label for="Numcuenta">Número de cuenta</label>
+           <input type="text" class="form-control-sm" id="Numcuenta">
+         </div>
+         
+       </div>
+     
+       <div class="modal-footer">
+         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver atrás</button>
+         <button type="button" class="btn btn-primary"   id="validar">Validar</button>
+ 
+       </div>
+     </div>
+   </div>
+ </div>
+             </div><br>
+ 
+             <div class="container">
+             <button class="btn-primary col-lg-12 col-md-12 col-sm-12 btn-lg">Finalizar Compra</button>
+           </div>
+ 
 
   </main>
   <footer class="text-muted">

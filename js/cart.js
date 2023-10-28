@@ -71,3 +71,136 @@ function calcularSubtotal(precioProducto, cantidadProducto) {
   subtotal = precioProducto * cantidadProducto;
   return subtotal;
 }
+
+// agrego aquí funcion para el modal
+const validacion = document.getElementById('validar');
+const obTransferencia = document.getElementById('Transferencia');
+const obTarjeta = document.getElementById('tarjetacredito');
+const avisoMetodo = document.getElementById('DebeCambiar');
+
+function modalCheck (){
+ 
+  let resultado ="";
+    if(obTransferencia.checked){
+    resultado = "Transferencia Bancaria";}
+    else if (obTarjeta.checked){
+      resultado = "Tarjeta de Crédito";
+    }
+    avisoMetodo.textContent = resultado;
+  }
+
+  validacion.addEventListener('click', (event)=>{
+    event.preventDefault();
+    return modalCheck();
+  });
+
+
+function validacionesModal() {
+  let validity = true;
+  
+    /*if (calle.value === "" || calle.checkValidity()) {
+    calle.setCustomValidity(false);
+    validity = false;
+    } else {
+    calle.setCustomValidity('');
+    }*/
+     
+    if (!obTransferencia.checked) {
+      validity = false;
+      document.querySelector('#Transferencia').classList.add('invalid-color');
+      document.querySelector('#feedbackTransfer').style.display = 'inline';
+    } else {
+      document.querySelector('#Transferencia').classList.remove('invalid-color');
+      document.querySelector('#feedbackTransfer').style.display = 'none';
+    }
+
+    if (!obTarjeta.checked) {
+      validity = false;
+      document.querySelector('#tarjetacredito').classList.add('invalid-color');
+      document.querySelector('#feedbackTarjeta').style.display = 'inline';
+    } else {
+      document.querySelector('#tarjetacredito').classList.remove('invalid-color');
+      document.querySelector('#feedbackTarjeta').style.display = 'none';
+    }
+
+
+    return modalCheck;
+  }
+
+  validacion.addEventListener('click', evento => {
+    if (!validacionesModal() && !validacionesModal2() || !this.checkValidity()) {
+      evento.preventDefault();
+      evento.stopPropagation();
+    
+    let obdivTarjeta = document.getElementById("feedbackTarjeta");
+    let obdivTransfer = document.getElementById("feedbackTransfer");
+    obdivTransfer.innerHTML += `Debe seleccionar un método`;
+    obdivTarjeta.innerHTML += `Debe seleccionar un método`;
+    } else if (validacionesModal()  || validacionesModal2() && this.checkValidity()){
+    evento.preventDefault();
+    evento.stopPropagation();
+    obdivTransfer.innerHTML = null;
+    obdivTarjeta.innerHTML = null;
+   } 
+   
+  });
+
+  
+ /*Validacion trasnferencia*/
+
+ function validacionesModal2() {
+  let validity = true;
+  
+    /*if (calle.value === "" || calle.checkValidity()) {
+    calle.setCustomValidity(false);
+    validity = false;
+    } else {
+    calle.setCustomValidity('');
+    }*/
+     
+    if (!obTarjeta.checked) {
+      validity = false;
+      document.querySelector('#tarjetacredito').classList.add('invalid-color');
+      document.querySelector('#feedbackTarjeta').style.display = 'inline';
+    } else {
+      document.querySelector('#tarjetacredito').classList.remove('invalid-color');
+      document.querySelector('#feedbackTarjeta').style.display = 'none';
+    }
+  
+    return modalCheck;
+  }
+
+  /*validacion.addEventListener('click', evento => {
+    if (!validacionesModal2() || !this.checkValidity()) {
+      evento.preventDefault();
+      evento.stopPropagation();
+    }
+    let obdivTarjeta = document.getElementById("feedbackTarjeta");
+    obdivTarjeta.innerHTML += `Debe seleccionar un método`
+    });*/
+
+
+  
+//Validaciones del botón de Compra
+
+const BotónComprar = document.getElementById('BotóndeCompra');
+
+
+
+
+/*
+BotónComprar.addEventListener('click', ()=>{
+
+  if ( calle.value ===" "){
+  return ("Ingrese una calle");
+} 
+else if( numeroDireccion.value ===" "){
+  return ("ingrese un número");
+} 
+else if( esquina.value ===" " ){
+  return ("Ingrese una esquina");
+}
+else {
+  return ("Has comprado con éxito");
+}
+});*/
