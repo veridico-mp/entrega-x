@@ -154,11 +154,7 @@ main {
   min-height: calc(100vh - 60px); 
   margin-top: 60px;
 }
-@media (max-width: 768px) {
-  main {
-    margin-top: 0px; /* En dispositivos móviles, se establece a 0 para eliminar el margin-top */
-  }
-}
+
 @media (max-width: 768px) {
   .col-md-4 {
     position: relative;
@@ -350,12 +346,6 @@ input:checked + .slider:before {
 }
 /*Estilo encabezado fin----------------------------*/
 
-/* Estilos para el modo claro */
-/*.light-mode {
-  background-color: #ffffff;
-  color: #000000;
-}*/
-
 /* Estilos para el modo oscuro */
 .dark-mode {
   background-color: #121212;
@@ -438,11 +428,6 @@ color: white;
 
   .sold-count {
     display: none;
-  }
-
-  .product img {
-    max-width: 100px; /* Ancho máximo deseado en píxeles */
-    max-height: 100px; /* Alto máximo deseado en píxeles */
   }
 
 /* Oculta el texto "Inicio" y muestra la imagen en dispositivos móviles */
@@ -529,12 +514,6 @@ color: white;
   padding: 10px;
   margin: 12px;
 }
-
-  
-
-
-  
-
 /*Imagen carrito*/
 .imagenCart{
   max-width: 50px;
@@ -560,4 +539,50 @@ color: white;
   margin-bottom:40px;
 }
 
+/*Inicio CostosCarrito*/
+.costosF {
+  width: 100%;
+  border: 2px solid;
+  border-color:  rgb(63, 61, 61);
+  margin: 2px 2px ;
+  padding: 8px;
+}
 
+.costp{
+  width: 85%;
+  font-size: 15px;
+  color: #969191;
+}
+
+.inputF1, .inputF2, .inputF3{
+  position: absolute;
+  max-width: 55px;
+  border:0;
+  float:right;
+}
+
+.f3{
+  height: 9vh;
+}
+.f3>.usd{
+  transform: translate(-35px, -15px);
+}
+
+.inputF3{
+  transform: translate(0px, -15px);
+}
+
+.usd{
+  transform: translate(-35px);
+  position: absolute;
+  width: 100%;
+  max-width: 60px;
+  font-size:14px ;
+  float: right;
+}
+
+.form2{
+   margin-top: 20px;
+}
+
+/*Fin CostosCarrito*/

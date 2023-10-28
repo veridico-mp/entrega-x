@@ -6,7 +6,8 @@ let URL_com = `https://japceibal.github.io/emercado-api/products_comments/${prod
 let cantidadProducto = 1;
 let precioProducto = 0;
 let productData;
-let productosEnCarrito = [];
+let productosEnCarrito = JSON.parse(localStorage.getItem('cartProducts')) || [];
+// let productosEnCarrito = [];
 
 // Hacer la solicitud fetch para obtener la información del producto
 fetchData(URL_prod);
@@ -251,7 +252,11 @@ function agregarAlCarrito(productData, cantidadProducto) {
     CosteUnidad: productData.cost,
   };
 
+  // Agrega el nuevo producto al arreglo de productos en el carrito
   productosEnCarrito.push(productoEnCarrito);
+
+  // Guarda el arreglo actualizado en el localStorage
   localStorage.setItem('cartProducts', JSON.stringify(productosEnCarrito));
+
   console.log(cantidadProducto);
 }
