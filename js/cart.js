@@ -68,6 +68,7 @@ function showListFromStorage(data) {
           </div>
           `;
   }
+}
   const deleteButtons = document.querySelectorAll('.deleteBtn');
   deleteButtons.forEach((button, index) => {
     button.addEventListener('click', () => {
@@ -87,7 +88,7 @@ function showListFromStorage(data) {
     input.addEventListener('change', modificarSubtotal);
 
   });
-}
+})
   
 
 
