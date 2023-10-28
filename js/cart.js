@@ -17,34 +17,36 @@ fetch(URL_CART)
 
 document.addEventListener('DOMContentLoaded', function () {
   let values = document.getElementsByClassName('cantidadProd');
-
+  let envio = document.getElementById('tipoEnvio');//Este es el div que contiene los radio check para el tipo de envio.
+  
   values.addEventListener('change', () => {
     let costElements = document.querySelectorAll('.cost').innerHTML;
     console.log(costElements);
     // calcularSubtotal(precioProducto, cantidadProducto);
   });
+
 });
 
-// function showList(data) {
-//   let list = document.getElementById('listaCarrito');
-//   for (let one of data.articles) {
-//     list.innerHTML += `
-//         <div class="form-control py-1" id="cssList">
-//             <div class="row py-0">
-//                 <div class="col text-center fnt-size px-1"><img src="${one.image}" title="producto" class="imagenCart img-fluid float-start"></div>
-//                 <div class="col text-center fnt-size px-1">${one.name}</div>
-//                 <div class="col text-center fnt-size px-0 py-0"><div class="row"><div class="col">${one.currency}</div><div class="col cost">${one.unitCost}</div></div></div>
-//                 <div class="col text-center fnt-size px-1 py-1"><input type="number" id="units" min="1" value="${one.count}" class="cantidadProd"></div>
-//                 <div class="col text-center fnt-size px-1 py-0"><div class="row"><div class="col">${one.currency}</div><div class="col subTot">${calcularSubtotal(one.unitCost, 1)}</div></div></div>
-//             </div>
-//         </div>
-//         `;
-//     /*Se crea la clase "cost" que contiene el valor numerico del costo unitario.
-//          Se crea la clase "subTot" en la cual se debe introducir el valor subtotal calculado*/
-
-//     console.log(values[2].value);
-//   }
-// }
+function showList(data) {
+  let list = document.getElementById('listaCarrito');
+  for (let one of data.articles) {
+    list.innerHTML += `
+        <div class="form-control py-1" id="cssList">
+            <div class="row py-0">
+                <div class="col text-center fnt-size px-1"><img src="${one.image}" title="producto" class="imagenCart img-fluid float-start"></div>
+                <div class="col text-center fnt-size px-1">${one.name}</div>
+                <div class="col text-center fnt-size px-0 py-0"><div class="row"><div class="col">${one.currency}</div><div class="col cost">${one.unitCost}</div></div></div>
+                <div class="col text-center fnt-size px-1 py-1"><input type="number" id="units" min="1" value="${one.count}" class="cantidadProd"></div>
+                <div class="col text-center fnt-size px-1 py-0"><div class="row"><div class="col">${one.currency}</div><div class="col subTot">${one.unitCost * one.count}</div></div></div>
+            </div>
+        </div>
+        `;
+  }
+  let cantidadInputs = document.querySelectorAll('.cantidadProd');
+  cantidadInputs.forEach(input => {
+    input.addEventListener('change', modificarSubtotal);
+  });
+}
 
 function showListFromStorage(data) {
   let list = document.getElementById('listaCarrito');
@@ -79,13 +81,25 @@ function showListFromStorage(data) {
       // Guarda los cambios en el carrito en el almacenamiento local
       localStorage.setItem('cartProducts', JSON.stringify(data));
     });
+      // Agregar el evento change a todos los elementos con la clase "cantidadProd"
+  let cantidadInputs = document.querySelectorAll('.cantidadProd');
+  cantidadInputs.forEach(input => {
+    input.addEventListener('change', modificarSubtotal);
+
   });
 }
   
 
 
-function calcularSubtotal(precioProducto, cantidadProducto) {
-  subtotal = precioProducto * cantidadProducto;
-  return subtotal;
+function modificarSubtotal() {
+  let cantidadInputs = document.querySelectorAll('.cantidadProd');
+  let preciosProducto = document.querySelectorAll('.cost');
+  let subtotales = document.querySelectorAll('.subTot');
+
+  for (let i = 0; i < cantidadInputs.length; i++) {
+    let cantidad = parseInt(cantidadInputs[i].value);
+    let precio = parseFloat(preciosProducto[i].textContent);
+    subtotales[i].textContent = cantidad * precio;
+  }
 }
 

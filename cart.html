@@ -79,17 +79,30 @@
       <div class="container h-100">
         <div class="row justify-content-md-center h-100">
           <div class="card-wrapper" >
-            
+            <div class="card fat" id="tipoEnvio">
+              <div class="card-body form-group" id="tipoEnvio">
+                <h4>Tipo de envío</h4>
+                <div class="form-control">
+                  <input type="radio" name="envío" value="1.05" id="env1"> <span>Standard (5%)</span>
+              </div>
+              <div class="form-control">
+                <input type="radio" name="envío" value="1.07"> <span>Rápido (7%)</span>
+              </div>
+              <div class="form-control">
+                <input type="radio" name="envío" value="1.12"> <span>Express (12%)</span>
+              </div>
+            </div>
+            <!--DATOS DE ENVÍO-->
             <div class="card fat" id="formulario">
               <div class="card-body form-control dark-mode" >
                 <h4 class="card-title">Envío</h4>
+                <div class="form-group">
+                  <label for="Calle">Calle</label>
+                  <input id="calle" type="text" class="form-control" name="calle" value="" required autofocus>
+                </div>
+          
                   <div class="form-group">
-                    <label for="Calle">Calle</label>
-                    <input id="calle" type="text" class="form-control" name="calle" value="" required autofocus>
-                  </div>
-  
-                  <div class="form-group">
-                    <label for="Numero">Numero</label>
+                    <label for="Numero">Número</label>
                     <input id="numero" type="number" class="form-control" name="numero" required data-eye>
                   </div>
                   
@@ -98,18 +111,41 @@
                     <input id="esquina" type="text" class="form-control" name="esquina" required data-eye>
                   </div>
                   
-  
-                  <div class="form-group m-0">
+          
+                  <!--<div class="form-group m-0">
                     <button type="submit" class="btn btn-primary btn-block">
                       Comprar
                     </button>
-                  </div>
+                  </div>-->
                 
               </div>
             </div>
             </div>
-			</div>
-		</div>
+            <br>
+             <div class="card fat dark-mode" id="formulario">
+                <div class="card-body form-control dark-mode form2">
+                  <h4 class="card-title">Costos</h4>
+                  <div class="form-group costosF" >
+                    <h6>Subtotal</h6>
+                    <label for="costo" class="costp">Monto inicial</label>
+                    <input class="inputF1" type="text" id="costo" value="0" readonly> <span class="usd">USD</span>
+                  </div>  
+          
+                  <div class="form-group costosF">
+                    <h6>Costo de envío</h6>
+                    <label for="envio" class="costp"> Según el tipo de envío</label>
+                    <input class="inputF2" type="text" id="envio" value="0" readonly><span class="usd">USD</span>
+                  </div>
+                  
+                  <div class="form-group costosF f3">
+                    <h6>Total($)</h6>
+                    <label for="Total" class="costp"></label>
+                   <input class="inputF3" type="text" id="total" value="0" readonly> <span class="usd">USD</span>
+                  </div>
+                </div> 
+             </div>
+            </div>
+          </div>
             </section>
 
   </main>

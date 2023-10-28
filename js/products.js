@@ -72,7 +72,7 @@ fetchProductData(URL_CATEGORIES)
           //Acá se construyen todos los div que contienen cada producto
           productDiv.innerHTML = `
             <div class="row">
-                <div class="col col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                <div class="col col-sm-6 col-md-4 col-lg-4 col-xl-4">
                     <img src="${item.image}">
                 </div>
                 <div class="col col-sm-6 col-md-6 col-lg-6 col-xl-6 description-container">
