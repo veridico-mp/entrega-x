@@ -80,8 +80,6 @@ document.addEventListener('DOMContentLoaded', function () {
     alert('Desconexion exitosa', 'Vuelve pronto');
     location.href = 'login.html';
   });
-  const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 });
 
 //Funcion para cargar contenidos.
@@ -244,37 +242,21 @@ function calcularSubtotal(precioProducto) {
 }
 
 function agregarAlCarrito(productData, cantidadProducto) {
-  let productoExistente = false;
-  cantidadProducto = parseInt(cantidadProducto); 
+  let productoEnCarrito = {
+    Nombre: productData.name,
+    Descripcion: productData.description,
+    Cantidad: cantidadProducto,
+    Id: productData.id,
+    Imagen: productData.images[0],
+    Divisa: productData.currency,
+    CosteUnidad: productData.cost,
+  };
 
-  for (let i = 0; i < productosEnCarrito.length; i++) {
-    if (productosEnCarrito[i].Id === productData.id) {
-      
-      productosEnCarrito[i].Cantidad += cantidadProducto;
-      productoExistente = true;
-      break;
-    }
-  }
-
-  if (!productoExistente) {
-    let productoEnCarrito = {
-      Nombre: productData.name,
-      Descripcion: productData.description,
-      Cantidad: cantidadProducto,
-      Id: productData.id,
-      Imagen: productData.images[0],
-      Divisa: productData.currency,
-      CosteUnidad: productData.cost,
-    };
-
-    // Agrega el nuevo producto al arreglo de productos en el carrito
-    productosEnCarrito.push(productoEnCarrito);
-  }
+  // Agrega el nuevo producto al arreglo de productos en el carrito
+  productosEnCarrito.push(productoEnCarrito);
 
   // Guarda el arreglo actualizado en el localStorage
   localStorage.setItem('cartProducts', JSON.stringify(productosEnCarrito));
 
   console.log(cantidadProducto);
 }
-
-

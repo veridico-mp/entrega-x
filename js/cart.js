@@ -1,4 +1,6 @@
 const URL_CART = `https://japceibal.github.io/emercado-api/user_cart/25801.json`;
+let costeDeProductosTotal = 0;
+let costeEnvio = 0;
 
 // Recuperar datos de localStorage
 const cartFromLocalStorage = JSON.parse(localStorage.getItem('cartProducts'));
@@ -48,6 +50,7 @@ function showList(data) {
     input.addEventListener('change', function () {
       modificarSubtotal();
       calcularCostos();
+      precioTotal();
     });
   });
 }
@@ -74,6 +77,7 @@ function showListFromStorage(data) {
     input.addEventListener('change', function () {
       modificarSubtotal();
       calcularCostos();
+      precioTotal();
     });
   });
 }
@@ -93,7 +97,6 @@ function modificarSubtotal() {
 function calcularCostos() {
   let mostrarPreciosProductos = document.querySelector('#costo');
   let preciosProductos = document.querySelectorAll('.subTot');
-  let costeDeProductosTotal = 0;
 
   for (let i = 0; i < preciosProductos.length; i++) {
     costo = Number(preciosProductos[i].innerHTML);
@@ -102,4 +105,38 @@ function calcularCostos() {
 
   mostrarPreciosProductos.value = costeDeProductosTotal;
   console.log(costeDeProductosTotal);
+}
+
+function tipoEnvio() {
+  let mostrarPrecioEnvio = document.querySelector('#envio');
+
+  envioStandard = document.querySelector('#envioStandard').checked;
+  envioRapido = document.querySelector('#envioRapido').checked;
+  envioExpress = document.querySelector('#envioExpress').checked;
+
+  if (envioStandard) {
+    costeEnvio = costeDeProductosTotal * 0.05;
+  } else if (envioRapido) {
+    costeEnvio = costeDeProductosTotal * 0.07;
+  } else if (envioExpress) {
+    costeEnvio = costeDeProductosTotal * 0.12;
+  }
+  mostrarPrecioEnvio.value = costeEnvio;
+}
+
+var radios = document.getElementsByName('envío');
+
+radios.forEach(function (radio) {
+  radio.addEventListener('change', function () {
+    if (radio.checked) {
+      tipoEnvio();
+      precioTotal();
+    }
+  });
+});
+
+function precioTotal() {
+  let mostrarPrecioTotal = document.querySelector('#total');
+
+  mostrarPrecioTotal.value = costeEnvio + costeDeProductosTotal;
 }
