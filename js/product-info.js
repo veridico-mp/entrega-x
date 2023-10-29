@@ -244,18 +244,32 @@ function calcularSubtotal(precioProducto) {
 }
 
 function agregarAlCarrito(productData, cantidadProducto) {
-  let productoEnCarrito = {
-    Nombre: productData.name,
-    Descripcion: productData.description,
-    Cantidad: cantidadProducto,
-    Id: productData.id,
-    Imagen: productData.images[0],
-    Divisa: productData.currency,
-    CosteUnidad: productData.cost,
-  };
+  let productoExistente = false;
+  cantidadProducto = parseInt(cantidadProducto); 
 
-  // Agrega el nuevo producto al arreglo de productos en el carrito
-  productosEnCarrito.push(productoEnCarrito);
+  for (let i = 0; i < productosEnCarrito.length; i++) {
+    if (productosEnCarrito[i].Id === productData.id) {
+      
+      productosEnCarrito[i].Cantidad += cantidadProducto;
+      productoExistente = true;
+      break;
+    }
+  }
+
+  if (!productoExistente) {
+    let productoEnCarrito = {
+      Nombre: productData.name,
+      Descripcion: productData.description,
+      Cantidad: cantidadProducto,
+      Id: productData.id,
+      Imagen: productData.images[0],
+      Divisa: productData.currency,
+      CosteUnidad: productData.cost,
+    };
+
+    // Agrega el nuevo producto al arreglo de productos en el carrito
+    productosEnCarrito.push(productoEnCarrito);
+  }
 
   // Guarda el arreglo actualizado en el localStorage
   localStorage.setItem('cartProducts', JSON.stringify(productosEnCarrito));
