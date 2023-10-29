@@ -80,6 +80,8 @@ document.addEventListener('DOMContentLoaded', function () {
     alert('Desconexion exitosa', 'Vuelve pronto');
     location.href = 'login.html';
   });
+  const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 });
 
 //Funcion para cargar contenidos.
@@ -260,3 +262,5 @@ function agregarAlCarrito(productData, cantidadProducto) {
 
   console.log(cantidadProducto);
 }
+
+
