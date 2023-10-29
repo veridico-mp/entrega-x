@@ -4,6 +4,8 @@ const URL_CART = `https://japceibal.github.io/emercado-api/user_cart/25801.json`
 const cartFromLocalStorage = JSON.parse(localStorage.getItem('cartProducts'));
 if (cartFromLocalStorage) {
   showListFromStorage(cartFromLocalStorage);
+  modificarSubtotal();
+  calcularCostos();
 }
 
 fetch(URL_CART)
@@ -17,14 +19,13 @@ fetch(URL_CART)
 
 document.addEventListener('DOMContentLoaded', function () {
   let values = document.getElementsByClassName('cantidadProd');
-  let envio = document.getElementById('tipoEnvio');//Este es el div que contiene los radio check para el tipo de envio.
-  
+  let envio = document.getElementById('tipoEnvio'); //Este es el div que contiene los radio check para el tipo de envio.
+
   values.addEventListener('change', () => {
     let costElements = document.querySelectorAll('.cost').innerHTML;
     console.log(costElements);
     // calcularSubtotal(precioProducto, cantidadProducto);
   });
-
 });
 
 function showList(data) {
@@ -44,7 +45,10 @@ function showList(data) {
   }
   let cantidadInputs = document.querySelectorAll('.cantidadProd');
   cantidadInputs.forEach(input => {
-    input.addEventListener('change', modificarSubtotal);
+    input.addEventListener('change', function () {
+      modificarSubtotal();
+      calcularCostos();
+    });
   });
 }
 
@@ -67,7 +71,10 @@ function showListFromStorage(data) {
   // Agregar el evento change a todos los elementos con la clase "cantidadProd"
   let cantidadInputs = document.querySelectorAll('.cantidadProd');
   cantidadInputs.forEach(input => {
-    input.addEventListener('change', modificarSubtotal);
+    input.addEventListener('change', function () {
+      modificarSubtotal();
+      calcularCostos();
+    });
   });
 }
 
@@ -79,6 +86,20 @@ function modificarSubtotal() {
   for (let i = 0; i < cantidadInputs.length; i++) {
     let cantidad = parseInt(cantidadInputs[i].value);
     let precio = parseFloat(preciosProducto[i].textContent);
-    subtotales[i].textContent = cantidad * precio;
+    subtotales[i].innerHTML = cantidad * precio;
   }
+}
+
+function calcularCostos() {
+  let mostrarPreciosProductos = document.querySelector('#costo');
+  let preciosProductos = document.querySelectorAll('.subTot');
+  let costeDeProductosTotal = 0;
+
+  for (let i = 0; i < preciosProductos.length; i++) {
+    costo = Number(preciosProductos[i].innerHTML);
+    costeDeProductosTotal += costo;
+  }
+
+  mostrarPreciosProductos.value = costeDeProductosTotal;
+  console.log(costeDeProductosTotal);
 }
