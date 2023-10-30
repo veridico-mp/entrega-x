@@ -624,7 +624,7 @@ color: white;
 
 /*Fin CostosCarrito*/
 
-#mensajeErrorNumero1, #mensajeErrorCodigo, #mensajeErrorVencimiento, #mensajeErrorNumCuenta, #mensajeErrorCalle, #mensajeErrorNumero, #mensajeErrorEsquina, #errorMensaje{
+#mensajeErrorNumero1, #mensajeErrorCodigo, #mensajeErrorVencimiento, #mensajeErrorNumCuenta, #mensajeErrorCalle, #mensajeErrorNumero, #mensajeErrorEsquina, #errorMensaje, #mensajedeError{
   color: red;
   font-size: 13px;
 }

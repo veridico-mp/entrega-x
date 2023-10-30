@@ -247,9 +247,43 @@ obTarjeta.addEventListener('change', () => {
   }
 });
 
+//Validacion campo vencimiento
 
+document.getElementById('vencimiento').addEventListener('input', function (e) {
+  const input = e.target;
+  let value = input.value;
+  const errorMessage = document.getElementById('mensajeErrorVencimiento');
+  
+  // Eliminar cualquier mensaje de error previo
+  errorMessage.textContent = '';
 
-
+  if (/^\d{2}\/\d{4}$/.test(value)) {
+    const month = value.split('/')[0];
+    const year = value.split('/')[1];
+    
+    if (month >= '01' && month <= '12' && year >= '2024' && year <= '2036') {
+      // Formato válido y año en el rango permitido
+    } else {
+      errorMessage.textContent = 'La fecha no es válida';
+    }
+  }
+  // Agregar automáticamente la barra después de escribir el mes
+  else if (/^\d{2}$/.test(value)) {
+    input.value = value + '/';
+  }
+  // Permite borrar la barra
+  else if (/^\d{2}\/$/.test(value)) {
+    input.value = value.substring(0, 2);
+  }
+  // Permite borrar la barra y el mes si se desea
+  else if (/^\d{0,2}\/\d{0,4}$/.test(value)) {
+    // No se hace nada, permite borrar la barra y el mes
+  }
+  // Restringe que después de la barra haya exactamente 4 dígitos
+  else if (/^\d{2}\/\d{5,}$/.test(value)) {
+    input.value = value.substring(0, 7);
+  }
+});
 
 
 //Validaciones del botón de Compra
@@ -266,12 +300,15 @@ const mensajeErrorEsquina = document.getElementById('mensajeErrorEsquina');
 
 const alertaExito = document.getElementById('alertaExito');
 
+const mensajeErrorPago = document.getElementById("mensajedeError");
+
 BotónComprar.addEventListener('click', () => {
   const calleValue = calle.value.trim();
   const numeroDireccionValue = numeroDireccion.value.trim();
   const esquinaValue = esquina.value.trim();
 
   // Restablece todos los mensajes de error
+  mensajeErrorPago.textContent = '';
   mensajeErrorCalle.textContent = '';
   mensajeErrorNumero.textContent = '';
   mensajeErrorEsquina.textContent = '';
@@ -288,10 +325,16 @@ BotónComprar.addEventListener('click', () => {
     mostrarMensajeError(mensajeErrorEsquina, 'Por favor, ingrese una esquina');
   }
 
-  if (calleValue !== '' && numeroDireccionValue !== '' && esquinaValue !== '') {
+  if(avisoMetodo.textContent === "No ha seleccionado"){
+    mostrarMensajeError(mensajeErrorPago, "Debe seleccionar una forma de pago");
+  }
+
+  if (calleValue !== '' && numeroDireccionValue !== '' && esquinaValue !== '' && avisoMetodo.textContent != "No ha seleccionado") {
     alertaExito.style.display = 'block'; // Muestra la alerta de éxito
     alertaExito.classList.add('animate__bounceIn'); // Aplica la animación
   }
+  
+  
 });
 
 function mostrarMensajeError(elemento, mensaje) {
