@@ -4,23 +4,22 @@ const URL_CATEGORIES = `https://japceibal.github.io/emercado-api/cats_products/$
 const searchInput = document.getElementById("searchInput");
 
 
-document.addEventListener("DOMContentLoaded", function(){
-
-            //Nombre de usuario y boton desconectar
-            let usuario = localStorage.getItem('nombre');
-            if (usuario=="" || usuario==null){
-                location.href='login.html';
-            }else{
-                document.getElementById('nombre').innerHTML= usuario;
-            }
-        
-            let logout = document.getElementById('salir');
-            logout.addEventListener('click', function(){
-                localStorage.removeItem('nombre');
-                alert('Desconexion exitosa', 'Vuelve pronto');
-                location.href="login.html";
-            })
-})
+document.addEventListener('DOMContentLoaded', function () {
+    //Nombre de usuario y boton desconectar
+    let usuario = localStorage.getItem('nombre');
+    if (usuario == '' || usuario == null) {
+      location.href = 'login.html';
+    } else {
+      document.getElementById('nombre').innerHTML += usuario;
+    }
+  
+    let logout = document.getElementById('salir');
+    logout.addEventListener('click', function () {
+      localStorage.removeItem('nombre');
+      alert('Desconexion exitosa', 'Vuelve pronto');
+      location.href = 'login.html';
+    });
+  });
 
 
 
