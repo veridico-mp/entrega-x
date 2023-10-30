@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let values = document.getElementsByClassName('cantidadProd');
   let envio = document.getElementById('tipoEnvio'); //Este es el div que contiene los radio check para el tipo de envio.
 
-  //calcularCostos();
+
 });
 
 function showList(data) {
@@ -63,7 +63,7 @@ function showListFromStorage(data) {
           <div class="col text-center fnt-size px-1">${article.Nombre}</div>
           <div class="col text-center fnt-size px-0 py-0"><div class="col"><div class="col">${article.Divisa}</div><div class="col cost">${article.CosteUnidad}</div></div></div>
           <div class="col text-center fnt-size px-1 py-1"><input type="number" min="1" value="${article.Cantidad}" class="cantidadProd"></div>
-          <div class="col text-center fnt-size px-1 py-0"><div class="row"><div class="col">${article.Divisa}</div><div class="col subTot">${article.Cantidad * article.CosteUnidad}</div></div></div>
+          <div class="col text-center fnt-size px-1 py-0"><div class="col"><div class="col">${article.Divisa}</div><div class="col subTot">${article.Cantidad * article.CosteUnidad}</div></div></div>
         </div>
       </div>
     `;
@@ -99,7 +99,7 @@ function calcularCostos() {
 
   for (let i = 0; i < preciosProductos.length; i++) {
     costo = Number(preciosProductos[i].innerHTML);
-    costeDeProductosTotal = "";
+    costeDeProductosTotal = 0;
     costeDeProductosTotal += costo;
   }
 
