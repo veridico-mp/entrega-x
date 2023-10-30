@@ -339,3 +339,22 @@ BotónComprar.addEventListener('click', () => {
 function mostrarMensajeError(elemento, mensaje) {
   elemento.textContent = mensaje;
 }
+
+document.getElementById("BotóndeCompra").addEventListener("click", function() {
+  let tipoEnvioInputs = document.getElementsByName("envío");
+  let seleccionado = false;
+
+  for (let i = 0; i < tipoEnvioInputs.length; i++) {
+    if (tipoEnvioInputs[i].checked) {
+      seleccionado = true;
+      break;
+    }
+  }
+
+  if (!seleccionado) {
+    document.getElementById("errorMensaje").textContent = "Por favor, seleccione un tipo de envío.";
+    return false;
+  }
+
+  // Continuar con el proceso de finalizar compra si se ha seleccionado un tipo de envío.
+});
