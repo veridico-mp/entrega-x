@@ -232,6 +232,8 @@ obTransferencia.addEventListener('change', () => {
   }
 });
 
+
+
 obTarjeta.addEventListener('change', () => {
   if (obTarjeta.checked) {
     // Si selecciona "Tarjeta de Crédito," bloquea el campo de número de cuenta
