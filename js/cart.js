@@ -14,6 +14,7 @@ fetch(URL_CART)
   .then(response => response.json())
   .then(data => {
     showList(data);
+    calcularCostos();
   })
   .catch(err => {
     console.error('Hubo un error al cargar los datos', err);
@@ -51,6 +52,7 @@ function showList(data) {
     input.addEventListener('change', function () {
       modificarSubtotal();
       calcularCostos();
+      tipoEnvio();
       precioTotal();
     });
   });
@@ -78,6 +80,7 @@ function showListFromStorage(data) {
     input.addEventListener('change', function () {
       modificarSubtotal();
       calcularCostos();
+      tipoEnvio();
       precioTotal();
     });
   });
