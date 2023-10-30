@@ -297,12 +297,15 @@ const mensajeErrorEsquina = document.getElementById('mensajeErrorEsquina');
 
 const alertaExito = document.getElementById('alertaExito');
 
+const mensajeErrorPago = document.getElementById("mensajedeError");
+
 BotónComprar.addEventListener('click', () => {
   const calleValue = calle.value.trim();
   const numeroDireccionValue = numeroDireccion.value.trim();
   const esquinaValue = esquina.value.trim();
 
   // Restablece todos los mensajes de error
+  mensajeErrorPago.textContent = '';
   mensajeErrorCalle.textContent = '';
   mensajeErrorNumero.textContent = '';
   mensajeErrorEsquina.textContent = '';
@@ -319,10 +322,16 @@ BotónComprar.addEventListener('click', () => {
     mostrarMensajeError(mensajeErrorEsquina, 'Por favor, ingrese una esquina');
   }
 
-  if (calleValue !== '' && numeroDireccionValue !== '' && esquinaValue !== '') {
+  if(avisoMetodo.textContent === "No ha seleccionado"){
+    mostrarMensajeError(mensajeErrorPago, "Debe seleccionar una forma de pago");
+  }
+
+  if (calleValue !== '' && numeroDireccionValue !== '' && esquinaValue !== '' && avisoMetodo.textContent != "No ha seleccionado") {
     alertaExito.style.display = 'block'; // Muestra la alerta de éxito
     alertaExito.classList.add('animate__bounceIn'); // Aplica la animación
   }
+  
+  
 });
 
 function mostrarMensajeError(elemento, mensaje) {
