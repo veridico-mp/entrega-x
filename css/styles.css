@@ -670,3 +670,8 @@ color: white;
 }
 
 /*Fin CostosCarrito*/
+
+#mensajeErrorNumero1, #mensajeErrorCodigo, #mensajeErrorVencimiento, #mensajeErrorNumCuenta, #mensajeErrorCalle, #mensajeErrorNumero, #mensajeErrorEsquina{
+  color: red;
+  font-size: 13px;
+}

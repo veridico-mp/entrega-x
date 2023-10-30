@@ -72,135 +72,154 @@ function calcularSubtotal(precioProducto, cantidadProducto) {
   return subtotal;
 }
 
-// agrego aquí funcion para el modal
 const validacion = document.getElementById('validar');
 const obTransferencia = document.getElementById('Transferencia');
 const obTarjeta = document.getElementById('tarjetacredito');
 const avisoMetodo = document.getElementById('DebeCambiar');
+const obNumTarjeta = document.getElementById('numero1');
+const obCodSeg = document.getElementById('codigo');
+const obVencimiento = document.getElementById('vencimiento');
+const obNumCuenta = document.getElementById('Numcuenta');
+const mensajeErrorNumero1 = document.getElementById('mensajeErrorNumero1');
+const mensajeErrorCodigo = document.getElementById('mensajeErrorCodigo');
+const mensajeErrorVencimiento = document.getElementById('mensajeErrorVencimiento');
+const mensajeErrorNumCuenta = document.getElementById('mensajeErrorNumCuenta');
 
-function modalCheck (){
- 
-  let resultado ="";
-    if(obTransferencia.checked){
-    resultado = "Transferencia Bancaria";}
-    else if (obTarjeta.checked){
+validacion.addEventListener('click', (event) => {
+  event.preventDefault();
+
+  let resultado = "";
+  mensajeErrorNumero1.textContent = '';
+  mensajeErrorCodigo.textContent = '';
+  mensajeErrorVencimiento.textContent = '';
+  mensajeErrorNumCuenta.textContent = '';
+
+  if (obTransferencia.checked) {
+    if (obNumTarjeta.value !== '') {
+      obNumTarjeta.value = ''; // Borrar número de tarjeta
+    }
+    if (obCodSeg.value !== '') {
+      obCodSeg.value = ''; // Borrar código de seguridad
+    }
+    if (obVencimiento.value !== '') {
+      obVencimiento.value = ''; // Borrar vencimiento
+    }
+    if (obNumCuenta.value === '') {
+      mensajeErrorNumCuenta.textContent = 'Debe poner su número de cuenta';
+    } else {
+      resultado = "Transferencia Bancaria";
+    }
+  } else if (obTarjeta.checked) {
+    if (obNumCuenta.value !== '') {
+      obNumCuenta.value = ''; // Borrar número de cuenta
+    }
+    const numeroTarjeta = obNumTarjeta.value.trim();
+    const codigoSeguridad = obCodSeg.value.trim();
+    const vencimiento = obVencimiento.value.trim();
+
+    if (numeroTarjeta === '') {
+      mensajeErrorNumero1.textContent = 'Debe poner su número de tarjeta';
+    }
+    if (codigoSeguridad === '') {
+      mensajeErrorCodigo.textContent = 'Debe poner su código de seguridad';
+    }
+    if (vencimiento === '') {
+      mensajeErrorVencimiento.textContent = 'Debe seleccionar una fecha de vencimiento';
+    }
+    
+    if (numeroTarjeta !== '' && codigoSeguridad !== '' && vencimiento !== '') {
       resultado = "Tarjeta de Crédito";
     }
-    avisoMetodo.textContent = resultado;
   }
+  avisoMetodo.textContent = resultado;
+});
 
-  validacion.addEventListener('click', (event)=>{
-    event.preventDefault();
-    return modalCheck();
-  });
+const modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
 
+modal._element.addEventListener('hidden.bs.modal', function () {
+  // Limpiar campos y mensajes cuando se cierra el modal
+  obNumTarjeta.value = '';
+  obCodSeg.value = '';
+  obVencimiento.value = '';
+  obNumCuenta.value = '';
+  mensajeErrorNumero1.textContent = '';
+  mensajeErrorCodigo.textContent = '';
+  mensajeErrorVencimiento.textContent = '';
+  mensajeErrorNumCuenta.textContent = '';
+});
 
-function validacionesModal() {
-  let validity = true;
-  
-    /*if (calle.value === "" || calle.checkValidity()) {
-    calle.setCustomValidity(false);
-    validity = false;
-    } else {
-    calle.setCustomValidity('');
-    }*/
-     
-    if (!obTransferencia.checked) {
-      validity = false;
-      document.querySelector('#Transferencia').classList.add('invalid-color');
-      document.querySelector('#feedbackTransfer').style.display = 'inline';
-    } else {
-      document.querySelector('#Transferencia').classList.remove('invalid-color');
-      document.querySelector('#feedbackTransfer').style.display = 'none';
-    }
+// Bloqueo y desbloqueo de campos según la opción seleccionada
+obTransferencia.addEventListener('change', () => {
+  if (obTransferencia.checked) {
+    // Si selecciona "Transferencia Bancaria," bloquea los campos de tarjeta de crédito
+    obNumTarjeta.disabled = true;
+    obCodSeg.disabled = true;
+    obVencimiento.disabled = true;
 
-    if (!obTarjeta.checked) {
-      validity = false;
-      document.querySelector('#tarjetacredito').classList.add('invalid-color');
-      document.querySelector('#feedbackTarjeta').style.display = 'inline';
-    } else {
-      document.querySelector('#tarjetacredito').classList.remove('invalid-color');
-      document.querySelector('#feedbackTarjeta').style.display = 'none';
-    }
-
-
-    return modalCheck;
+    // Desbloquea el campo de número de cuenta
+    obNumCuenta.disabled = false;
   }
+});
 
-  validacion.addEventListener('click', evento => {
-    if (!validacionesModal() && !validacionesModal2() || !this.checkValidity()) {
-      evento.preventDefault();
-      evento.stopPropagation();
-    
-    let obdivTarjeta = document.getElementById("feedbackTarjeta");
-    let obdivTransfer = document.getElementById("feedbackTransfer");
-    obdivTransfer.innerHTML += `Debe seleccionar un método`;
-    obdivTarjeta.innerHTML += `Debe seleccionar un método`;
-    } else if (validacionesModal()  || validacionesModal2() && this.checkValidity()){
-    evento.preventDefault();
-    evento.stopPropagation();
-    obdivTransfer.innerHTML = null;
-    obdivTarjeta.innerHTML = null;
-   } 
-   
-  });
+obTarjeta.addEventListener('change', () => {
+  if (obTarjeta.checked) {
+    // Si selecciona "Tarjeta de Crédito," bloquea el campo de número de cuenta
+    obNumCuenta.disabled = true;
 
-  
- /*Validacion trasnferencia*/
-
- function validacionesModal2() {
-  let validity = true;
-  
-    /*if (calle.value === "" || calle.checkValidity()) {
-    calle.setCustomValidity(false);
-    validity = false;
-    } else {
-    calle.setCustomValidity('');
-    }*/
-     
-    if (!obTarjeta.checked) {
-      validity = false;
-      document.querySelector('#tarjetacredito').classList.add('invalid-color');
-      document.querySelector('#feedbackTarjeta').style.display = 'inline';
-    } else {
-      document.querySelector('#tarjetacredito').classList.remove('invalid-color');
-      document.querySelector('#feedbackTarjeta').style.display = 'none';
-    }
-  
-    return modalCheck;
+    // Desbloquea los campos de tarjeta de crédito
+    obNumTarjeta.disabled = false;
+    obCodSeg.disabled = false;
+    obVencimiento.disabled = false;
   }
-
-  /*validacion.addEventListener('click', evento => {
-    if (!validacionesModal2() || !this.checkValidity()) {
-      evento.preventDefault();
-      evento.stopPropagation();
-    }
-    let obdivTarjeta = document.getElementById("feedbackTarjeta");
-    obdivTarjeta.innerHTML += `Debe seleccionar un método`
-    });*/
+});
 
 
-  
+
+
+
+
 //Validaciones del botón de Compra
 
+
 const BotónComprar = document.getElementById('BotóndeCompra');
+const calle = document.getElementById('calle');
+const numeroDireccion = document.getElementById('numerodireccion');
+const esquina = document.getElementById('esquina');
 
+const mensajeErrorCalle = document.getElementById('mensajeErrorCalle');
+const mensajeErrorNumero = document.getElementById('mensajeErrorNumero');
+const mensajeErrorEsquina = document.getElementById('mensajeErrorEsquina');
 
+const alertaExito = document.getElementById('alertaExito');
 
+BotónComprar.addEventListener('click', () => {
+  const calleValue = calle.value.trim();
+  const numeroDireccionValue = numeroDireccion.value.trim();
+  const esquinaValue = esquina.value.trim();
 
-/*
-BotónComprar.addEventListener('click', ()=>{
+  // Restablece todos los mensajes de error
+  mensajeErrorCalle.textContent = '';
+  mensajeErrorNumero.textContent = '';
+  mensajeErrorEsquina.textContent = '';
 
-  if ( calle.value ===" "){
-  return ("Ingrese una calle");
-} 
-else if( numeroDireccion.value ===" "){
-  return ("ingrese un número");
-} 
-else if( esquina.value ===" " ){
-  return ("Ingrese una esquina");
+  if (calleValue === '') {
+    mostrarMensajeError(mensajeErrorCalle, 'Por favor, ingrese una calle');
+  }
+
+  if (numeroDireccionValue === '') {
+    mostrarMensajeError(mensajeErrorNumero, 'Por favor, ingrese un número');
+  }
+
+  if (esquinaValue === '') {
+    mostrarMensajeError(mensajeErrorEsquina, 'Por favor, ingrese una esquina');
+  }
+
+  if (calleValue !== '' && numeroDireccionValue !== '' && esquinaValue !== '') {
+    alertaExito.style.display = 'block'; // Muestra la alerta de éxito
+    alertaExito.classList.add('animate__bounceIn'); // Aplica la animación
+  }
+});
+
+function mostrarMensajeError(elemento, mensaje) {
+  elemento.textContent = mensaje;
 }
-else {
-  return ("Has comprado con éxito");
-}
-});*/
