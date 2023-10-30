@@ -376,6 +376,33 @@ input:checked + .slider:before {
 .dark-mode .new-comment{
   color: #121212;
 }
+
+
+.dark-mode .modal-content{
+  background-color: rgb(66, 66, 66);
+  color: white;
+}
+
+.dark-mode #mensajeErrorNumero1 {
+  color: rgb(43, 168, 240);
+  font-size: 13px;
+}
+
+.dark-mode #mensajeErrorCodigo {
+  color: rgb(43, 168, 240);
+  font-size: 13px;
+}
+
+.dark-mode #mensajeErrorVencimiento {
+  color: rgb(43, 168, 240);
+  font-size: 13px;
+}
+
+.dark-mode #mensajeErrorNumCuenta {
+  color: rgb(43, 168, 240);
+  font-size: 13px;
+}
+
 .dark-mode input{
   background-color: rgb(66, 66, 66);
   color: white;
@@ -586,3 +613,8 @@ color: white;
 }
 
 /*Fin CostosCarrito*/
+
+#mensajeErrorNumero1, #mensajeErrorCodigo, #mensajeErrorVencimiento, #mensajeErrorNumCuenta, #mensajeErrorCalle, #mensajeErrorNumero, #mensajeErrorEsquina{
+  color: red;
+  font-size: 13px;
+}
