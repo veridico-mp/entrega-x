@@ -403,6 +403,16 @@ input:checked + .slider:before {
   font-size: 13px;
 }
 
+.dark-mode #tipoEnvio{
+  background-color: rgb(19, 18, 18);
+  color: white;
+}
+
+.dark-mode #tiposEnvios{
+  background-color: rgb(43, 42, 42);
+  color: white;
+}
+
 .dark-mode input{
   background-color: rgb(66, 66, 66);
   color: white;
@@ -614,7 +624,7 @@ color: white;
 
 /*Fin CostosCarrito*/
 
-#mensajeErrorNumero1, #mensajeErrorCodigo, #mensajeErrorVencimiento, #mensajeErrorNumCuenta, #mensajeErrorCalle, #mensajeErrorNumero, #mensajeErrorEsquina{
+#mensajeErrorNumero1, #mensajeErrorCodigo, #mensajeErrorVencimiento, #mensajeErrorNumCuenta, #mensajeErrorCalle, #mensajeErrorNumero, #mensajeErrorEsquina, #errorMensaje{
   color: red;
   font-size: 13px;
 }
