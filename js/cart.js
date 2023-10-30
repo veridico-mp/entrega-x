@@ -4,11 +4,7 @@ let costeEnvio = 0;
 
 // Recuperar datos de localStorage
 const cartFromLocalStorage = JSON.parse(localStorage.getItem('cartProducts'));
-if (cartFromLocalStorage) {
-  showListFromStorage(cartFromLocalStorage);
-  modificarSubtotal();
-  calcularCostos();
-}
+
 
 fetch(URL_CART)
   .then(response => response.json())
@@ -24,7 +20,11 @@ document.addEventListener('DOMContentLoaded', function () {
   let values = document.getElementsByClassName('cantidadProd');
   let envio = document.getElementById('tipoEnvio'); //Este es el div que contiene los radio check para el tipo de envio.
 
-
+  if (cartFromLocalStorage) {
+    showListFromStorage(cartFromLocalStorage);
+    modificarSubtotal();
+    calcularCostos();
+  }
 });
 
 function showList(data) {
@@ -97,9 +97,11 @@ function calcularCostos() {
   let mostrarPreciosProductos = document.querySelector('#costo');
   let preciosProductos = document.querySelectorAll('.subTot');
 
+  costeDeProductosTotal = 0;
+
   for (let i = 0; i < preciosProductos.length; i++) {
     costo = Number(preciosProductos[i].innerHTML);
-    costeDeProductosTotal = 0;
+    
     costeDeProductosTotal += costo;
   }
 
