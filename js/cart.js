@@ -23,11 +23,12 @@ document.addEventListener('DOMContentLoaded', function () {
   let values = document.getElementsByClassName('cantidadProd');
   let envio = document.getElementById('tipoEnvio'); //Este es el div que contiene los radio check para el tipo de envio.
 
-  values.addEventListener('change', () => {
+  calcularCostos();
+  /*values.addEventListener('change', () => {
     let costElements = document.querySelectorAll('.cost').innerHTML;
     console.log(costElements);
     // calcularSubtotal(precioProducto, cantidadProducto);
-  });
+  });*/
 });
 
 function showList(data) {
@@ -100,6 +101,7 @@ function calcularCostos() {
 
   for (let i = 0; i < preciosProductos.length; i++) {
     costo = Number(preciosProductos[i].innerHTML);
+
     costeDeProductosTotal += costo;
   }
 
@@ -119,7 +121,7 @@ function tipoEnvio() {
   } else if (envioRapido) {
     costeEnvio = costeDeProductosTotal * 0.07;
   } else if (envioExpress) {
-    costeEnvio = costeDeProductosTotal * 0.12;
+    costeEnvio = costeDeProductosTotal * 0.15;
   }
   mostrarPrecioEnvio.value = costeEnvio;
 }
