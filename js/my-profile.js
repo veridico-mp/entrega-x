@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function() {
   const apellido2Input = document.getElementById("apellido2");
   const emailInput = document.getElementById("email");
   const telefonoInput = document.getElementById("telefono");
-  const salirButton = document.getElementById("salir");
   const userProfileForm = document.querySelector(".form-group");
   
 
