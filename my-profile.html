@@ -67,39 +67,51 @@
   </header>
   <main>
     <div class="container">
-      <div class="form-group">
-        <div class="col-8">
-          <h1>Mi Perfil</h1>
-        </div>
-        <div class="col-4">
-          <img src="" alt=""><span>UnaImagen</span>
-        </div>
-        <div class="col-4 mt-5">
-          <div class="col-6"><!--Nombre-->
-            <input type="text" id="nombre" placeholder="Nombre">
-          </div>
-          <div class="col-6"><!--Apellido-->
-            <input type="text" id="apellido" placeholder="Apellido">
-          </div>
-        </div>
-        <div class="form-control col-4 mt-5">
-          <div class="col-6"><!--Segundo-Nombre-->
-            <input type="text" id="nombre2" placeholder="Segundo-Nombre">
-          </div>
-          <div class="col-6"><!--Segundo-Apellido-->
-            <input type="text" id="apellido2" placeholder="Segundo-Apellido">
-          </div>
-        </div>
-        <div class="form-control col-4 mt-5">
-          <div class="col-6"><!--Email-->
-            <input type="email" id="email">
-          </div>
-          <div class="col-6">
-            <input type="text" placeholder="Tel/Cel">
+      <h1 class="mt-4">Perfil</h1>
+      <div class="row mt-4">
+        <div class="col-md-12 text-right">
+          <div class="fotoDelPerfil">
+            <img id="perfilImagen" src="/img/perfil defecto.webp" alt="Imagen de Perfil" class="img-fluid recuadro-imagen">
           </div>
         </div>
       </div>
-    </div>
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="primerNombre">Primer Nombre*</label>
+            <input type="text" id="primerNombre" class="form-control" placeholder="Primer Nombre">
+          </div><br>
+          <div class="form-group">
+            <label for="primerApellido">Primer Apellido*</label>
+            <input type="text" id="primerApellido" class="form-control" placeholder="Primer Apellido">
+          </div><br>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" placeholder="Email">
+          </div><br>
+          <div class="form-group">
+            <label for="telefono">Teléfono*</label>
+            <input type="text" id="telefono" class="form-control" placeholder="Tel/Cel">
+          </div>
+        </div><br>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="segundoNombre">Segundo Nombre</label>
+            <input type="text" id="segundoNombre" class="form-control" placeholder="Segundo Nombre">
+          </div><br>
+          <div class="form-group">
+            <label for="segundoApellido">Segundo Apellido</label>
+            <input type="text" id="segundoApellido" class="form-control" placeholder="Segundo Apellido">
+          </div><br>
+          <div class="form-group">
+            <label for="imagen">Imagen de Perfil</label>
+            <input type="file" id="imagen" class="form-control">
+          </div>
+        </div>
+      </div>
+      
+    </div>     
+    
   </main>
   <footer class="text-muted">
     <div class="container">
