@@ -108,38 +108,6 @@ document.addEventListener("DOMContentLoaded", function(e){
         sortAndShowCategories(ORDER_BY_PROD_COUNT);
     });
 
-    document.getElementById("clearRangeFilter").addEventListener("click", function(){
-        document.getElementById("rangeFilterCountMin").value = "";
-        document.getElementById("rangeFilterCountMax").value = "";
-
-        minCount = undefined;
-        maxCount = undefined;
-
-        showCategoriesList();
-    });
-
-    document.getElementById("rangeFilterCount").addEventListener("click", function(){
-        //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
-        //de productos por categoría.
-        minCount = document.getElementById("rangeFilterCountMin").value;
-        maxCount = document.getElementById("rangeFilterCountMax").value;
-
-        if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0){
-            minCount = parseInt(minCount);
-        }
-        else{
-            minCount = undefined;
-        }
-
-        if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0){
-            maxCount = parseInt(maxCount);
-        }
-        else{
-            maxCount = undefined;
-        }
-
-        showCategoriesList();
-    });
 });
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -173,6 +141,7 @@ document.addEventListener("DOMContentLoaded", function(){
     let logout = document.getElementById('salir');
     logout.addEventListener('click', function(){
         localStorage.removeItem('nombre');
+        localStorage.removeItem('email');
         alert('Desconexion exitosa', 'Vuelve pronto');
         location.href="login.html";
     })
