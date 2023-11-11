@@ -10,22 +10,6 @@
   <link href="css/styles.css" rel="stylesheet">
   <link rel="stylesheet" href="css/my-profile.css">
   <script src="js/dark-mode.js" defer></script>
-  <style>
-    .bd-placeholder-img {
-      font-size: 1.125rem;
-      text-anchor: middle;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-
-    @media (min-width: 768px) {
-      .bd-placeholder-img-lg {
-        font-size: 3.5rem;
-      }
-    }
-  </style>
 </head>
 
 <body class="light-mode">
@@ -68,54 +52,60 @@
   </header>
   <main>
     <div class="container">
-      <div class="row">
-        <div class="col-8">
-          <h1>Mi Perfil</h1>
-        </div>
-        <div class="col-4">
-          <img src="" alt=""><span>UnaImagen</span>
-        </div>
-        
-        <div class="row justify-content-center">
-          <div class="col-4 mt-5 p-0">
-            <div class="col-6"><!--Nombre-->
-              <label for="nombre">Nombres</label>
-              <input type="text" class="inputText" id="nombre" placeholder="Nombre">
-            </div>
-            <div class="col-6"><!--Apellido-->
-              <label for="apellido">Apellidos</label>
-              <input type="text" class="inputText" id="apellido" placeholder="Apellido">
-            </div>
-          </div>
-
-        
-        
-          <div class="col-4 mt-5 p-0">
-            <div class="col-6"><!--Segundo-Nombre-->
-              <label for="nombre2"></label>
-              <input type="text" class="inputText" id="nombre2" placeholder="Segundo-Nombre">
-            </div>
-            <div class="col-6"><!--Segundo-Apellido-->
-              <label for="apellido2"></label>
-              <input type="text" class="inputText" id="apellido2" placeholder="Segundo-Apellido">
-            </div>
+      <h1 class="mt-4">Perfil</h1>
+      <div class="row mt-4">
+        <div class="col-md-12 text-right">
+          <div class="fotoDelPerfil">
+            <img id="perfilImagen" src="/img/perfil defecto.webp" alt="Imagen de Perfil" class="img-fluid recuadro-imagen">
           </div>
         </div>
-
-        <div class="row justify-content-center">
-          <div class="col-4 mt-3">
-            <div class="col-6"><!--Email-->
-              <label for="email">Email</label>
-              <input type="email" class="inputText" id="email">
-            </div>
-            <div class="col-6">
-              <label for="tel">Tel.</label>
-              <input type="text" class="inputText" id="tel" placeholder="Tel/Cel">
-            </div>
-          </div>
-        </div>
-
       </div>
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="primerNombre">Primer Nombre*</label>
+            <input type="text" id="primerNombre" class="form-control" placeholder="Primer Nombre" required>
+            <div id="mensajeErrorNombre" class="error"></div>
+          </div><br>
+          <div class="form-group">
+            <label for="primerApellido">Primer Apellido*</label>
+            <input type="text" id="primerApellido" class="form-control" placeholder="Primer Apellido" required>
+            <div id="mensajeErrorApellido" class="error"></div>
+          </div><br>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" class="form-control" placeholder="Email" required>
+          </div><br>
+          <div class="form-group">
+            <label for="telefono">Teléfono de Contacto*</label>
+            <input type="text" id="telefono" class="form-control" placeholder="Tel/Cel" required>
+            <div id="mensajeErrorTelefono" class="error"></div>
+          </div>
+        </div><br>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="segundoNombre">Segundo Nombre</label>
+            <input type="text" id="segundoNombre" class="form-control" placeholder="Segundo Nombre">
+          </div><br>
+          <div class="form-group">
+            <label for="segundoApellido">Segundo Apellido</label>
+            <input type="text" id="segundoApellido" class="form-control" placeholder="Segundo Apellido">
+          </div><br>
+          <div class="form-group">
+            <label for="imagen">Imagen de Perfil</label>
+            <input type="file" id="imagen" class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-12 text-center">
+          <button type="button" class="btn btn-primary btn-lg" id="guardarCambios">Guardar Cambios</button>
+        </div>
+        </div>  
+    </div>   
+    <div id="alerta" class="alert alert-success alert-dismissible fade d-none" role="alert">
+      Se ha actualizado tu perfil
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
   </main>
   <footer class="text-muted">

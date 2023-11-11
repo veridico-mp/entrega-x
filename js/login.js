@@ -12,14 +12,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function checkCont() {
     const nombre = document.getElementById('nombre');
+    const email = document.getElementById('email');
     const pass = document.getElementById('pass');
     const errorMessage = "Ninguno de los campos puede estar vacío";
 
-    if (nombre.value === "" || pass.value === "") {
+    if (nombre.value === "" || pass.value === "" || email.value === "") {
         alert(errorMessage);
         return false;
     } else {
         localStorage.setItem('nombre', nombre.value);
+        localStorage.setItem('email', email.value);
         return true;
     }
 }

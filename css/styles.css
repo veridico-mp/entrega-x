@@ -628,3 +628,15 @@ color: white;
   color: red;
   font-size: 13px;
 }
+
+/* Estilo para recuadro de foto del perfil */
+
+.recuadro-imagen {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto; /* Esto centra el elemento horizontalmente */
+  border: 2px solid #000;
+  border-radius: 10px;
+}
