@@ -1,0 +1,9 @@
+.inputText{
+    width: 200%;
+}
+input::placeholder {
+    font-weight: bold;
+    opacity: 0.5;
+    color: gray;
+    font-size: 70%;
+  }
