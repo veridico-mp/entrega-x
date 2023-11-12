@@ -19,7 +19,7 @@ fetch(URL_CART)
 document.addEventListener('DOMContentLoaded', function () {
   let values = document.getElementsByClassName('cantidadProd');
   let envio = document.getElementById('tipoEnvio'); //Este es el div que contiene los radio check para el tipo de envio.
-
+// Si existe un carrito almacenado en el almacenamiento local, se llaman a las funciones 
   if (cartFromLocalStorage) {
     showListFromStorage(cartFromLocalStorage);
     modificarSubtotal();
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
       location.href="login.html";
   })
 });
-
+//Mostrar una lista de elementos en el carrito de compras
 function showList(data) {
   let list = document.getElementById('listaCarrito');
   for (let one of data.articles) {
@@ -57,6 +57,7 @@ function showList(data) {
         </div>
         `;
   }
+  //Actualizar los cálculos relacionados con el carrito.
   let cantidadInputs = document.querySelectorAll('.cantidadProd');
   cantidadInputs.forEach(input => {
     input.addEventListener('change', function () {
@@ -68,6 +69,7 @@ function showList(data) {
   });
 }
 
+//Muestra una lista de elementos de carrito de compras
 function showListFromStorage(data) {
   let list = document.getElementById('listaCarrito');
   for (let article of data) {
@@ -96,6 +98,7 @@ function showListFromStorage(data) {
   });
 }
 
+//Actualizar los subtotales de los productos en el carrito de compras en función de la cantidad seleccionada por el usuario.
 function modificarSubtotal() {
   let cantidadInputs = document.querySelectorAll('.cantidadProd');
   let preciosProducto = document.querySelectorAll('.cost');
@@ -107,7 +110,7 @@ function modificarSubtotal() {
     subtotales[i].innerHTML = cantidad * precio;
   }
 }
-
+//Mostrar costo total de los productos en el carrito de compras
 function calcularCostos() {
   let mostrarPreciosProductos = document.querySelector('#costo');
   let preciosProductos = document.querySelectorAll('.subTot');
@@ -123,7 +126,7 @@ function calcularCostos() {
   mostrarPreciosProductos.value = costeDeProductosTotal;
   console.log(costeDeProductosTotal);
 }
-
+//Calcular costo de envío y mostrarlo
 function tipoEnvio() {
   let mostrarPrecioEnvio = document.querySelector('#envio');
 
@@ -141,16 +144,6 @@ function tipoEnvio() {
   mostrarPrecioEnvio.value = costeEnvio;
 }
 
-var radios = document.getElementsByName('envío');
-
-radios.forEach(function (radio) {
-  radio.addEventListener('change', function () {
-    if (radio.checked) {
-      tipoEnvio();
-      precioTotal();
-    }
-  });
-});
 
 function precioTotal() {
   let mostrarPrecioTotal = document.querySelector('#total');
@@ -158,6 +151,7 @@ function precioTotal() {
   mostrarPrecioTotal.value = costeEnvio + costeDeProductosTotal;
 }
 
+//Validaciones de datos
 const validacion = document.getElementById('validar');
 const obTransferencia = document.getElementById('Transferencia');
 const obTarjeta = document.getElementById('tarjetacredito');
@@ -355,6 +349,7 @@ function mostrarMensajeError(elemento, mensaje) {
   elemento.textContent = mensaje;
 }
 
+//Botón comprar
 document.getElementById("BotóndeCompra").addEventListener("click", function() {
   let tipoEnvioInputs = document.getElementsByName("envío");
   let seleccionado = false;
