@@ -1,3 +1,4 @@
+//Evento de envío al formulario y redirigir
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.querySelector('form');
 
@@ -9,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
+//verifica si los campos y guaarda si es correcto
 function checkCont() {
     const nombre = document.getElementById('nombre');
     const email = document.getElementById('email');

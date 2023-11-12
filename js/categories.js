@@ -6,6 +6,7 @@ let currentSortCriteria = undefined;
 let minCount = undefined;
 let maxCount = undefined;
 
+//Ordenar categorías
 function sortCategories(criteria, array){
     let result = [];
     if (criteria === ORDER_ASC_BY_NAME)
@@ -34,12 +35,13 @@ function sortCategories(criteria, array){
 
     return result;
 }
-
+//Guardar id de categoría seleccionada y redirigir
 function setCatID(id) {
     localStorage.setItem("catID", id);
     window.location = "products.html"
 }
 
+//Lista de categorías con filtros
 function showCategoriesList(){
 
     let htmlContentToAppend = "";
@@ -70,7 +72,7 @@ function showCategoriesList(){
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend;
     }
 }
-
+//Ordenar y mostrar categorías
 function sortAndShowCategories(sortCriteria, categoriesArray){
     currentSortCriteria = sortCriteria;
 
@@ -109,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function(e){
     });
 
 });
-
+//Evento buscador y filtrado de la lista de categorías en función del texto ingresado
 document.addEventListener("DOMContentLoaded", function(){
     //Enlazar a campo de busqueda y lista de artiulos
     const buscador = document.getElementById('Buscador');
