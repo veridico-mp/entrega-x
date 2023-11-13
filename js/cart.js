@@ -3,27 +3,26 @@ let costeDeProductosTotal = 0;
 let costeEnvio = 0;
 
 // Recuperar datos de localStorage
-const cartFromLocalStorage = JSON.parse(localStorage.getItem('cartProducts'));
+let cartFromLocalStorage = JSON.parse(localStorage.getItem('cartProducts')) || [];
+let productosEnCarrito = JSON.parse(localStorage.getItem('cartProducts')) || [];
 
 
 fetch(URL_CART)
-  .then(response => response.json())
-  .then(data => {
-    showList(data);
-    calcularCostos();
-  })
-  .catch(err => {
-    console.error('Hubo un error al cargar los datos', err);
-  });
+.then(response => response.json())
+.then(data => {
+  recorrerJapList(data);
+})
+.catch(err => {
+  console.error('Hubo un error al cargar los datos', err);
+});
 
 document.addEventListener('DOMContentLoaded', function () {
-  let values = document.getElementsByClassName('cantidadProd');
-  let envio = document.getElementById('tipoEnvio'); //Este es el div que contiene los radio check para el tipo de envio.
-// Si existe un carrito almacenado en el almacenamiento local, se llaman a las funciones 
-  if (cartFromLocalStorage) {
+  // Si existe un carrito almacenado en el almacenamiento local, se llaman a las funciones 
+ 
+  if(cartFromLocalStorage){
+    console.log(cartFromLocalStorage);
     showListFromStorage(cartFromLocalStorage);
-    modificarSubtotal();
-    calcularCostos();
+    actualizarCostos();
   }
 
   //Nombre de usuario y boton desconectar
@@ -41,48 +40,74 @@ document.addEventListener('DOMContentLoaded', function () {
       location.href="login.html";
   })
 });
-//Mostrar una lista de elementos en el carrito de compras
-function showList(data) {
-  let list = document.getElementById('listaCarrito');
-  for (let one of data.articles) {
-    list.innerHTML += `
-        <div class="form-control py-1" id="cssList">
-            <div class="row py-0">
-                <div class="col text-center fnt-size px-1"><img src="${one.image}" title="producto" class="imagenCart img-fluid float-start"></div>
-                <div class="col text-center fnt-size px-1">${one.name}</div>
-                <div class="col text-center fnt-size px-0 py-0"><div class="col"><div class="col">${one.currency}</div><div class="col cost">${one.unitCost}</div></div></div>
-                <div class="col text-center fnt-size px-1 py-1"><input type="number" id="units" min="1" value="${one.count}" class="cantidadProd"></div>
-                <div class="col text-center fnt-size px-1 py-0"><div class="col"><div class="col">${one.currency}</div><div class="col subTot">${one.unitCost * one.count}</div></div></div>
-            </div>
-        </div>
-        `;
-  }
-  //Actualizar los cálculos relacionados con el carrito.
-  let cantidadInputs = document.querySelectorAll('.cantidadProd');
-  cantidadInputs.forEach(input => {
-    input.addEventListener('change', function () {
-      modificarSubtotal();
-      calcularCostos();
-      tipoEnvio();
-      precioTotal();
-    });
-  });
-}
-
 //Muestra una lista de elementos de carrito de compras
 function showListFromStorage(data) {
   let list = document.getElementById('listaCarrito');
+  list.innerHTML = "";
   for (let article of data) {
     list.innerHTML += `
-      <div class="form-control py-1" id="cssList">
-        <div class="row py-0">
-          <div class="col text-center fnt-size px-1"><img src="${article.Imagen}" title="producto" class="imagenCart img-fluid float-start"></div>
-          <div class="col text-center fnt-size px-1">${article.Nombre}</div>
-          <div class="col text-center fnt-size px-0 py-0"><div class="col"><div class="col">${article.Divisa}</div><div class="col cost">${article.CosteUnidad}</div></div></div>
-          <div class="col text-center fnt-size px-1 py-1"><input type="number" min="1" value="${article.Cantidad}" class="cantidadProd"></div>
-          <div class="col text-center fnt-size px-1 py-0"><div class="col"><div class="col">${article.Divisa}</div><div class="col subTot">${article.Cantidad * article.CosteUnidad}</div></div></div>
+    <div class="row">
+    <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+      <!-- Image -->
+      <div class="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
+        <img src="${article.image}" title="producto""
+          class="w-100" alt="imagenProducto" />
+        <a href="#!">
+          <div class="mask" style="background-color: rgba(251, 251, 251, 0.2)"></div>
+        </a>
+      </div>
+      <!-- Image -->
+    </div>
+
+    <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+      <!-- Data -->
+      <p><strong>${article.name}</strong></p>
+      <!-- Price -->
+      <div class="text-start text-md-center">
+        <div>${article.currency}</div>
+        <div class="cost">${article.cost}</div>
+      </div>
+      <!-- Price -->
+      <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
+        title="Remove item" onclick="actualizarCostos()">
+        <i class="fas fa-trash"></i>
+      </button>
+      <!-- Data -->
+    </div>
+
+    <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+      <!-- Quantity -->
+      <div class="d-flex mb-4" style="max-width: 300px">
+        <button class="btn btn-primary px-3 me-2"
+          onclick="this.parentNode.querySelector('input[type=number]').stepDown(), actualizarCostos()">
+          <i class="fas fa-minus"></i>
+        </button>
+
+        <div class="form-outline">
+          <input id="form1" min="0" name="quantity" value="${article.count}" type="number" class="form-control cantidadProd" />
+          <label class="form-label" for="form1">Cantidad</label>
+        </div>
+
+        <button class="btn btn-primary px-3 ms-2"
+          onclick="this.parentNode.querySelector('input[type=number]').stepUp(), actualizarCostos()">
+          <i class="fas fa-plus"></i>
+        </button>
+      </div>
+      <!-- Quantity -->
+
+      <!-- Price -->
+      <div class"">
+        <div>
+          Subtotal: ${article.currency}
+        </div>
+        <div class="text-start text-md-center subTot">
+          ${article.count * article.cost}
         </div>
       </div>
+      <!-- Price -->
+    </div>
+  </div>
+  <hr class="my-4" />
     `;
   }
 
@@ -90,13 +115,13 @@ function showListFromStorage(data) {
   let cantidadInputs = document.querySelectorAll('.cantidadProd');
   cantidadInputs.forEach(input => {
     input.addEventListener('change', function () {
-      modificarSubtotal();
-      calcularCostos();
-      tipoEnvio();
-      precioTotal();
+      actualizarCostos();
     });
   });
 }
+
+
+
 
 //Actualizar los subtotales de los productos en el carrito de compras en función de la cantidad seleccionada por el usuario.
 function modificarSubtotal() {
@@ -123,13 +148,13 @@ function calcularCostos() {
     costeDeProductosTotal += costo;
   }
 
-  mostrarPreciosProductos.value = costeDeProductosTotal;
-  console.log(costeDeProductosTotal);
+  mostrarPreciosProductos.innerHTML = costeDeProductosTotal;
+  //console.log(costeDeProductosTotal);
 }
 //Calcular costo de envío y mostrarlo
 function tipoEnvio() {
   let mostrarPrecioEnvio = document.querySelector('#envio');
-
+  
   envioStandard = document.querySelector('#envioStandard').checked;
   envioRapido = document.querySelector('#envioRapido').checked;
   envioExpress = document.querySelector('#envioExpress').checked;
@@ -141,14 +166,14 @@ function tipoEnvio() {
   } else if (envioExpress) {
     costeEnvio = costeDeProductosTotal * 0.15;
   }
-  mostrarPrecioEnvio.value = costeEnvio;
+  mostrarPrecioEnvio.innerHTML = parseInt(costeEnvio);
 }
 
 
 function precioTotal() {
   let mostrarPrecioTotal = document.querySelector('#total');
 
-  mostrarPrecioTotal.value = costeEnvio + costeDeProductosTotal;
+  mostrarPrecioTotal.innerHTML = costeEnvio + costeDeProductosTotal;
 }
 
 //Validaciones de datos
@@ -368,3 +393,68 @@ document.getElementById("BotóndeCompra").addEventListener("click", function() {
 
   // Continuar con el proceso de finalizar compra si se ha seleccionado un tipo de envío.
 });
+
+function actualizarCostos(){
+  
+  modificarSubtotal();
+  calcularCostos();
+  tipoEnvio();
+  precioTotal();
+}
+
+/*function eliminarProducto(nombreProducto) {
+  // Recupera el carrito del almacenamiento local
+  let carritoLocalStorage = JSON.parse(localStorage.getItem('cartProducts')) || [];
+
+  // Filtra el producto a eliminar del carrito
+  carritoLocalStorage = carritoLocalStorage.filter(producto => producto.name !== nombreProducto);
+
+  // Guarda el carrito actualizado en el almacenamiento local
+  localStorage.setItem('cartProducts', JSON.stringify(carritoLocalStorage));
+
+  // Elimina el producto visualmente
+  const productoAEliminar = document.querySelector(`[data-nombre="${nombreProducto}"]`);
+  if (productoAEliminar) {
+    productoAEliminar.remove();
+  }
+
+  // Actualiza los costos después de eliminar un producto
+  actualizarCostos();
+}*/
+
+function agregarAlCarrito(productData, cantidadProducto) {
+  let productoExistente = false;
+  cantidadProducto = parseInt(cantidadProducto); 
+
+  for (let i = 0; i < productosEnCarrito.length; i++) {
+    if (productosEnCarrito[i].id === productData.id) {
+      productoExistente = true;
+      break;
+    }
+  }
+  if (!productoExistente) {
+    let productoEnCarrito = {
+      name: productData.name,
+      description: productData.description,
+      count: cantidadProducto,
+      id: productData.id,
+      image: productData.image,
+      currency: productData.currency,
+      cost: productData.unitCost,
+    };
+    // Agrega el nuevo producto al arreglo de productos en el carrito
+    productosEnCarrito.push(productoEnCarrito);
+  }
+  // Guarda el arreglo actualizado en el localStorage
+  localStorage.setItem('cartProducts', JSON.stringify(productosEnCarrito));
+  cartFromLocalStorage = JSON.parse(localStorage.getItem('cartProducts')) || [];
+  productosEnCarrito = JSON.parse(localStorage.getItem('cartProducts')) || [];
+  showListFromStorage(cartFromLocalStorage);
+  //console.log(cantidadProducto);
+}
+//Recorro la lista de productos del carrito que hay guardados en jap server
+function recorrerJapList(data){
+  for(let one of data.articles){
+    agregarAlCarrito(one, one.count);  
+  }
+}
