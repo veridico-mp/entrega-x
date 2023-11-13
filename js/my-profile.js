@@ -52,7 +52,8 @@ document.addEventListener('DOMContentLoaded', () => {
   let firstLastName = document.getElementById('primerApellido');
   let secondName = document.getElementById('segundoNombre');
   let secondLastName = document.getElementById('segundoApellido');
-  let correo = (document.getElementById('email').value = email);
+  let correo = (document.getElementById('email'));
+  correo.value = email;
   let phone = document.getElementById('telefono');
   let datosUsuario = {};
   //Tomo datos del storage si los hay.
@@ -104,8 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
       };
       localStorage.setItem('datosdelUsuario', JSON.stringify(datosUsuario));
     }
+    correo.disabled = true;
     // Mostrar alerta de Bootstrap
-    console.log(alerta);
     alerta.classList.add('show');
   });
 });
