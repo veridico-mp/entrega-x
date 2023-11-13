@@ -154,11 +154,9 @@ function calcularCostos() {
 //Calcular costo de envío y mostrarlo
 function tipoEnvio() {
   let mostrarPrecioEnvio = document.querySelector('#envio');
-  
   envioStandard = document.querySelector('#envioStandard').checked;
   envioRapido = document.querySelector('#envioRapido').checked;
   envioExpress = document.querySelector('#envioExpress').checked;
-
   if (envioStandard) {
     costeEnvio = costeDeProductosTotal * 0.05;
   } else if (envioRapido) {
@@ -169,13 +167,10 @@ function tipoEnvio() {
   mostrarPrecioEnvio.innerHTML = parseInt(costeEnvio);
 }
 
-
 function precioTotal() {
   let mostrarPrecioTotal = document.querySelector('#total');
-
   mostrarPrecioTotal.innerHTML = costeEnvio + costeDeProductosTotal;
 }
-
 //Validaciones de datos
 const validacion = document.getElementById('validar');
 const obTransferencia = document.getElementById('Transferencia');
@@ -190,15 +185,14 @@ const mensajeErrorCodigo = document.getElementById('mensajeErrorCodigo');
 const mensajeErrorVencimiento = document.getElementById('mensajeErrorVencimiento');
 const mensajeErrorNumCuenta = document.getElementById('mensajeErrorNumCuenta');
 
+
 validacion.addEventListener('click', (event) => {
   event.preventDefault();
-
   let resultado = "";
   mensajeErrorNumero1.textContent = '';
   mensajeErrorCodigo.textContent = '';
   mensajeErrorVencimiento.textContent = '';
   mensajeErrorNumCuenta.textContent = '';
-
   if (obTransferencia.checked) {
     if (obNumTarjeta.value !== '') {
       obNumTarjeta.value = ''; // Borrar número de tarjeta
@@ -213,6 +207,15 @@ validacion.addEventListener('click', (event) => {
       mensajeErrorNumCuenta.textContent = 'Debe poner su número de cuenta';
     } else {
       resultado = "Transferencia Bancaria";
+      modalPago.hide();
+      validacionPago=true;
+      alertaPagoExito.style.display = 'block'; // Muestra la alerta de éxito
+      alertaPagoExito.classList.add('animate__bounceIn'); // Aplica la animación
+      setTimeout(function () {
+
+        // Closing the alert
+        bsAlertaPago.close();
+      }, 5000);
     }
   } else if (obTarjeta.checked) {
     if (obNumCuenta.value !== '') {
@@ -221,7 +224,6 @@ validacion.addEventListener('click', (event) => {
     const numeroTarjeta = obNumTarjeta.value.trim();
     const codigoSeguridad = obCodSeg.value.trim();
     const vencimiento = obVencimiento.value.trim();
-
     if (numeroTarjeta === '') {
       mensajeErrorNumero1.textContent = 'Debe poner su número de tarjeta';
     }
@@ -231,16 +233,21 @@ validacion.addEventListener('click', (event) => {
     if (vencimiento === '') {
       mensajeErrorVencimiento.textContent = 'Debe seleccionar una fecha de vencimiento';
     }
-    
     if (numeroTarjeta !== '' && codigoSeguridad !== '' && vencimiento !== '') {
       resultado = "Tarjeta de Crédito";
+      modalPago.hide();
+      validacionPago=true;
+      alertaPagoExito.style.display = 'block'; // Muestra la alerta de éxito
+      alertaPagoExito.classList.add('animate__bounceIn'); // Aplica la animación
+      setTimeout(function () {
+
+        // Closing the alert
+        bsAlertaPago.close();
+      }, 5000);
     }
   }
-  avisoMetodo.textContent = resultado;
 });
-
 const modal = new bootstrap.Modal(document.getElementById('staticBackdrop'));
-
 modal._element.addEventListener('hidden.bs.modal', function () {
   // Limpiar campos y mensajes cuando se cierra el modal
   obNumTarjeta.value = '';
@@ -265,9 +272,6 @@ obTransferencia.addEventListener('change', () => {
     obNumCuenta.disabled = false;
   }
 });
-
-
-
 obTarjeta.addEventListener('change', () => {
   if (obTarjeta.checked) {
     // Si selecciona "Tarjeta de Crédito," bloquea el campo de número de cuenta
@@ -319,10 +323,11 @@ document.getElementById('vencimiento').addEventListener('input', function (e) {
 });
 
 
-//Validaciones del botón de Compra
-
-
-const BotónComprar = document.getElementById('BotóndeCompra');
+//Botón de validacion dirección
+let validacionDireccion = false;
+let validacionPago = false;
+let validacionTipoEnvio = true;
+const validarDireccion = document.getElementById('validarDireccion');
 const calle = document.getElementById('calle');
 const numeroDireccion = document.getElementById('numerodireccion');
 const esquina = document.getElementById('esquina');
@@ -332,16 +337,26 @@ const mensajeErrorNumero = document.getElementById('mensajeErrorNumero');
 const mensajeErrorEsquina = document.getElementById('mensajeErrorEsquina');
 
 const alertaExito = document.getElementById('alertaExito');
+const alertaDireccionExito = document.getElementById('alertaDireccionExito');
+const alertaPagoExito = document.getElementById('alertaPagoExito');
 
-const mensajeErrorPago = document.getElementById("mensajedeError");
+var modalDireccion = new bootstrap.Modal(document.getElementById('modalDireccion'), {
+  keyboard: false
+})
+var modalPago = new bootstrap.Modal(document.getElementById('staticBackdrop'), {
+  keyboard: false
+})
+var alertaDireccion = document.getElementById('alertaDireccionExito')
+var bsAlertaDireccion = new bootstrap.Alert(alertaDireccion)
 
-BotónComprar.addEventListener('click', () => {
+
+validarDireccion.addEventListener('click', () => {
   const calleValue = calle.value.trim();
   const numeroDireccionValue = numeroDireccion.value.trim();
   const esquinaValue = esquina.value.trim();
 
   // Restablece todos los mensajes de error
-  mensajeErrorPago.textContent = '';
+  
   mensajeErrorCalle.textContent = '';
   mensajeErrorNumero.textContent = '';
   mensajeErrorEsquina.textContent = '';
@@ -358,13 +373,18 @@ BotónComprar.addEventListener('click', () => {
     mostrarMensajeError(mensajeErrorEsquina, 'Por favor, ingrese una esquina');
   }
 
-  if(avisoMetodo.textContent === "No ha seleccionado"){
-    mostrarMensajeError(mensajeErrorPago, "Debe seleccionar una forma de pago");
-  }
+ 
 
-  if (calleValue !== '' && numeroDireccionValue !== '' && esquinaValue !== '' && avisoMetodo.textContent != "No ha seleccionado") {
-    alertaExito.style.display = 'block'; // Muestra la alerta de éxito
-    alertaExito.classList.add('animate__bounceIn'); // Aplica la animación
+  if (calleValue !== '' && numeroDireccionValue !== '' && esquinaValue !== '') {
+    modalDireccion.hide();
+    validacionDireccion = true;
+    alertaDireccionExito.style.display = 'block'; // Muestra la alerta de éxito
+    alertaDireccionExito.classList.add('animate__bounceIn'); // Aplica la animación
+    setTimeout(function () {
+
+      // Closing the alert
+      bsAlertaDireccion.close();
+    }, 5000);
   }
   
   
@@ -375,33 +395,29 @@ function mostrarMensajeError(elemento, mensaje) {
 }
 
 //Botón comprar
-document.getElementById("BotóndeCompra").addEventListener("click", function() {
-  let tipoEnvioInputs = document.getElementsByName("envío");
-  let seleccionado = false;
 
-  for (let i = 0; i < tipoEnvioInputs.length; i++) {
-    if (tipoEnvioInputs[i].checked) {
-      seleccionado = true;
-      break;
-    }
+
+var alertaExitoBS = document.getElementById('alertaExito')
+var bsAlertaExito = new bootstrap.Alert(alertaExitoBS)
+
+const botonCompra = document.getElementById('botonCompra');
+botonCompra.addEventListener('click',()=> {
+  if (validacionDireccion &&  validacionPago && validacionTipoEnvio ) {
+    alertaExito.style.display = 'block'; // Muestra la alerta de éxito
+    alertaExito.classList.add('animate__bounceIn'); // Aplica la animación
+    setTimeout(function () {
+
+      // Closing the alert
+      bsAlertaExito.close();
+    }, 8000);
   }
-
-  if (!seleccionado) {
-    document.getElementById("errorMensaje").textContent = "Por favor, seleccione un tipo de envío.";
-    return false;
-  }
-
-  // Continuar con el proceso de finalizar compra si se ha seleccionado un tipo de envío.
 });
-
 function actualizarCostos(){
-  
   modificarSubtotal();
   calcularCostos();
   tipoEnvio();
   precioTotal();
 }
-
 function eliminarProducto(nombreProducto) {
   // Recupera el carrito del almacenamiento local
   let carritoLocalStorage = JSON.parse(localStorage.getItem('cartProducts')) || [];
@@ -458,3 +474,22 @@ function recorrerJapList(data){
     agregarAlCarrito(one, one.count);  
   }
 }
+
+
+
+
+
+
+/*--------------------------------------------------------------------Validaciónes Inicio----------------------------------------------------*/
+var alertaPago = document.getElementById('alertaPagoExito')
+var bsAlertaPago = new bootstrap.Alert(alertaPago)
+
+
+
+/*--------------------------------------------------------------------Validaciónes Fin-------------------------------------------------------*/
+
+/*--------------------------------------------------------------Conversión de monedas-----------------------------------------------------------*/
+function obtenerMoneda(){
+  
+}
+/*-----------------------------------------------------------Fin conversión de monedas----------------------------------------------------------*/
