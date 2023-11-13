@@ -69,7 +69,7 @@ function showListFromStorage(data) {
       </div>
       <!-- Price -->
       <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
-        title="Remove item" onclick="actualizarCostos()">
+        title="Remove item" onclick="eliminarProducto('${article.name}')">
         <i class="fas fa-trash"></i>
       </button>
       <!-- Data -->
@@ -402,7 +402,7 @@ function actualizarCostos(){
   precioTotal();
 }
 
-/*function eliminarProducto(nombreProducto) {
+function eliminarProducto(nombreProducto) {
   // Recupera el carrito del almacenamiento local
   let carritoLocalStorage = JSON.parse(localStorage.getItem('cartProducts')) || [];
 
@@ -417,10 +417,10 @@ function actualizarCostos(){
   if (productoAEliminar) {
     productoAEliminar.remove();
   }
-
+  showListFromStorage(carritoLocalStorage);
   // Actualiza los costos después de eliminar un producto
   actualizarCostos();
-}*/
+}
 
 function agregarAlCarrito(productData, cantidadProducto) {
   let productoExistente = false;
