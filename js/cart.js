@@ -3,27 +3,26 @@ let costeDeProductosTotal = 0;
 let costeEnvio = 0;
 
 // Recuperar datos de localStorage
-const cartFromLocalStorage = JSON.parse(localStorage.getItem('cartProducts'));
+let cartFromLocalStorage = JSON.parse(localStorage.getItem('cartProducts')) || [];
 let productosEnCarrito = JSON.parse(localStorage.getItem('cartProducts')) || [];
 
 
 fetch(URL_CART)
-  .then(response => response.json())
-  .then(data => {
-    recorrerJapList(data);
-  })
-  .catch(err => {
-    console.error('Hubo un error al cargar los datos', err);
-  });
+.then(response => response.json())
+.then(data => {
+  recorrerJapList(data);
+})
+.catch(err => {
+  console.error('Hubo un error al cargar los datos', err);
+});
 
 document.addEventListener('DOMContentLoaded', function () {
-  let values = document.getElementsByClassName('cantidadProd');
-  let envio = document.getElementById('tipoEnvio'); //Este es el div que contiene los radio check para el tipo de envio.
-// Si existe un carrito almacenado en el almacenamiento local, se llaman a las funciones 
-  if (cartFromLocalStorage) {
+  // Si existe un carrito almacenado en el almacenamiento local, se llaman a las funciones 
+ 
+  if(cartFromLocalStorage){
+    console.log(cartFromLocalStorage);
     showListFromStorage(cartFromLocalStorage);
-    modificarSubtotal();
-    calcularCostos();
+    actualizarCostos();
   }
 
   //Nombre de usuario y boton desconectar
@@ -41,33 +40,10 @@ document.addEventListener('DOMContentLoaded', function () {
       location.href="login.html";
   })
 });
-//Mostrar una lista de elementos en el carrito de compras
-function showList(data) {
-  for (let one of data.articles) {    
-    /*list.innerHTML += `  <div class="form-control py-1" id="cssList">
-            <div class="row py-0">
-                <div class="col text-center fnt-size px-1"><img src="${one.image}" title="producto" class="imagenCart img-fluid float-start"></div>
-                <div class="col text-center fnt-size px-1">${one.name}</div>
-                <div class="col text-center fnt-size px-0 py-0"><div class="col"><div class="col">${one.currency}</div><div class="col cost">${one.unitCost}</div></div></div>
-                <div class="col text-center fnt-size px-1 py-1"><input type="number" id="units" min="1" value="${one.count}" class="cantidadProd"></div>
-                <div class="col text-center fnt-size px-1 py-0"><div class="col"><div class="col">${one.currency}</div><div class="col subTot">${one.unitCost * one.count}</div></div></div>
-            </div>
-        </div>
-      
-        `;*/
-  }
-  //Actualizar los cálculos relacionados con el carrito.
-  let cantidadInputs = document.querySelectorAll('.cantidadProd');
-  cantidadInputs.forEach(input => {
-    input.addEventListener('change', function () {
-      actualizarCostos();
-    });
-  });
-}
-
 //Muestra una lista de elementos de carrito de compras
 function showListFromStorage(data) {
   let list = document.getElementById('listaCarrito');
+  list.innerHTML = "";
   for (let article of data) {
     list.innerHTML += `
     <div class="row">
@@ -173,7 +149,7 @@ function calcularCostos() {
   }
 
   mostrarPreciosProductos.innerHTML = costeDeProductosTotal;
-  console.log(costeDeProductosTotal);
+  //console.log(costeDeProductosTotal);
 }
 //Calcular costo de envío y mostrarlo
 function tipoEnvio() {
@@ -419,6 +395,7 @@ document.getElementById("BotóndeCompra").addEventListener("click", function() {
 });
 
 function actualizarCostos(){
+  
   modificarSubtotal();
   calcularCostos();
   tipoEnvio();
@@ -430,26 +407,27 @@ function actualizarCostos(){
   let carritoLocalStorage = JSON.parse(localStorage.getItem('cartProducts')) || [];
 
   // Filtra el producto a eliminar del carrito
-  carritoLocalStorage = carritoLocalStorage.filter(producto => producto.Nombre !== nombreProducto);
+  carritoLocalStorage = carritoLocalStorage.filter(producto => producto.name !== nombreProducto);
 
   // Guarda el carrito actualizado en el almacenamiento local
   localStorage.setItem('cartProducts', JSON.stringify(carritoLocalStorage));
 
   // Elimina el producto visualmente
-  const productoAEliminar = document.querySelector([data-nombre = nombreProducto]);
+  const productoAEliminar = document.querySelector(`[data-nombre="${nombreProducto}"]`);
   if (productoAEliminar) {
-      productoAEliminar.remove();
+    productoAEliminar.remove();
   }
+
+  // Actualiza los costos después de eliminar un producto
+  actualizarCostos();
 }*/
-//Carga del producto que esta en jap server
+
 function agregarAlCarrito(productData, cantidadProducto) {
   let productoExistente = false;
   cantidadProducto = parseInt(cantidadProducto); 
 
   for (let i = 0; i < productosEnCarrito.length; i++) {
     if (productosEnCarrito[i].id === productData.id) {
-      
-      productosEnCarrito[i].count = cantidadProducto;
       productoExistente = true;
       break;
     }
@@ -469,11 +447,14 @@ function agregarAlCarrito(productData, cantidadProducto) {
   }
   // Guarda el arreglo actualizado en el localStorage
   localStorage.setItem('cartProducts', JSON.stringify(productosEnCarrito));
-  console.log(cantidadProducto);
+  cartFromLocalStorage = JSON.parse(localStorage.getItem('cartProducts')) || [];
+  productosEnCarrito = JSON.parse(localStorage.getItem('cartProducts')) || [];
+  showListFromStorage(cartFromLocalStorage);
+  //console.log(cantidadProducto);
 }
 //Recorro la lista de productos del carrito que hay guardados en jap server
 function recorrerJapList(data){
   for(let one of data.articles){
-    agregarAlCarrito(one, one.count);
+    agregarAlCarrito(one, one.count);  
   }
 }
