@@ -244,11 +244,10 @@ function calcularSubtotal(precioProducto) {
 
 function agregarAlCarrito(productData, cantidadProducto) {
   let productoExistente = false;
-  cantidadProducto = parseInt(cantidadProducto); 
+  cantidadProducto = parseInt(cantidadProducto);
 
   for (let i = 0; i < productosEnCarrito.length; i++) {
     if (productosEnCarrito[i].id === productData.id) {
-      
       productosEnCarrito[i].count += cantidadProducto;
       productoExistente = true;
       break;
