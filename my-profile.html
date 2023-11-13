@@ -62,34 +62,40 @@
       </div>
       <div class="row mt-4">
         <div class="col-md-6">
-          <div class="form-group">
-            <label for="primerNombre">Primer Nombre*</label>
+          <div class="form-floating ">
             <input type="text" id="primerNombre" class="form-control" placeholder="Primer Nombre" required>
+            <label for="floatingInput">Primer Nombre*</label>
             <div id="mensajeErrorNombre" class="error"></div>
           </div><br>
-          <div class="form-group">
-            <label for="primerApellido">Primer Apellido*</label>
+
+          <div class="form-floating">
+            
             <input type="text" id="primerApellido" class="form-control" placeholder="Primer Apellido" required>
+            <label for="floatingInput">Primer Apellido*</label>
             <div id="mensajeErrorApellido" class="error"></div>
           </div><br>
-          <div class="form-group">
-            <label for="email">Email</label>
+          <div class="form-floating">
+            
             <input type="email" id="email" class="form-control" placeholder="Email" required>
+            <label for="floatingInput">Email</label>
           </div><br>
-          <div class="form-group">
-            <label for="telefono">Teléfono de Contacto*</label>
+          <div class="form-floating">
+            
             <input type="text" id="telefono" class="form-control" placeholder="Tel/Cel" required>
+            <label for="floatingInput">Teléfono de Contacto*</label>
             <div id="mensajeErrorTelefono" class="error"></div>
           </div>
         </div><br>
         <div class="col-md-6">
-          <div class="form-group">
-            <label for="segundoNombre">Segundo Nombre</label>
+          <div class="form-floating">
             <input type="text" id="segundoNombre" class="form-control" placeholder="Segundo Nombre">
+            <label for="floatingInput">Segundo Nombre</label>
+
           </div><br>
-          <div class="form-group">
-            <label for="segundoApellido">Segundo Apellido</label>
+          <div class="form-floating">
             <input type="text" id="segundoApellido" class="form-control" placeholder="Segundo Apellido">
+            <label for="floatingInput">Segundo Apellido</label>
+
           </div><br>
           <div class="form-group">
             <label for="imagen">Imagen de Perfil</label>
@@ -103,7 +109,7 @@
         </div>
         </div>  
     </div>   
-    <div id="alerta" class="alert alert-success alert-dismissible fade d-none" role="alert">
+    <div id="alerta" class="alert alert-success alert-dismissible fade" role="alert">
       Se ha actualizado tu perfil
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
