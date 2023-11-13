@@ -21,6 +21,11 @@ document.querySelector('#btnCart').addEventListener('click', function () {
   agregarAlCarrito(productData, cantidadProducto);
 });
 
+document.querySelector('#btnBuy').addEventListener('click', function () {
+  agregarAlCarrito(productData, cantidadProducto);
+  window.location.href = "cart.html";
+});
+
 // Obtener una referencia al formulario y al contenedor de comentarios
 const commentForm = document.getElementById('comment-form');
 const commentsContainer = document.getElementById('comments');

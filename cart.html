@@ -204,7 +204,7 @@
     
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver atrás</button>
-        <button type="button" class="btn btn-primary"  id="validar">Validar</button>
+        <button type="button" class="btn btn-primary"  id="validarDireccion">Validar</button>
   
       </div>
     </div>
@@ -213,13 +213,18 @@
   
             
   
-            <div class="container">
-            <button class="btn-primary col-lg-12 col-md-12 col-sm-12 btn-lg" id="BotóndeCompra">Finalizar Compra</button>
-          </div>
-  
-          <div class="alert alert-success animate__animated animate__bounceIn animate__center" role="alert" id="alertaExito" style="display: none;">
-            Has comprado con éxito
-          </div>
+  <div class="container">
+   <button class="btn-primary col-lg-12 col-md-12 col-sm-12 btn-lg" id="botonCompra">Finalizar Compra</button>
+  </div>
+  <div class="alert alert-success animate__animated animate__bounceIn animate__center auto-close" role="alert" id="alertaPagoExito" style="display: none;">
+    Has colocado un metodo de pago con éxito
+</div>       
+  <div class="alert alert-success animate__animated animate__bounceIn animate__center auto-close" role="alert" id="alertaDireccionExito" style="display: none;">
+        Has colocado la dirección con éxito
+  </div>
+    <div class="alert alert-success animate__animated animate__bounceIn animate__center auto-close" role="alert" id="alertaExito" style="display: none;">
+      Has comprado con éxito
+    </div>
  
 
   </main>
