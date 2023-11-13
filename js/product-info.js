@@ -247,9 +247,9 @@ function agregarAlCarrito(productData, cantidadProducto) {
   cantidadProducto = parseInt(cantidadProducto); 
 
   for (let i = 0; i < productosEnCarrito.length; i++) {
-    if (productosEnCarrito[i].Id === productData.id) {
+    if (productosEnCarrito[i].id === productData.id) {
       
-      productosEnCarrito[i].Cantidad += cantidadProducto;
+      productosEnCarrito[i].count += cantidadProducto;
       productoExistente = true;
       break;
     }
@@ -257,13 +257,13 @@ function agregarAlCarrito(productData, cantidadProducto) {
 
   if (!productoExistente) {
     let productoEnCarrito = {
-      Nombre: productData.name,
-      Descripcion: productData.description,
-      Cantidad: cantidadProducto,
-      Id: productData.id,
-      Imagen: productData.images[0],
-      Divisa: productData.currency,
-      CosteUnidad: productData.cost,
+      name: productData.name,
+      description: productData.description,
+      count: cantidadProducto,
+      id: productData.id,
+      image: productData.images[0],
+      currency: productData.currency,
+      cost: productData.cost,
     };
 
     // Agrega el nuevo producto al arreglo de productos en el carrito
