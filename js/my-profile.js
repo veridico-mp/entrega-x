@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let secondLastName = document.getElementById('segundoApellido');
   let correo = (document.getElementById('email'));
   correo.value = email;
+  correo.disabled = true;
   let phone = document.getElementById('telefono');
   let datosUsuario = {};
   //Tomo datos del storage si los hay.
@@ -105,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
       };
       localStorage.setItem('datosdelUsuario', JSON.stringify(datosUsuario));
     }
-    correo.disabled = true;
+    
     // Mostrar alerta de Bootstrap
     alerta.classList.add('show');
   });
