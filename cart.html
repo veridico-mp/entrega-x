@@ -52,22 +52,21 @@
     </nav>
   </header>
   <main>
-
-      <!--Cart content--><!--id="listaCarrito"-->
-      <section class="h-100 gradient-custom">
-        <div class="container py-5">
-          <div class="row d-flex justify-content-center my-4">
-            <div class="col-md-8">
-              <div class="card mb-4">
-                <div class="card-header py-3">
-                  <h5 class="mb-0">Carrito</h5>
-                </div>
-                <div class="card-body" id="listaCarrito">
-                  
-                </div>
+    <!--Cart content--><!--id="listaCarrito"-->
+    <section class="h-100 gradient-custom">
+      <div class="container py-5">
+        <div class="row d-flex justify-content-center my-4">
+          <div class="col-md-8">
+            <div class="card mb-4">
+              <div class="card-header py-3">
+                <h5 class="mb-0">Carrito</h5>
+              </div>
+              <div class="card-body" id="listaCarrito">
+                
               </div>
             </div>
-            <!--Costos -->
+          </div>
+          <!--Costos -->
           <div class="col-md-4">
             <div class="card mb-4">
               <div class="card-header py-3">
@@ -90,7 +89,6 @@
                   <a class="btn btn-primary btn-lg btn-block" href="#modalDireccion" data-bs-toggle="modal" data-bs-target="#modalDireccion " >Dirección de envio</a>
                 </div>
               </div>
-
               <!-- Costo-->
               <div class="card-header py-3">
                 <h5 class="mb-0">Costos</h5>
@@ -115,118 +113,106 @@
                   </li>
                 </ul>
                 <a class="btn btn-primary btn-lg btn-block" href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#staticBackdrop " >Metodo de Pago</a>
+              </div>
             </div>
           </div>
         </div>
-      </section>
-      <!--CART END-->
-    </div>
+      </div>
+    </section>
+    <!--CART END-->
     <br>
-              <!-- Button trigger modal -->
- <!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title text-primary fs-5" id="staticBackdropLabel">Selecciona tu método de pago</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="container" id="tarjeta">
-        <input type="radio" name="SelMetodo" class="form-check-input" id="tarjetacredito">
-        <label for="tarjetacredito" class="form-label text-center">Tarjeta de crédito</label>
-        </div>
-        <hr class="border-top border-dark">
-        <div class="container">
-          <label for="numero1" class="form-label">Número de Tarjeta</label>
-          <br>
-          <input type="text" class="form-control-sm" id="numero1">
-          <div id="mensajeErrorNumero1" class="error"></div>
-          <br>
-          <label for="codigo" class="form-label">Código de Seg</label>
-          <input type="text" class="form-control-sm" id="codigo">
-          <div id="mensajeErrorCodigo" class="error"></div>
-          <br>
-          <label for="vencimiento" class="form-label">Vencimiento</label>
-          <input type="text" class="form-control-sm" id="vencimiento" name="vencimiento"  pattern="^(0[1-9]|1[0-2])/(19[3-9][0-9]|20[0-2][0-9])" placeholder="MM/AAAA">
-          <div id="mensajeErrorVencimiento" class="error"></div> 
-          <br>
-          <input type="radio" name="SelMetodo" class="form-check-input" id="Transferencia">
-          <label for="Transferencia"  class="form-label text-center">Transferencia Bancaria</label>
-          <br>
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title text-primary fs-5" id="staticBackdropLabel">Selecciona tu método de pago</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <hr class="border-top border-dark">
-          <div class="container">
-          <label for="Numcuenta">Número de cuenta</label>
-          <input type="text" class="form-control-sm" id="Numcuenta">
-          <div id="mensajeErrorNumCuenta" class="error"></div>
+          <div class="modal-body">
+            <div class="container" id="tarjeta">
+              <input type="radio" name="SelMetodo" class="form-check-input" id="tarjetacredito">
+              <label for="tarjetacredito" class="form-label text-center">Tarjeta de crédito</label>
+            </div>
+            <hr class="border-top border-dark">
+            <div class="container">
+              <label for="numero1" class="form-label">Número de Tarjeta</label>
+              <br>
+              <input type="text" class="form-control-sm" id="numero1">
+              <div id="mensajeErrorNumero1" class="error"></div>
+              <br>
+              <label for="codigo" class="form-label">Código de Seg</label>
+              <input type="text" class="form-control-sm" id="codigo">
+              <div id="mensajeErrorCodigo" class="error"></div>
+              <br>
+              <label for="vencimiento" class="form-label">Vencimiento</label>
+              <input type="text" class="form-control-sm" id="vencimiento" name="vencimiento"  pattern="^(0[1-9]|1[0-2])/(19[3-9][0-9]|20[0-2][0-9])" placeholder="MM/AAAA">
+              <div id="mensajeErrorVencimiento" class="error"></div> 
+              <br>
+              <input type="radio" name="SelMetodo" class="form-check-input" id="Transferencia">
+              <label for="Transferencia"  class="form-label text-center">Transferencia Bancaria</label>
+              <br>
+            </div>
+            <hr class="border-top border-dark">
+            <div class="container">
+              <label for="Numcuenta">Número de cuenta</label>
+              <input type="text" class="form-control-sm" id="Numcuenta">
+              <div id="mensajeErrorNumCuenta" class="error"></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver atrás</button>
+            <button type="button" class="btn btn-primary"  id="validar">Validar</button>
+          </div>
         </div>
-        
-      </div>
-    
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver atrás</button>
-        <button type="button" class="btn btn-primary"  id="validar">Validar</button>
-  
       </div>
     </div>
-  </div>
-  </div>
-  
-   <!-- Modal Direccion-->
-<div class="modal fade" id="modalDireccion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title text-primary fs-5" id="staticBackdropLabel">Dirección de envio</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-          <label for="Calle">Calle</label>
-          <input id="calle" type="text" class="form-control" name="calle" value="" required autofocus>
-          <div id="mensajeErrorCalle" class="error"></div>
+    <!-- Modal Direccion-->
+    <div class="modal fade" id="modalDireccion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title text-primary fs-5" id="staticBackdropLabel">Dirección de envio</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="Calle">Calle</label>
+              <input id="calle" type="text" class="form-control" name="calle" value="" required autofocus>
+              <div id="mensajeErrorCalle" class="error"></div>
+            </div>
+            <div class="form-group">
+              <label for="Numero">Numero</label>
+              <input id="numerodireccion" type="number" class="form-control" name="numero" required data-eye>
+              <div id="mensajeErrorNumero" class="error"></div>
+            </div>  
+            <div class="form-group">
+              <label for="Esquina">Esquina</label>
+              <input id="esquina" type="text" class="form-control" name="esquina" required data-eye>
+              <div id="mensajeErrorEsquina" class="error"></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver atrás</button>
+            <button type="button" class="btn btn-primary"  id="validarDireccion">Validar</button>
+          </div>
         </div>
-
-        <div class="form-group">
-          <label for="Numero">Numero</label>
-          <input id="numerodireccion" type="number" class="form-control" name="numero" required data-eye>
-          <div id="mensajeErrorNumero" class="error"></div>
-        </div>
-        
-        <div class="form-group">
-          <label for="Esquina">Esquina</label>
-          <input id="esquina" type="text" class="form-control" name="esquina" required data-eye>
-          <div id="mensajeErrorEsquina" class="error"></div>
-        </div>
-        
-      </div>
-    
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Volver atrás</button>
-        <button type="button" class="btn btn-primary"  id="validarDireccion">Validar</button>
-  
       </div>
     </div>
-  </div>
-  </div>
-  
-            
-  
-  <div class="container">
-   <button class="btn-primary col-lg-12 col-md-12 col-sm-12 btn-lg" id="botonCompra">Finalizar Compra</button>
-  </div>
-  <div class="alert alert-success animate__animated animate__bounceIn animate__center auto-close" role="alert" id="alertaPagoExito" style="display: none;">
-    Has colocado un metodo de pago con éxito
-</div>       
-  <div class="alert alert-success animate__animated animate__bounceIn animate__center auto-close" role="alert" id="alertaDireccionExito" style="display: none;">
-        Has colocado la dirección con éxito
-  </div>
+    <div class="container">
+      <button class="btn-primary col-lg-12 col-md-12 col-sm-12 btn-lg" id="botonCompra">Finalizar Compra</button>
+    </div>
+    <!--Alertas de error-->
+    <div class="alert alert-success animate__animated animate__bounceIn animate__center auto-close" role="alert" id="alertaPagoExito" style="display: none;">
+      Has colocado un metodo de pago con éxito
+    </div>       
+    <div class="alert alert-success animate__animated animate__bounceIn animate__center auto-close" role="alert" id="alertaDireccionExito" style="display: none;">
+      Has colocado la dirección con éxito
+    </div>
+    <!--Alerta de succes-->
     <div class="alert alert-success animate__animated animate__bounceIn animate__center auto-close" role="alert" id="alertaExito" style="display: none;">
       Has comprado con éxito
     </div>
- 
-
   </main>
   <footer class="text-muted">
     <div class="container">

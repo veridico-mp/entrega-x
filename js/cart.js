@@ -58,7 +58,6 @@ function showListFromStorage(data) {
       </div>
       <!-- Image -->
     </div>
-
     <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
       <!-- Data -->
       <p><strong>${article.name}</strong></p>
@@ -74,7 +73,6 @@ function showListFromStorage(data) {
       </button>
       <!-- Data -->
     </div>
-
     <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
       <!-- Quantity -->
       <div class="d-flex mb-4" style="max-width: 300px">
@@ -82,35 +80,29 @@ function showListFromStorage(data) {
           onclick="this.parentNode.querySelector('input[type=number]').stepDown(), actualizarCostos()">
           <i class="fas fa-minus"></i>
         </button>
-
         <div class="form-outline">
           <input id="form1" min="0" name="quantity" value="${article.count}" type="number" class="form-control cantidadProd" />
           <label class="form-label" for="form1">Cantidad</label>
         </div>
-
         <button class="btn btn-primary px-3 ms-2"
           onclick="this.parentNode.querySelector('input[type=number]').stepUp(), actualizarCostos()">
           <i class="fas fa-plus"></i>
         </button>
       </div>
-      <!-- Quantity -->
-
       <!-- Price -->
-      <div class"">
-        <div>
-          Subtotal: ${article.currency}
-        </div>
-        <div class="text-start text-md-center subTot">
-          ${article.count * article.cost}
+      <div class="row">
+        <div class="col">
+          Subtotal: USD
+          <div class="col-10 text-end subTot">
+            ${article.count * obtenerMoneda(article.cost, article.currency)}
+          </div>
         </div>
       </div>
-      <!-- Price -->
     </div>
   </div>
-  <hr class="my-4" />
+  <hr class="my-4"/>
     `;
   }
-
   // Agregar el evento change a todos los elementos con la clase "cantidadProd"
   let cantidadInputs = document.querySelectorAll('.cantidadProd');
   cantidadInputs.forEach(input => {
@@ -119,10 +111,6 @@ function showListFromStorage(data) {
     });
   });
 }
-
-
-
-
 //Actualizar los subtotales de los productos en el carrito de compras en función de la cantidad seleccionada por el usuario.
 function modificarSubtotal() {
   let cantidadInputs = document.querySelectorAll('.cantidadProd');
@@ -474,22 +462,26 @@ function recorrerJapList(data){
     agregarAlCarrito(one, one.count);  
   }
 }
-
-
-
-
-
-
 /*--------------------------------------------------------------------Validaciónes Inicio----------------------------------------------------*/
 var alertaPago = document.getElementById('alertaPagoExito')
 var bsAlertaPago = new bootstrap.Alert(alertaPago)
-
-
-
 /*--------------------------------------------------------------------Validaciónes Fin-------------------------------------------------------*/
-
 /*--------------------------------------------------------------Conversión de monedas-----------------------------------------------------------*/
-function obtenerMoneda(){
-  
+function obtenerMoneda(num, currency){
+  let pesos = 40;
+  let a = 1/pesos;
+  /*fetch()
+  .then(response=> response.json())
+  .then(data=>{
+
+  })
+  .catch(error=>{
+    console.error("Error al cargar datos", error)
+  });*/
+  if(currency==="UYU"){
+    return num*a;
+  }else if(currency==="USD"){
+    return num;
+  }
 }
 /*-----------------------------------------------------------Fin conversión de monedas----------------------------------------------------------*/
