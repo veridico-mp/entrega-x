@@ -423,6 +423,21 @@ background-color: rgb(66, 66, 66);
 color: white;
 }
 
+.dark-mode #mainInfo{
+  background-color: rgb(19, 18, 18);
+  color: white;
+}
+
+.dark-mode #descripcion{
+  background-color: rgb(19, 18, 18);
+  color: white;
+}
+
+.dark-mode .dMode{
+  background-color: rgb(19, 18, 18);
+  color: white;
+}
+
 
 /* Estilo para ocultar el texto en dispositivos móviles */
 @media (max-width: 1400px) {

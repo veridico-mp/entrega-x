@@ -132,7 +132,7 @@ function showImgList(data) {
   let numImg = 1;
   for (let one of data.images) {
     imgList.innerHTML += `
-      <div class="mySlides">
+      <div class="mySlides ">
           <div class="numbertext">${numImg} / ${data.images.length}</div>
           <img class="img-fluid" src='${one}' onclick='expose("${one}") style="width:100%'>
       </div>`;
@@ -195,7 +195,7 @@ function showRelatedProducts(data) {
   // Funcion que mostrara los productos relacionados
   let relproduct = document.getElementById('prodRelacionados');
   relproduct.innerHTML += `
-  <div class='container form-control' id='relprod'></div>`;
+  <div class='container form-control ' id='relprod'></div>`;
   showProductRelacionado(data);
 }
 function showProductRelacionado(data) {
@@ -203,7 +203,7 @@ function showProductRelacionado(data) {
   let relprod = document.getElementById('relprod');
   for (let product of data.relatedProducts) {
     relprod.innerHTML += `
-    <div class="containerRelProd" id="${product.id}" onclick="setProdID(${product.id})">
+    <div class="containerRelProd dMode" id="${product.id}" onclick="setProdID(${product.id})">
      <div class="product-info">
      <img class="img-fluid"src=${product.image}>
      <p>${product.name}</p> 
