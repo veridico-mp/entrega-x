@@ -122,7 +122,7 @@ function modificarSubtotal() {
     let cantidad = parseInt(cantidadInputs[i].value);
     let precio = parseFloat(preciosProducto[i].textContent);
     let moneda = currency[i].textContent.toUpperCase();
-    subtotales[i].innerHTML = cantidad * obtenerMoneda(precio, moneda);
+    subtotales[i].innerHTML = parseInt(cantidad * obtenerMoneda(precio, moneda));
   }
 }
 //Mostrar costo total de los productos en el carrito de compras
@@ -148,11 +148,11 @@ function tipoEnvio() {
   envioRapido = document.querySelector('#envioRapido').checked;
   envioExpress = document.querySelector('#envioExpress').checked;
   if (envioStandard) {
-    costeEnvio = costeDeProductosTotal * 0.05;
+    costeEnvio = parseInt(costeDeProductosTotal * 0.05);
   } else if (envioRapido) {
-    costeEnvio = costeDeProductosTotal * 0.07;
+    costeEnvio = parseInt(costeDeProductosTotal * 0.07);
   } else if (envioExpress) {
-    costeEnvio = costeDeProductosTotal * 0.15;
+    costeEnvio = parseInt(costeDeProductosTotal * 0.15);
   }
   mostrarPrecioEnvio.innerHTML = parseInt(costeEnvio);
 }
@@ -471,7 +471,7 @@ function obtenerMoneda(num, currency){
   let a = 1/pesos;//Dolar sobre pesos para obtener el valor de conversión
 
   if(currency==="UYU"){
-    return num*a;
+    return parseInt(num*a);
   }else if(currency==="USD"){
     return num;
   }
