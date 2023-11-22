@@ -63,7 +63,7 @@ function showListFromStorage(data) {
       <p><strong>${article.name}</strong></p>
       <!-- Price -->
       <div class="text-start text-md-center">
-        <div>${article.currency}</div>
+        <div class="currency">${article.currency}</div>
         <div class="cost">${article.cost}</div>
       </div>
       <!-- Price -->
@@ -81,7 +81,7 @@ function showListFromStorage(data) {
           <i class="fas fa-minus"></i>
         </button>
         <div class="form-outline">
-          <input id="form1" min="0" name="quantity" value="${article.count}" type="number" class="form-control cantidadProd" />
+          <input id="form1" min="1" name="quantity" value="${article.count}" type="number" class="form-control cantidadProd" />
           <label class="form-label" for="form1">Cantidad</label>
         </div>
         <button class="btn btn-primary px-3 ms-2"
@@ -116,11 +116,13 @@ function modificarSubtotal() {
   let cantidadInputs = document.querySelectorAll('.cantidadProd');
   let preciosProducto = document.querySelectorAll('.cost');
   let subtotales = document.querySelectorAll('.subTot');
+  let currency = document.querySelectorAll('.currency');
 
   for (let i = 0; i < cantidadInputs.length; i++) {
     let cantidad = parseInt(cantidadInputs[i].value);
     let precio = parseFloat(preciosProducto[i].textContent);
-    subtotales[i].innerHTML = cantidad * precio;
+    let moneda = currency[i].textContent.toUpperCase();
+    subtotales[i].innerHTML = cantidad * obtenerMoneda(precio, moneda);
   }
 }
 //Mostrar costo total de los productos en el carrito de compras
@@ -383,8 +385,6 @@ function mostrarMensajeError(elemento, mensaje) {
 }
 
 //Botón comprar
-
-
 var alertaExitoBS = document.getElementById('alertaExito')
 var bsAlertaExito = new bootstrap.Alert(alertaExitoBS)
 
@@ -394,7 +394,6 @@ botonCompra.addEventListener('click',()=> {
     alertaExito.style.display = 'block'; // Muestra la alerta de éxito
     alertaExito.classList.add('animate__bounceIn'); // Aplica la animación
     setTimeout(function () {
-
       // Closing the alert
       bsAlertaExito.close();
     }, 8000);
@@ -469,15 +468,8 @@ var bsAlertaPago = new bootstrap.Alert(alertaPago)
 /*--------------------------------------------------------------Conversión de monedas-----------------------------------------------------------*/
 function obtenerMoneda(num, currency){
   let pesos = 40;
-  let a = 1/pesos;
-  /*fetch()
-  .then(response=> response.json())
-  .then(data=>{
+  let a = 1/pesos;//Dolar sobre pesos para obtener el valor de conversión
 
-  })
-  .catch(error=>{
-    console.error("Error al cargar datos", error)
-  });*/
   if(currency==="UYU"){
     return num*a;
   }else if(currency==="USD"){
