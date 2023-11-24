@@ -3,9 +3,7 @@ let costeDeProductosTotal = 0;
 let costeEnvio = 0;
 
 // Recuperar datos de localStorage
-let cartFromLocalStorage = JSON.parse(localStorage.getItem('cartProducts')) || [];
 let productosEnCarrito = JSON.parse(localStorage.getItem('cartProducts')) || [];
-
 
 fetch(URL_CART)
 .then(response => response.json())
@@ -19,9 +17,9 @@ fetch(URL_CART)
 document.addEventListener('DOMContentLoaded', function () {
   // Si existe un carrito almacenado en el almacenamiento local, se llaman a las funciones 
  
-  if(cartFromLocalStorage){
-    console.log(cartFromLocalStorage);
-    showListFromStorage(cartFromLocalStorage);
+  if(productosEnCarrito){
+    console.log(productosEnCarrito);
+    showListFromStorage(productosEnCarrito);
     actualizarCostos();
   }
 
@@ -156,10 +154,17 @@ function tipoEnvio() {
   }
   mostrarPrecioEnvio.innerHTML = parseInt(costeEnvio);
 }
-
+//Carga el monto total a pagar sumandole el costo de envio
 function precioTotal() {
   let mostrarPrecioTotal = document.querySelector('#total');
   mostrarPrecioTotal.innerHTML = costeEnvio + costeDeProductosTotal;
+}
+//Ejecuta el calculo de todos los valores relacionados con el carrito para actualizar los valores
+function actualizarCostos(){
+  modificarSubtotal();
+  calcularCostos();
+  tipoEnvio();
+  precioTotal();
 }
 //Validaciones de datos
 const validacion = document.getElementById('validar');
@@ -363,21 +368,16 @@ validarDireccion.addEventListener('click', () => {
     mostrarMensajeError(mensajeErrorEsquina, 'Por favor, ingrese una esquina');
   }
 
- 
-
   if (calleValue !== '' && numeroDireccionValue !== '' && esquinaValue !== '') {
     modalDireccion.hide();
     validacionDireccion = true;
     alertaDireccionExito.style.display = 'block'; // Muestra la alerta de éxito
     alertaDireccionExito.classList.add('animate__bounceIn'); // Aplica la animación
     setTimeout(function () {
-
       // Closing the alert
       bsAlertaDireccion.close();
     }, 5000);
   }
-  
-  
 });
 
 function mostrarMensajeError(elemento, mensaje) {
@@ -399,12 +399,6 @@ botonCompra.addEventListener('click',()=> {
     }, 8000);
   }
 });
-function actualizarCostos(){
-  modificarSubtotal();
-  calcularCostos();
-  tipoEnvio();
-  precioTotal();
-}
 function eliminarProducto(nombreProducto) {
   // Recupera el carrito del almacenamiento local
   let carritoLocalStorage = JSON.parse(localStorage.getItem('cartProducts')) || [];
@@ -424,7 +418,7 @@ function eliminarProducto(nombreProducto) {
   // Actualiza los costos después de eliminar un producto
   actualizarCostos();
 }
-
+//Agrega un elemento nuevo al carrito, si ya existia el producto modifica la cantidad de unidades en el carrito
 function agregarAlCarrito(productData, cantidadProducto) {
   let productoExistente = false;
   cantidadProducto = parseInt(cantidadProducto); 
@@ -450,9 +444,9 @@ function agregarAlCarrito(productData, cantidadProducto) {
   }
   // Guarda el arreglo actualizado en el localStorage
   localStorage.setItem('cartProducts', JSON.stringify(productosEnCarrito));
-  cartFromLocalStorage = JSON.parse(localStorage.getItem('cartProducts')) || [];
   productosEnCarrito = JSON.parse(localStorage.getItem('cartProducts')) || [];
-  showListFromStorage(cartFromLocalStorage);
+  productosEnCarrito = JSON.parse(localStorage.getItem('cartProducts')) || [];
+  showListFromStorage(productosEnCarrito);
   //console.log(cantidadProducto);
 }
 //Recorro la lista de productos del carrito que hay guardados en jap server
