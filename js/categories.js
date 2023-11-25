@@ -92,8 +92,8 @@ function sortAndShowCategories(sortCriteria, categoriesArray){
 document.addEventListener("DOMContentLoaded", function(e){
     getJSONData(CATEGORIES_URL).then(function(resultObj){
         if (resultObj.status === "ok"){
-            currentCategoriesArray = resultObj.data
-            showCategoriesList()
+            currentCategoriesArray = resultObj.data;
+            showCategoriesList();
             //sortAndShowCategories(ORDER_ASC_BY_NAME, resultObj.data);
         }
     });
@@ -144,6 +144,7 @@ document.addEventListener("DOMContentLoaded", function(){
     logout.addEventListener('click', function(){
         localStorage.removeItem('nombre');
         localStorage.removeItem('email');
+        localStorage.removeItem('token');
         alert('Desconexion exitosa', 'Vuelve pronto');
         location.href="login.html";
     })

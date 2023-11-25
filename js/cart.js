@@ -32,10 +32,11 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   let logout = document.getElementById('salir');
   logout.addEventListener('click', function(){
-      localStorage.removeItem('nombre');
-      localStorage.removeItem('email');
-      alert('Desconexion exitosa', 'Vuelve pronto');
-      location.href="login.html";
+    localStorage.removeItem('nombre');
+    localStorage.removeItem('email');
+    localStorage.removeItem('token');
+    alert('Desconexion exitosa', 'Vuelve pronto');
+    location.href="login.html";
   })
 });
 //Muestra una lista de elementos de carrito de compras

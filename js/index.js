@@ -26,9 +26,9 @@ document.addEventListener("DOMContentLoaded", function(){
     logout.addEventListener('click', function(){
         localStorage.removeItem('nombre');
         localStorage.removeItem('email');
+        localStorage.removeItem('token');
         alert('Desconexion exitosa', 'Vuelve pronto');
         location.href="login.html";
-        
     })
 });
 

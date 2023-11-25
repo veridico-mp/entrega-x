@@ -6,12 +6,13 @@ if (usuario == '' || usuario == null) {
   document.getElementById('nombre').innerHTML += usuario;
 }
 let logout = document.getElementById('salir');
-logout.addEventListener('click', function () {
+logout.addEventListener('click', function(){
   localStorage.removeItem('nombre');
   localStorage.removeItem('email');
+  localStorage.removeItem('token');
   alert('Desconexion exitosa', 'Vuelve pronto');
-  location.href = 'login.html';
-});
+  location.href="login.html";
+})
 const imagenInput = document.getElementById('imagen');
 const perfilImagen = document.getElementById('perfilImagen');
 

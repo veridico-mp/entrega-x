@@ -80,12 +80,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   let logout = document.getElementById('salir');
-  logout.addEventListener('click', function () {
+  logout.addEventListener('click', function(){
     localStorage.removeItem('nombre');
     localStorage.removeItem('email');
+    localStorage.removeItem('token');
     alert('Desconexion exitosa', 'Vuelve pronto');
-    location.href = 'login.html';
-  });
+    location.href="login.html";
+})
 });
 
 //Funcion para cargar contenidos.

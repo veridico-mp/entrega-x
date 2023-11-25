@@ -14,12 +14,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 //verifica si los campos y guaarda si es correcto
-function checkCont() {
-    const nombre = document.getElementById('nombre').value;
+function checkCont(a, b) {
     const email = document.getElementById('email').value;
 
-    localStorage.setItem('nombre', nombre);
+    localStorage.setItem('nombre', a);
     localStorage.setItem('email', email);
+    localStorage.setItem('token', b);
 }
 //Funcion que envia los datos del usuario para procesar el ingreso
 function solicitarIngreso(user, mail, pass){
@@ -42,7 +42,7 @@ function manejoRespuesta(dato){
     if(dato.status!=="ok"){
         alert(dato.message);
     }else {
-        checkCont();
+        checkCont(dato.usuario, dato.token);
         alert(dato.message);
         window.location.href = 'index.html';
     }

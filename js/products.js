@@ -14,22 +14,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   
     let logout = document.getElementById('salir');
-    logout.addEventListener('click', function () {
-      localStorage.removeItem('nombre');
-      localStorage.removeItem('email');
-      alert('Desconexion exitosa', 'Vuelve pronto');
-      location.href = 'login.html';
-    });
+    logout.addEventListener('click', function(){
+        localStorage.removeItem('nombre');
+        localStorage.removeItem('email');
+        localStorage.removeItem('token');
+        alert('Desconexion exitosa', 'Vuelve pronto');
+        location.href="login.html";
+    })
   });
-
-
-
-
-
-
-
 //Realiza solicitud fetch y espera a que la respuesta se convierta a formato JSON. En caso de error se captura en un bloque catch y muestra mensaje de error en consola
 async function fetchProductData(url) {
+    let TOKEN = localStorage.getItem('token');
     try {
         const res = await fetch(url);
         return await res.json();  
@@ -38,7 +33,6 @@ async function fetchProductData(url) {
         throw error;
     }
 }
-    
 //Se llama a la funcion fetchProductData() con la URL. Cuando se resuelve la promesa muestra los datos con uploadProducts(), sino se crea un mensaje de error
 fetchProductData(URL_CATEGORIES)
     .then(data => {
