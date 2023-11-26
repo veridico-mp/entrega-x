@@ -1,7 +1,7 @@
 // Obtener el ID de producto almacenado en el localStorage
 var prodID = localStorage.getItem('prodID');
-let URL_prod = `https://japceibal.github.io/emercado-api/products/${prodID}.json`;
-let URL_com = `https://japceibal.github.io/emercado-api/products_comments/${prodID}.json`;
+let URL_prod = `http://localhost:3000/product/${prodID}`;
+let URL_com = `http://localhost:3000/comments/${prodID}`;
 
 let cantidadProducto = 1;
 let precioProducto = 0;
@@ -91,32 +91,48 @@ document.addEventListener('DOMContentLoaded', function () {
 
 //Funcion para cargar contenidos.
 function fetchData(url) {
+  let TOKEN = localStorage.getItem('token');
+  let myHeaders = new Headers();
+  myHeaders.append("access-token", TOKEN);
+  myHeaders.append("Content-Type", "application/json");
+  let requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+  };
   //Esta es para mostrar imagenes
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      productData = data;
-      showProductGalery(data);
-      showMainInfo(data);
-      calcularSubtotal(precioProducto);
-      showProductDescription(data);
-      showRelatedProducts(data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  fetch(url, requestOptions)
+  .then(response => response.json())
+  .then(data => {
+    productData = data;
+    showProductGalery(data);
+    showMainInfo(data);
+    calcularSubtotal(precioProducto);
+    showProductDescription(data);
+    showRelatedProducts(data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 }
 
 // Función para cargar comentarios.
 function fetchComments(url) {
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      showProductComments(data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+  let TOKEN = localStorage.getItem('token');
+  let myHeaders = new Headers();
+  myHeaders.append("access-token", TOKEN);
+  myHeaders.append("Content-Type", "application/json");
+  let requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+  };
+  fetch(url, requestOptions)
+  .then(response => response.json())
+  .then(data => {
+    showProductComments(data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
 }
 
 function showProductGalery(data) {
@@ -178,19 +194,13 @@ function showMainInfo(data) {
   let des = document.getElementById('mainInfo');
   let prodName = document.getElementById('prodName');
   let prodCost = document.getElementById('prodCost');
-
   precioProducto = data.cost;
-
   prodName.innerHTML += `${data.name}`;
-
   prodCost.innerHTML += `${data.currency}:  <span id="cost">${data.cost} </span>`;
 }
 function showProductDescription(data) {
   let des = document.getElementById('descripcion');
-
   des.innerHTML += `<h2>Descripción:</h2> <br> <p>${data.description}</p><br>`;
-
-  console.log(des);
 }
 function showRelatedProducts(data) {
   // Funcion que mostrara los productos relacionados
